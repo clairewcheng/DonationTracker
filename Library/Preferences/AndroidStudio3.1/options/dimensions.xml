@@ -15,7 +15,7 @@
     <location key="GitCloneDialog.0.0.2880.1800@192dpi" x="832" y="680" />
     <location key="IdeErrosDialog.0.0.2880.1800@192dpi" x="674" y="548" />
     <location key="com.intellij.ide.util.TipDialog.0.0.2880.1800@192dpi" x="714" y="514" />
-    <location key="SettingsEditor.0.0.2880.1800@192dpi" x="288" y="86" />
+    <location key="SettingsEditor.0.0.2880.1800@192dpi" x="58" y="46" />
     <location key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate.0.0.2880.1800@192dpi" x="946" y="634" />
     <location key="git4idea.merge.GitMergeDialog.0.0.2880.1800@192dpi" x="978" y="452" />
     <location key="Vcs.Push.Dialog.0.0.2880.1800@192dpi" x="808" y="328" />
@@ -33,6 +33,7 @@
     <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.2880.1800@192dpi" x="368" y="172" />
     <location key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog.0.0.2880.1800@192dpi" x="1072" y="362" />
     <location key="#Project_Structure.0.0.2880.1800@192dpi" x="630" y="164" />
+    <location key="ProcessPopupWindow.0.0.2880.1800@192dpi" x="2080" y="1426" />
     <size key="GridCell.Tab.0.left.0.0.1440.900" width="1422" height="205" />
     <size key="GridCell.Tab.0.center.0.0.1440.900" width="1422" height="205" />
     <size key="GridCell.Tab.0.right.0.0.1440.900" width="1422" height="205" />
@@ -53,5 +54,6 @@
     <size key="SettingsEditor.0.0.2880.1800@192dpi" width="2052" height="1512" />
     <size key="javadoc.popup.0.0.2880.1800@192dpi" width="888" height="336" />
     <size key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.2880.1800@192dpi" width="2142" height="1468" />
+    <size key="ProcessPopupWindow.0.0.2880.1800@192dpi" width="800" height="216" />
   </component>
 </application>

@@ -1,0 +1,72 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="$Copy" count="2" />
+      <entry action="$Delete" count="23" />
+      <entry action="$Paste" count="26" />
+      <entry action="$Redo" count="27" />
+      <entry action="$Undo" count="235" />
+      <entry action="Add TypeCast" count="1" />
+      <entry action="Android Profiler" count="1" />
+      <entry action="Android.RunAndroidAvdManager" count="2" />
+      <entry action="Android.RunAndroidSdkManager" count="10" />
+      <entry action="Back" count="14" />
+      <entry action="Change method signature from usage" count="2" />
+      <entry action="ChangesView.CreatePatch" count="1" />
+      <entry action="ChangesView.Refresh" count="1" />
+      <entry action="CheckinFiles" count="1" />
+      <entry action="CheckinProject" count="52" />
+      <entry action="ChooseRunConfiguration" count="1" />
+      <entry action="CleanGradleProject" count="11" />
+      <entry action="Create method from usage" count="1" />
+      <entry action="Create switch statement" count="1" />
+      <entry action="CreateResourceBundle" count="1" />
+      <entry action="DeveloperServices.Firebase" count="6" />
+      <entry action="EditorBackSpace" count="1207" />
+      <entry action="EditorChooseLookupItem" count="175" />
+      <entry action="EditorCopy" count="57" />
+      <entry action="EditorDown" count="36" />
+      <entry action="EditorEnter" count="167" />
+      <entry action="EditorLeft" count="3" />
+      <entry action="EditorPaste" count="38" />
+      <entry action="EditorRight" count="73" />
+      <entry action="EditorStartNewLine" count="1" />
+      <entry action="EditorTab" count="8" />
+      <entry action="EditorUp" count="1" />
+      <entry action="FindUsages" count="1" />
+      <entry action="Fix modifiers" count="1" />
+      <entry action="Git.Branches" count="15" />
+      <entry action="Git.Init" count="1" />
+      <entry action="Git.Merge" count="10" />
+      <entry action="Git.Pull" count="14" />
+      <entry action="Github.Share" count="12" />
+      <entry action="HideAllWindows" count="6" />
+      <entry action="Kotlin.NewFile" count="2" />
+      <entry action="MakeGradleModule" count="1" />
+      <entry action="MakeGradleProject" count="56" />
+      <entry action="Migrate" count="1" />
+      <entry action="NewClass" count="1" />
+      <entry action="NewFile" count="5" />
+      <entry action="NewScratchFile" count="2" />
+      <entry action="OpenFile" count="5" />
+      <entry action="RebuildGradleProject" count="8" />
+      <entry action="Rerun" count="5" />
+      <entry action="RevealIn" count="1" />
+      <entry action="Run" count="153" />
+      <entry action="RunClass" count="2" />
+      <entry action="SaveAll" count="87" />
+      <entry action="SearchEverywhere" count="2" />
+      <entry action="ShowIntentionActions" count="1" />
+      <entry action="Start.Use.Vcs" count="9" />
+      <entry action="Stop" count="2" />
+      <entry action="Synchronize" count="2" />
+      <entry action="ToggleLineBreakpoint" count="1" />
+      <entry action="Vcs.Push" count="44" />
+      <entry action="Vcs.QuickListPopupAction" count="6" />
+      <entry action="Vcs.RefreshStatuses" count="1" />
+      <entry action="Vcs.ShowTabbedFileHistory" count="1" />
+      <entry action="Vcs.UpdateProject" count="12" />
+      <entry action="template.create.ActivityLogin Activity" count="1" />
+    </counts>
+  </component>
+</application>
