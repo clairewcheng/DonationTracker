@@ -15,7 +15,7 @@
       <entry action="ChangesView.CreatePatch" count="1" />
       <entry action="ChangesView.Refresh" count="1" />
       <entry action="CheckinFiles" count="1" />
-      <entry action="CheckinProject" count="52" />
+      <entry action="CheckinProject" count="53" />
       <entry action="ChooseRunConfiguration" count="1" />
       <entry action="CleanGradleProject" count="11" />
       <entry action="Create method from usage" count="1" />
@@ -37,7 +37,7 @@
       <entry action="Fix modifiers" count="1" />
       <entry action="Git.Branches" count="15" />
       <entry action="Git.Init" count="1" />
-      <entry action="Git.Merge" count="10" />
+      <entry action="Git.Merge" count="11" />
       <entry action="Git.Pull" count="14" />
       <entry action="Github.Share" count="12" />
       <entry action="HideAllWindows" count="6" />
@@ -62,7 +62,7 @@
       <entry action="Synchronize" count="2" />
       <entry action="ToggleLineBreakpoint" count="1" />
       <entry action="Vcs.Push" count="44" />
-      <entry action="Vcs.QuickListPopupAction" count="6" />
+      <entry action="Vcs.QuickListPopupAction" count="7" />
       <entry action="Vcs.RefreshStatuses" count="1" />
       <entry action="Vcs.ShowTabbedFileHistory" count="1" />
       <entry action="Vcs.UpdateProject" count="12" />

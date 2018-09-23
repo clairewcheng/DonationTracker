@@ -3,13 +3,6 @@
     <option name="recentPaths">
       <list>
         <option value="$USER_HOME$/Desktop/DonationTrackerv1" />
-        <option value="$USER_HOME$/Desktop/DonationTrackerApp" />
-        <option value="$USER_HOME$/Desktop/donationtracker" />
-        <option value="$USER_HOME$/Desktop/DonationTracker2" />
-        <option value="$USER_HOME$/Desktop/Lab32VM" />
-        <option value="$USER_HOME$/Desktop/Lab32VM 2" />
-        <option value="$USER_HOME$/Desktop/M2" />
-        <option value="$USER_HOME$/AndroidStudioProjects/FirstWatchFace" />
       </list>
     </option>
     <option name="openPaths">
@@ -43,6 +36,17 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/Desktop/DonationTracker">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="AI-173.4670197" />
+              <option name="productionCode" value="AI" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1537727685749" />
+              <option name="buildTimestamp" value="1521681617150" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/Desktop/DonationTracker2">
           <value>
             <RecentProjectMetaInfo>
@@ -71,8 +75,8 @@
               <option name="build" value="AI-173.4670197" />
               <option name="productionCode" value="AI" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1537724304027" />
-              <option name="buildTimestamp" value="1521681645145" />
+              <option name="projectOpenTimestamp" value="1537727815460" />
+              <option name="buildTimestamp" value="1521681617150" />
             </RecentProjectMetaInfo>
           </value>
         </entry>

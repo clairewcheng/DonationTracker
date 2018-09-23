@@ -8,15 +8,15 @@
     <property name="android-component-compatibility-check" value="1537128915942" />
     <property name="MobileminApi" value="22" />
     <property name="WearminApi" value="22" />
-    <property name="lastTip" value="19" />
+    <property name="lastTip" value="20" />
     <property name="inspector.open.textAppearance" value="true" />
     <property name="newly.installed.api.level" value="27" />
     <property name="AndroidInitConfigurator.V5" value="true" />
     <property name="installed.kotlin.plugin.version" value="1.2.30-release-Studio3.1-1" />
-    <property name="file.gist.reindex.count" value="486" />
+    <property name="file.gist.reindex.count" value="24017" />
     <property name="last.imported.location" value="$USER_HOME$/Desktop/DonationTrackerApp" />
     <property name="create.project.preferred.importer" value="Existing Sources" />
-    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.28742516" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.28892216" />
     <property name="com.intellij.diagnostic.IdeErrorsDialogactiveTab" value="0" />
     <property name="kotlin.lastUpdateCheck" value="1536033196832" />
     <property name="vcs.log.changes.splitter.proportion" value="0.86950356" />
@@ -56,5 +56,6 @@
     <property name="ATTACHED_TOOL_WINDOW.Preview.RIGHT.UNSCALED.WIDTH" value="225" />
     <property name="NlScreenMode" value="SCREEN_ONLY" />
     <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="AndroidPlatformName" value="Android API 25 Platform" />
   </component>
 </application>
