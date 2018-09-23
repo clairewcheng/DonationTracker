@@ -1,0 +1,38 @@
+<application>
+  <component name="ToolbarClicksCollector">
+    <counts>
+      <entry action="Android Profiler@MainToolbar" count="1" />
+      <entry action="Android.RunAndroidAvdManager@MainToolbar" count="2" />
+      <entry action="Android.RunAndroidSdkManager@MainToolbar" count="10" />
+      <entry action="Back@MainToolbar" count="14" />
+      <entry action="ChangesView.Refresh@ChangesViewToolbar" count="1" />
+      <entry action="CheckinProject@ChangesViewToolbar" count="10" />
+      <entry action="CheckinProject@MainToolbar" count="5" />
+      <entry action="MakeGradleProject@MainToolbar" count="56" />
+      <entry action="OpenFile@MainToolbar" count="3" />
+      <entry action="Rerun@RunnerToolbar" count="5" />
+      <entry action="Run@MainToolbar" count="151" />
+      <entry action="SaveAll@MainToolbar" count="1" />
+      <entry action="Stop@MainToolbar" count="2" />
+      <entry action="Synchronize@MainToolbar" count="2" />
+      <entry action="Vcs.UpdateProject@MainToolbar" count="1" />
+      <entry action="com.android.tools.adtui.actions.DropDownAction@toolbar" count="3" />
+      <entry action="com.android.tools.adtui.workbench.AttachedToolWindow$SearchAction@TOOL_WINDOW_TOOLBAR" count="1" />
+      <entry action="com.android.tools.idea.common.actions.IssueNotificationAction@NlRhsConfigToolbar" count="19" />
+      <entry action="com.android.tools.idea.configurations.DeviceMenuAction@toolbar" count="27" />
+      <entry action="com.android.tools.idea.configurations.TargetMenuAction@toolbar" count="5" />
+      <entry action="com.android.tools.idea.configurations.ThemeMenuAction@toolbar" count="12" />
+      <entry action="com.android.tools.idea.gradle.project.build.invoker.GradleBuildInvoker$2$1@BuildView" count="1" />
+      <entry action="com.android.tools.idea.ui.resourcechooser.ChooseResourceDialog$1@ResourceViewOptionToolbar" count="1" />
+      <entry action="com.android.tools.idea.ui.resourcechooser.ChooseResourceDialog$2@ResourceViewOptionToolbar" count="1" />
+      <entry action="com.android.tools.idea.uibuilder.error.IssuePanel$MinimizeAction@unknown" count="11" />
+      <entry action="com.android.tools.idea.uibuilder.property.ViewAllPropertiesAction@TOOL_WINDOW_TOOLBAR" count="1" />
+      <entry action="com.android.tools.idea.uibuilder.property.editors.BrowsePanel$BrowseAction@unknown" count="13" />
+      <entry action="com.android.tools.idea.uibuilder.property.editors.NlBooleanIconEditor$BooleanAction@Inspector Place" count="6" />
+      <entry action="com.android.tools.idea.uibuilder.property.editors.NlFlagsEditor$3@unknown" count="1" />
+      <entry action="com.intellij.build.AbstractViewManager$CloseBuildContentAction@BuildView" count="2" />
+      <entry action="com.intellij.notification.EventLogToolWindowFactory$EditNotificationSettings@EventLog" count="2" />
+      <entry action="org.jetbrains.plugins.terminal.TerminalView$NewSession@Terminal" count="1" />
+    </counts>
+  </component>
+</application>
