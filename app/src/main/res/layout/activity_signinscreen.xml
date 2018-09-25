@@ -4,37 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".signinscreen">
+
+    <TextView
+        android:id="@+id/welcomeback"
+        android:layout_width="279dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/welcome_back"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logosignin" />
 
     <ImageView
-        android:id="@+id/logocreate"
+        android:id="@+id/logosignin"
         android:layout_width="146dp"
         android:layout_height="172dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/donationtrackertitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/donation_tracker"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logocreate" />
-
     <EditText
-        android:id="@+id/emailcreate"
+        android:id="@+id/emailsignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -46,52 +46,50 @@
         android:text="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donationtrackertitle" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeback" />
 
     <EditText
-        android:id="@+id/passwordcreate"
+        android:id="@+id/passwordsignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="98dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:text="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/createaccountbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailcreate" />
+        app:layout_constraintTop_toBottomOf="@+id/emailsignin" />
 
     <Button
-        android:id="@+id/createaccountbutton"
+        android:id="@+id/signinbutton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="162dp"
-        android:layout_marginStart="161dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="@string/create_account"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordcreate" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordsignin" />
 
     <Button
-        android:id="@+id/signinscreen"
+        android:id="@+id/createscreen"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginStart="161dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
-        android:text="@string/already_have_an_account_sign_in"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:text="@string/don_t_have_an_account_create_one"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createaccountbutton" />
-
 
 </android.support.constraint.ConstraintLayout>

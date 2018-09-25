@@ -23,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".signinscreen" />
+        <activity android:name=".AppHome"></activity>
     </application>
 
 </manifest>
