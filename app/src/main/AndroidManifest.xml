@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".signinscreen" />
-        <activity android:name=".AppHome"></activity>
+        <activity android:name=".AppHome" />
     </application>
 
 </manifest>

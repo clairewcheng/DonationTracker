@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
 
                             // navigate to logged in screen(currently causing app crash
-                            //Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
-                            //startActivity(intentSignUP);
+                            Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
+                            startActivity(intentSignUP);
 
                         }
                         if(!task.isSuccessful()){

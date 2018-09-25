@@ -72,6 +72,8 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(signinscreen.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
+                            Intent intentLaunchApp = new Intent(getApplicationContext(),AppHome.class);
+                            startActivity(intentLaunchApp);
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -94,9 +96,7 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
 
         if (view == signInButton) {
             signIn();
-            // navigate to logged in screen(currently causing app crash
-            //Intent intentLaunchApp = new Intent(getApplicationContext(),AppHome.class);
-            //startActivity(intentLaunchApp);
+
         }
 
     }

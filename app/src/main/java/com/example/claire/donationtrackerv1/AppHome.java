@@ -1,8 +1,10 @@
 package com.example.claire.donationtrackerv1;
 
 import android.content.Intent;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,8 +30,8 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
         if (view == backbutton) {
             // navigate to logged in screen(currently causing app crash
-            Intent intentSignUP = new Intent(getApplicationContext(),signinscreen.class);
-            startActivity(intentSignUP);
+            Intent intentLogOut = new Intent(getApplicationContext(),signinscreen.class);
+            startActivity(intentLogOut);
         }
 
     }
