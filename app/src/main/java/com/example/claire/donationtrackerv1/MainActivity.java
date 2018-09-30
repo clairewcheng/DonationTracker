@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText passwordField;
     private Button createAccountButton;
     private Button goToSignInButton;
+    private Spinner userTypeSpinner;
+
+    private User _user;
 
 
 
@@ -40,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         passwordField = (EditText) findViewById(R.id.passwordcreate);
         goToSignInButton = (Button) findViewById(R.id.signinscreen);
         createAccountButton= (Button) findViewById(R.id.createaccountbutton);
+        userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.userType);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        userTypeSpinner.setAdapter(adapter);
 
         goToSignInButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
@@ -50,8 +60,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void createAccount() {
+        _user = new User();
         String email = emailField.getText().toString().trim();
+        _user.setEmail(email);
         String password = passwordField.getText().toString().trim();
+        _user.setPassword(password);
+        _user.setUserType((String) userTypeSpinner.getSelectedItem());
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
