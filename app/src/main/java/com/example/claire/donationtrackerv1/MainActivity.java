@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             // navigate to logged in screen(currently causing app crash
                             Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
+                            intentSignUP.putExtra("userType", _user.getUserType());
                             startActivity(intentSignUP);
 
                         }

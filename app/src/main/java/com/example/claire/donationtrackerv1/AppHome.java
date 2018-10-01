@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -14,6 +15,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private Button backbutton;
+    private TextView userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +23,10 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_app_home);
 
         backbutton = (Button) findViewById(R.id.tempsignoutbutton);
+        userType = (TextView) findViewById(R.id.user_type_field);
 
         backbutton.setOnClickListener(this);
+        userType.setText(getIntent().getExtras().getString("userType"));
     }
 
     @Override

@@ -28,6 +28,7 @@ public class User {
     public String getPassword() {return _password; }
     public void setPassword(String password) { _password = password; }
 
+    public String getUserType() { return _userType; }
     public void setUserType(String userType) { _userType = userType; }
 
 
@@ -41,6 +42,10 @@ public class User {
         _userType = userType;
         _email = email;
         _password = password;
+    }
+
+    public User(String email, String password) {
+        this("User", email, password);
     }
 
     public User() {

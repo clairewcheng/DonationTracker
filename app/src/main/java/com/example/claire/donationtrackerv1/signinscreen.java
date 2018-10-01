@@ -26,6 +26,8 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
     private Button signInButton;
     private Button goBackToCreate;
 
+    private User _user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,11 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
 
 
     private void signIn() {
+        _user = new User();
         String email = emailField.getText().toString().trim();
+        _user.setEmail(email);
         String password = passwordField.getText().toString().trim();
+        _user.setPassword(password);
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
@@ -73,6 +78,7 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
                             FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
                             Intent intentLaunchApp = new Intent(getApplicationContext(),AppHome.class);
+                            intentLaunchApp.putExtra("userType", _user.getUserType());
                             startActivity(intentLaunchApp);
 
                         } else {
