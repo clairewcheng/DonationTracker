@@ -18,11 +18,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private DatabaseReference users;
 
     private EditText emailField;
     private EditText passwordField;
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         createAccountButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
 
@@ -66,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = passwordField.getText().toString().trim();
         _user.setPassword(password);
         _user.setUserType((String) userTypeSpinner.getSelectedItem());
+
+        // Add new user to database
+        String uid = email.substring(0, email.indexOf("."));
+        mDatabase.child("users").child(uid).setValue(_user);
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
@@ -121,7 +129,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-
-
-
 }
