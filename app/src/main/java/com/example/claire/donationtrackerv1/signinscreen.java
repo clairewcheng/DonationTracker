@@ -45,7 +45,7 @@ public class signinscreen extends AppCompatActivity implements View.OnClickListe
         mAuth = FirebaseAuth.getInstance();
     }
 
-
+    // TODO: get user type to display from database
     private void signIn() {
         _user = new User();
         String email = emailField.getText().toString().trim();

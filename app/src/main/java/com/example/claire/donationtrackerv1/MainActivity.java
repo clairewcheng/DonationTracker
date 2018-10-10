@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private DatabaseReference users;
 
     private EditText emailField;
     private EditText passwordField;
@@ -65,15 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void createAccount() {
         _user = new User();
-        String email = emailField.getText().toString().trim();
+        final String email = emailField.getText().toString().trim();
         _user.setEmail(email);
         String password = passwordField.getText().toString().trim();
         _user.setPassword(password);
         _user.setUserType((String) userTypeSpinner.getSelectedItem());
-
-        // Add new user to database
-        String uid = email.substring(0, email.indexOf("."));
-        mDatabase.child("users").child(uid).setValue(_user);
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
@@ -99,7 +94,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // call to change activity to main application landing.
                             Toast.makeText(MainActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
 
-                            // navigate to logged in screen(currently causing app crash
+                            // Add new user to database
+                            String uid = email.substring(0, email.indexOf("."));
+                            mDatabase.child("users").child(uid).setValue(_user);
+
+                            // navigate to logged in screen
                             Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
                             intentSignUP.putExtra("userType", _user.getUserType());
                             startActivity(intentSignUP);
