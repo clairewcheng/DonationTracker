@@ -17,12 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountScreen extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()) {
 
                             // call to change activity to main application landing.
-                            Toast.makeText(MainActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
 
                             // Add new user to database
                             String uid = email.substring(0, email.indexOf("."));
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast.makeText(MainActivity.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountScreen.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (view == goToSignInButton) {
             // navigate to logged in screen(currently causing app crash
-            Intent intentSignUP = new Intent(getApplicationContext(),signinscreen.class);
+            Intent intentSignUP = new Intent(getApplicationContext(),SignInScreen.class);
             startActivity(intentSignUP);
         }
 
