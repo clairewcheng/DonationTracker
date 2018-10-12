@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,17 +17,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountScreen extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     private EditText emailField;
     private EditText passwordField;
     private Button createAccountButton;
     private Button goToSignInButton;
+    private Spinner userTypeSpinner;
+
+    private User _user;
 
 
 
@@ -40,18 +47,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         passwordField = (EditText) findViewById(R.id.passwordcreate);
         goToSignInButton = (Button) findViewById(R.id.signinscreen);
         createAccountButton= (Button) findViewById(R.id.createaccountbutton);
+        userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.userType);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        userTypeSpinner.setAdapter(adapter);
 
         goToSignInButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
 
     private void createAccount() {
-        String email = emailField.getText().toString().trim();
+        _user = new User();
+        final String email = emailField.getText().toString().trim();
+        _user.setEmail(email);
         String password = passwordField.getText().toString().trim();
+        _user.setPassword(password);
+        _user.setUserType((String) userTypeSpinner.getSelectedItem());
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
@@ -75,16 +91,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()) {
 
                             // call to change activity to main application landing.
-                            Toast.makeText(MainActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
 
-                            // navigate to logged in screen(currently causing app crash
+                            // Add new user to database
+                            String uid = email.substring(0, email.indexOf("."));
+                            mDatabase.child("users").child(uid).setValue(_user);
+
+                            // navigate to logged in screen
                             Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
+                            intentSignUP.putExtra("userType", _user.getUserType());
                             startActivity(intentSignUP);
 
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast.makeText(MainActivity.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountScreen.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -101,12 +122,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (view == goToSignInButton) {
             // navigate to logged in screen(currently causing app crash
-            Intent intentSignUP = new Intent(getApplicationContext(),signinscreen.class);
+            Intent intentSignUP = new Intent(getApplicationContext(),SignInScreen.class);
             startActivity(intentSignUP);
         }
 
     }
-
-
-
 }
