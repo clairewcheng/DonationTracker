@@ -15,12 +15,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private DatabaseReference mUserRef;
+    private DatabaseReference mLocationsRef;
     private ValueEventListener mUserListener;
-    private User _user;
+    private ValueEventListener mLocationsListener;
+    private User user;
+    private ArrayList<Location> locations;
 
     private Button backbutton;
     private TextView userType;
@@ -38,6 +43,8 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
         mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(email.substring(0, email.indexOf(".")));
+        mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
+        locations = new ArrayList<>();
     }
 
     @Override
@@ -50,11 +57,11 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
-                _user = dataSnapshot.getValue(User.class);
-                if (_user == null) {
+                user = dataSnapshot.getValue(User.class);
+                if (user == null) {
                     Toast.makeText(AppHome.this, "Unable to retrieve user from database.", Toast.LENGTH_LONG).show();
                 } else {
-                    userType.setText(_user.getUserType());
+                    userType.setText(user.getUserType());
                 }
             }
 
@@ -67,8 +74,29 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mUserRef.addValueEventListener(userListener);
         // [END user_event_listener]
 
-        // Keep copy of post listener so we can remove it when app stops
+        // Add value event listener to the locations
+        // [START locations_event_listener]
+        ValueEventListener locationsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Location objects and use the values to update the UI
+                for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
+                    locations.add(locSnapshot.getValue(Location.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(AppHome.this, "Failed to load locations.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        mLocationsRef.addValueEventListener(locationsListener);
+        // [END locations_event_listener]
+
+        // Keep copy of listeners so we can remove them when app stops
         mUserListener = userListener;
+        mLocationsListener = locationsListener;
     }
 
     @Override
@@ -78,6 +106,11 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         // Remove user event listener
         if (mUserListener != null) {
             mUserRef.removeEventListener(mUserListener);
+        }
+
+        // Remove locations event listener
+        if (mLocationsListener != null) {
+            mLocationsRef.removeEventListener(mLocationsListener);
         }
     }
 
