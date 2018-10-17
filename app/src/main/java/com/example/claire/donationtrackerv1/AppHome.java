@@ -3,6 +3,7 @@ package com.example.claire.donationtrackerv1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -53,18 +56,24 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         
 
         mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
-        mAdapter = new MyAdapter(locations);
-        mRecyclerView.setAdapter(mAdapter);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        //mAdapter = new MyAdapter(locations);
+        //mRecyclerView.setAdapter(mAdapter);
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         private ArrayList<Location> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-              public TextView mView;
-              public MyViewHolder(TextView v) {
-                          super(v);
-                          mView = v;
+              public View mView;
+              public TextView mContentView;
+              public Location mLocation;
+
+              public MyViewHolder(View view) {
+                          super(view);
+                          mView = view;
+                          mContentView = (TextView) view.findViewById(R.id.content);
               }
 
         }
@@ -77,16 +86,17 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
-           TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.location_list_content, parent, false);
-           MyViewHolder vh = new MyViewHolder(v);
-           return vh;
+           View view = LayoutInflater.from(parent.getContext())
+                   .inflate(R.layout.location_list_content, parent, false);
+           return new MyViewHolder(view);
         }
         
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
-                // - get element from your dataset at this position
-                // - replace the contents of the view with that element
-                holder.mView.setText(mDataset.get(position).getName());
+            // - get element from your dataset at this position
+            // - replace the contents of the view with that element
+            holder.mLocation = mDataset.get(position);
+            holder.mContentView.setText(mDataset.get(position).getName());
 
         }
         @Override
@@ -132,6 +142,9 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
                     locations.add(locSnapshot.getValue(Location.class));
                 }
+                //mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
+                mAdapter = new MyAdapter(locations);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
