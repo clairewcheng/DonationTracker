@@ -1,5 +1,6 @@
 package com.example.claire.donationtrackerv1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,9 +72,9 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
               public Location mLocation;
 
               public MyViewHolder(View view) {
-                          super(view);
-                          mView = view;
-                          mContentView = (TextView) view.findViewById(R.id.content);
+                  super(view);
+                  mView = view;
+                  mContentView = (TextView) view.findViewById(R.id.content);
               }
 
         }
@@ -92,12 +93,31 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         }
         
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(final MyViewHolder holder, final int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataset.get(position);
             holder.mContentView.setText(mDataset.get(position).getName());
 
+            /*
+             * set up a listener to handle if the user clicks on this list item, what should happen?
+             */
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                //on a phone, we need to change windows to the detail view
+                //create our new intent with the new screen (activity)
+                Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
+                /*
+                    pass along the id of the location so we can retrieve the correct data in
+                    the next window
+                 */
+                intent.putExtra("locationID", "" + position);
+
+                //now just display the new window
+                startActivity(intent);
+                }
+            });
         }
         @Override
         public int getItemCount() {

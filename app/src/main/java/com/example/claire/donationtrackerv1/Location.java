@@ -121,4 +121,18 @@ public class Location {
     public void setZip(String zip) {
         this.zip = zip;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name
+                + "\nCity: " + city
+                + "\nStreet Address: " + streetAddress
+                + "\nState: " + state
+                + "\nZip: " + zip
+                + "\nLatitude: " + latitude
+                + "\nLongitude: " + longitude
+                + "\nType: " + type
+                + "\nWebsite: " + website
+                + "\nPhone: " + phone;
+    }
 }
