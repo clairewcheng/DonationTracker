@@ -54,13 +54,40 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(email.substring(0, email.indexOf(".")));
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
-        
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         //mAdapter = new MyAdapter(locations);
         //mRecyclerView.setAdapter(mAdapter);
+
+        // Add value event listener to the locations
+         ValueEventListener locationsListener = new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                 // Get Location objects and use the values to update the UI
+                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
+                     locations.add(locSnapshot.getValue(Location.class));
+                 }
+                 //mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
+                 mAdapter = new MyAdapter(locations);
+                 mRecyclerView.setAdapter(mAdapter);
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+                 Toast.makeText(AppHome.this, "Failed to load locations.",
+                         Toast.LENGTH_SHORT).show();
+             }
+         };
+         mLocationsRef.addValueEventListener(locationsListener);
+         // [END locations_event_listener]
+
+          mLocationsListener = locationsListener;
+
+
+
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -152,33 +179,9 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         };
         mUserRef.addValueEventListener(userListener);
         // [END user_event_listener]
-
-        // Add value event listener to the locations
-        // [START locations_event_listener]
-        ValueEventListener locationsListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Location objects and use the values to update the UI
-                for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
-                    locations.add(locSnapshot.getValue(Location.class));
-                }
-                //mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
-                mAdapter = new MyAdapter(locations);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AppHome.this, "Failed to load locations.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-        mLocationsRef.addValueEventListener(locationsListener);
-        // [END locations_event_listener]
-
         // Keep copy of listeners so we can remove them when app stops
         mUserListener = userListener;
-        mLocationsListener = locationsListener;
+
     }
 
     @Override
