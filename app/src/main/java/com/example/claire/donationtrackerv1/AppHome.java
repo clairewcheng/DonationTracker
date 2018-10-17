@@ -3,7 +3,10 @@ package com.example.claire.donationtrackerv1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,12 +32,14 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
     private Button backbutton;
     private TextView userType;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
-
         backbutton = (Button) findViewById(R.id.tempsignoutbutton);
         userType = (TextView) findViewById(R.id.user_type_field);
 
@@ -45,7 +50,51 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(email.substring(0, email.indexOf(".")));
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
+        
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
+        mAdapter = new MyAdapter(locations);
+        mRecyclerView.setAdapter(mAdapter);
     }
+
+    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+        private ArrayList<Location> mDataset;
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+              public TextView mView;
+              public MyViewHolder(TextView v) {
+                          super(v);
+                          mView = v;
+              }
+
+        }
+
+        public MyAdapter(ArrayList<Location> myDataset) {
+                mDataset = myDataset;
+        }
+
+        @Override
+
+        public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
+           //create new view
+           TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.location_list_content, parent, false);
+           MyViewHolder vh = new MyViewHolder(v);
+           return vh;
+        }
+        
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+                // - get element from your dataset at this position
+                // - replace the contents of the view with that element
+                holder.mView.setText(mDataset.get(position).getName());
+
+        }
+        @Override
+        public int getItemCount() {
+            return mDataset.size();
+        }
+    }
+
 
     @Override
     public void onStart() {
