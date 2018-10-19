@@ -24,6 +24,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+// TODO: pass location by id not index
+
 public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
@@ -55,39 +57,30 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
-
         mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        //mAdapter = new MyAdapter(locations);
-        //mRecyclerView.setAdapter(mAdapter);
 
         // Add value event listener to the locations
-         ValueEventListener locationsListener = new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                 // Get Location objects and use the values to update the UI
-                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
-                     locations.add(locSnapshot.getValue(Location.class));
-                 }
-                 //mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
-                 mAdapter = new MyAdapter(locations);
-                 mRecyclerView.setAdapter(mAdapter);
-             }
+        ValueEventListener locationsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Location objects and use the values to update the UI
+                for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
+                    locations.add(locSnapshot.getValue(Location.class));
+                }
+                mAdapter = new MyAdapter(locations);
+                mRecyclerView.setAdapter(mAdapter);
+            }
 
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
-                 Toast.makeText(AppHome.this, "Failed to load locations.",
-                         Toast.LENGTH_SHORT).show();
-             }
-         };
-         mLocationsRef.addValueEventListener(locationsListener);
-         // [END locations_event_listener]
-
-          mLocationsListener = locationsListener;
-
-
-
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(AppHome.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+            }
+        };
+        mLocationsRef.addValueEventListener(locationsListener);
+        // [END locations_event_listener]
+        // mLocationsListener = locationsListener;
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -103,7 +96,6 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
                   mView = view;
                   mContentView = (TextView) view.findViewById(R.id.content);
               }
-
         }
 
         public MyAdapter(ArrayList<Location> myDataset) {
@@ -111,7 +103,6 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         }
 
         @Override
-
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
            View view = LayoutInflater.from(parent.getContext())
