@@ -1,4 +1,4 @@
-package com.example.claire.donationtrackerv1;
+package com.example.claire.donationtrackerv1.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Location;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
