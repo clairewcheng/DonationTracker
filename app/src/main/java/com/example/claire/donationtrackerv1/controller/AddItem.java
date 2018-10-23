@@ -65,6 +65,7 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void createItem() {
+        //TODO: check for valid dates, etc
         String _shortDesc = shortDescField.getText().toString().trim();
         String _longDesc = longDescField.getText().toString().trim();
         String _value = valueField.getText().toString().trim();
