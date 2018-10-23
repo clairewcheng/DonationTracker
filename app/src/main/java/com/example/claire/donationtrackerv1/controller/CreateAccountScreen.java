@@ -96,6 +96,7 @@ public class CreateAccountScreen extends AppCompatActivity implements View.OnCli
                             Toast.makeText(CreateAccountScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
 
                             // Add new user to database
+                            //TODO: change to using unique uid
                             String uid = email.substring(0, email.indexOf("."));
                             mDatabase.child("users").child(uid).setValue(_user);
 

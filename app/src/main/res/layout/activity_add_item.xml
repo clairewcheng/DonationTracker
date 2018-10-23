@@ -40,18 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/addItemExitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="21dp"
-        android:background="@android:string/no"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pageDecalImage"
-        app:srcCompat="@drawable/closeicon" />
-
     <TextView
         android:id="@+id/shortDescription"
         android:layout_width="wrap_content"
@@ -102,7 +90,7 @@
         android:textColor="@android:color/black"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/locationSpinner" />
 
     <TextView
         android:id="@+id/comments"
@@ -169,20 +157,13 @@
         app:layout_constraintTop_toBottomOf="@+id/fullDescription"
         tools:targetApi="o" />
 
-    <EditText
-        android:id="@+id/locationEntry"
+    <Spinner
+        android:id="@+id/locationSpinner"
         android:layout_width="369dp"
-        android:layout_height="39dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/_404_imaginary_drive_ironic_city_neptune"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location"
-        tools:targetApi="o" />
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
     <EditText
         android:id="@+id/valueEntry"

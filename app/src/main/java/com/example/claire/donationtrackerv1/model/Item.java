@@ -5,54 +5,54 @@ import java.util.List;
 
 public class Item {
 
-    private String time_Stamp;
-    private String name;
-    private String description;
-    private Integer value;
+    private String shortDesc;
+    private String longDesc;
+    private String value;
+    private String timeStamp;
+    private String date;
     public static List<String> _category = Arrays.asList("Clothing", "Hat", "Kitchen", "Electronics", "Household", "Other");
-    private String category;
     private String comments;
-    private String picture;
     private String location;
+    private String category;
+    private String picture;
 
-    public Item(String time_Stamp, String name, String description, Integer value, String category,
-                String comments, String picture, String location) {
-        time_Stamp = this.time_Stamp;
-        name = this.name;
-        description = this.description;
-        value = this.value;
-        category = category;
-        comments = this.comments;
-        picture = this.picture;
-        location = this.location;
+    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date, String comments,
+            String location, String category, String picture) {
+        this.shortDesc = shortDesc;
+        this.longDesc = longDesc;
+        this.value = value;
+        this.timeStamp = timeStamp;
+        this.date = date;
+        this.comments = comments;
+        this.location = location;
+        this.category = category;
+        this.picture = picture;
     }
 
     // constructor chaining
-    public Item(String time_Stamp, String name, String description, Integer value, String category,
-                String picture, String location) {
-        this(time_Stamp, name, description, value, category, "No comments entered" , picture, location);
-    }
-
-    public Item (String time_Stamp, String name, String description, Integer value, String category,  String location) {
-        this(time_Stamp, name, description, value, category, "No comments entered", "No picture entered", location );
+    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date, String comments,
+                String location, String category) {
+        this(shortDesc, longDesc, value, timeStamp, date, comments, location, category, "No picture available");
     }
 
     // to string method
     @Override
     public String toString() {
         if (comments == null && picture == null) {
-            return "Name: " + name
-                    + "\nTime Stamp: " + time_Stamp
-                    + "\nDescription: " + description
+            return "Name: " + shortDesc
+                    + "\nTime Stamp: " + timeStamp
+                    + "\nDate: " + date
+                    + "\nDescription: " + longDesc
                     + "\nValue: " + value
                     + "\nCategory: " + category
                     + "\nLocation: " + location;
         }
 
         else if (comments == null) {
-            return "Name: " + name
-                    + "\nTime Stamp: " + time_Stamp
-                    + "\nDescription: " + description
+            return "Name: " + shortDesc
+                    + "\nTime Stamp: " + timeStamp
+                    + "\nDate: " + date
+                    + "\nDescription: " + longDesc
                     + "\nValue: " + value
                     + "\nCategory: " + category
                     + "\nPicture: " + picture
@@ -60,23 +60,97 @@ public class Item {
         }
 
         else if (picture == null) {
-            return "Name: " + name
-                    + "\nTime Stamp: " + time_Stamp
-                    + "\nDescription: " + description
+            return "Name: " + shortDesc
+                    + "\nTime Stamp: " + timeStamp
+                    + "\nDate: " + date
+                    + "\nDescription: " + longDesc
                     + "\nValue: " + value
                     + "\nCategory: " + category
-                    + "\nComments: " + picture
+                    + "\nComments: " + comments
                     + "\nLocation: " + location;
         }
         else {
-            return "Name: " + name
-                    + "\nTime Stamp: " + time_Stamp
-                    + "\nDescription: " + description
+            return "Name: " + shortDesc
+                    + "\nTime Stamp: " + timeStamp
+                    + "\nDate: " + date
+                    + "\nDescription: " + longDesc
                     + "\nValue: " + value
                     + "\nCategory: " + category
                     + "\nComments: " + comments
                     + "\nPicture: " + picture
                     + "\nLocation: " + location;
         }
+    }
+
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public void setShortDesc(String desc) {
+        shortDesc = desc;
+    }
+
+    public String getLongDesc() {
+        return longDesc;
+    }
+
+    public void setLongDesc(String desc) {
+        longDesc = desc;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String time) {
+        timeStamp = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
