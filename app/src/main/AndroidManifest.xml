@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".SignInScreen" />
         <activity android:name=".AppHome" />
+        <activity android:name=".AddItem"></activity>
     </application>
 
 </manifest>
