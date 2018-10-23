@@ -1,4 +1,4 @@
-package com.example.claire.donationtrackerv1;
+package com.example.claire.donationtrackerv1.model;
 
 import java.util.Arrays;
 import java.util.List;
