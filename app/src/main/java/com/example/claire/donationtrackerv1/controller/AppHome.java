@@ -37,6 +37,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
     private ArrayList<Location> locations;
 
     private Button backbutton;
+    private Button donateItemButton;
     private TextView userType;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -46,10 +47,13 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
+
         backbutton = (Button) findViewById(R.id.tempsignoutbutton);
         userType = (TextView) findViewById(R.id.user_type_field);
+        donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
 
         backbutton.setOnClickListener(this);
+        donateItemButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -197,6 +201,11 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
             // navigate to logged in screen
             Intent intentLogOut = new Intent(getApplicationContext(),SignInScreen.class);
             startActivity(intentLogOut);
+        }
+
+        if (view == donateItemButton) {
+            Intent intentDonateItem = new Intent(getApplicationContext(), AddItem.class);
+            startActivity(intentDonateItem);
         }
 
     }
