@@ -1,4 +1,4 @@
-package com.example.claire.donationtrackerv1;
+package com.example.claire.donationtrackerv1.model;
 
 public class Location {
 
@@ -121,6 +121,7 @@ public class Location {
     public void setZip(String zip) {
         this.zip = zip;
     }
+
 
     @Override
     public String toString() {
