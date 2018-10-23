@@ -1,4 +1,4 @@
-package com.example.claire.donationtrackerv1;
+package com.example.claire.donationtrackerv1.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Location;
 import com.example.claire.donationtrackerv1.model.User;
 import com.google.firebase.auth.FirebaseAuth;

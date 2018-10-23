@@ -1,7 +1,9 @@
-package com.example.claire.donationtrackerv1;
+package com.example.claire.donationtrackerv1.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.claire.donationtrackerv1.R;
 
 public class AddItem extends AppCompatActivity {
 

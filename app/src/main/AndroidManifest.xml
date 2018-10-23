@@ -16,16 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccountScreen">
+        <activity android:name=".controller.CreateAccountScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInScreen" />
-        <activity android:name=".AppHome" />
-        <activity android:name=".AddItem"></activity>
+        <activity android:name=".controller.SignInScreen" />
+        <activity android:name=".controller.AppHome" />
+        <activity android:name=".controller.AddItem" />
+        <activity android:name=".controller.LocationDetailActivity" />
     </application>
 
 </manifest>
