@@ -69,6 +69,8 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         ValueEventListener locationsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                // Empty locations list
+                locations = new ArrayList<>();
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
                     locations.add(locSnapshot.getValue(Location.class));
@@ -85,6 +87,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         mLocationsRef.addValueEventListener(locationsListener);
         // [END locations_event_listener]
         // mLocationsListener = locationsListener;
+        mLocationsListener = locationsListener;
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {

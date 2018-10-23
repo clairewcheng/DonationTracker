@@ -8,18 +8,26 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
+import com.example.claire.donationtrackerv1.model.Location;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class AddItem extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mDatabase;
+    private DatabaseReference mLocationsRef;
+    private ValueEventListener mLocationsListener;
 
     private EditText shortDescField;
     private EditText longDescField;
@@ -33,6 +41,7 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
     //TODO: add picture capability
 
     private Item _item;
+    private ArrayList<String> locationNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +62,32 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
 
-        //TODO: change this to pull locations from Firebase
-        List<String> _locations = Arrays.asList("Loc 1", "Loc 2", "Loc 3", "Loc 4", "Loc 5");
-        ArrayAdapter<String> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, _locations);
-        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationSpinner.setAdapter(locAdapter);
+        mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
+
+        // Add value event listener to the locations
+        ValueEventListener locationsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Empty locations list
+                locationNames = new ArrayList<>();
+                // Get Location objects and use the values to update the UI
+                for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
+                    locationNames.add(locSnapshot.getValue(Location.class).getName());
+                }
+                ArrayAdapter<String> locAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, locationNames);
+                locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                locationSpinner.setAdapter(locAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(AddItem.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+            }
+        };
+        mLocationsRef.addValueEventListener(locationsListener);
+        // [END locations_event_listener]
+        // mLocationsListener = locationsListener;
+        mLocationsListener = locationsListener;
 
         addItemButton.setOnClickListener(this);
 
@@ -76,11 +106,20 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         String _category = (String) categorySpinner.getSelectedItem();
 
         _item = new Item(_shortDesc, _longDesc, _value, _time, _date, _comment, _location, _category);
-        //TODO: change to add by unique ids
+        //TODO: change to add by unique ids (currently name but paths can't contain . or # or $ or [ or ]
         mDatabase.child("items").child("ID:" + _shortDesc).setValue(_item);
 
         Intent intentHome = new Intent(getApplicationContext(),AppHome.class);
         startActivity(intentHome);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Remove locations event listener
+        if (mLocationsListener != null) {
+            mLocationsRef.removeEventListener(mLocationsListener);
+        }
     }
 
     @Override
