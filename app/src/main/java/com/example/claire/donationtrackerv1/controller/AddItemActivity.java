@@ -20,10 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class AddItem extends AppCompatActivity implements View.OnClickListener {
+public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mDatabase;
     private DatabaseReference mLocationsRef;
@@ -81,7 +79,7 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AddItem.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddItemActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -109,7 +107,7 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
         //TODO: change to add by unique ids (currently name but paths can't contain . or # or $ or [ or ]
         mDatabase.child("items").child("ID:" + _shortDesc).setValue(_item);
 
-        Intent intentHome = new Intent(getApplicationContext(),AppHome.class);
+        Intent intentHome = new Intent(getApplicationContext(),AppHomeActivity.class);
         startActivity(intentHome);
     }
 

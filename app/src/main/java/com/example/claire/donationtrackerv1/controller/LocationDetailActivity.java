@@ -44,7 +44,7 @@ public class LocationDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location_detail);
+        setContentView(R.layout.activity_location_detail);
 
         locInfo = (TextView) findViewById(R.id.loc_info);
         locationName = (TextView) findViewById(R.id.location_name);
@@ -137,7 +137,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         public LocationDetailActivity.MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
             //create new view
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.itemslistforrecylerview, parent, false);
+                    .inflate(R.layout.item_card_rv, parent, false);
             return new LocationDetailActivity.MyAdapter.MyViewHolder(view);
         }
 

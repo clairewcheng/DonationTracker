@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 // TODO: pass location by id not index
 
-public class AppHome extends AppCompatActivity implements View.OnClickListener{
+public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private DatabaseReference mUserRef;
@@ -81,7 +81,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AppHome.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AppHomeActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -113,7 +113,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
            View view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.location_list_content, parent, false);
+                   .inflate(R.layout.location_card_rv, parent, false);
            return new MyViewHolder(view);
         }
         
@@ -163,7 +163,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
                 // Get User object and use the values to update the UI
                 user = dataSnapshot.getValue(User.class);
                 if (user == null) {
-                    Toast.makeText(AppHome.this, "Unable to retrieve user from database.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AppHomeActivity.this, "Unable to retrieve user from database.", Toast.LENGTH_LONG).show();
                 } else {
                     userType.setText(user.getUserType());
                 }
@@ -171,7 +171,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AppHome.this, "Failed to load user.",
+                Toast.makeText(AppHomeActivity.this, "Failed to load user.",
                         Toast.LENGTH_SHORT).show();
             }
         };
@@ -202,12 +202,12 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
         if (view == backbutton) {
             // navigate to logged in screen
-            Intent intentLogOut = new Intent(getApplicationContext(),SignInScreen.class);
+            Intent intentLogOut = new Intent(getApplicationContext(),SignInActivity.class);
             startActivity(intentLogOut);
         }
 
         if (view == donateItemButton) {
-            Intent intentDonateItem = new Intent(getApplicationContext(), AddItem.class);
+            Intent intentDonateItem = new Intent(getApplicationContext(), AddItemActivity.class);
             startActivity(intentDonateItem);
         }
 

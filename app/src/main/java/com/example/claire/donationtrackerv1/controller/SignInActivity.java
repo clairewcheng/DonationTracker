@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignInScreen extends AppCompatActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private FirebaseAuth mAuth;
@@ -31,7 +31,7 @@ public class SignInScreen extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signinscreen);
+        setContentView(R.layout.activity_signin);
 
         emailField = (EditText) findViewById(R.id.emailsignin);
         passwordField = (EditText) findViewById(R.id.passwordsignin);
@@ -68,15 +68,15 @@ public class SignInScreen extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SignInScreen.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
-                            Intent intentLaunchApp = new Intent(getApplicationContext(),AppHome.class);
+                            Intent intentLaunchApp = new Intent(getApplicationContext(),AppHomeActivity.class);
                             startActivity(intentLaunchApp);
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignInScreen.this, "Please Correct Email and or Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Please Correct Email and or Password", Toast.LENGTH_SHORT).show();
                         }
 
                         // ...
@@ -89,7 +89,7 @@ public class SignInScreen extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view == goBackToCreate) {
             // navigate to logged in screen(currently causing app crash
-            Intent intentSignUP = new Intent(getApplicationContext(),CreateAccountScreen.class);
+            Intent intentSignUP = new Intent(getApplicationContext(),CreateAccountActivity.class);
             startActivity(intentSignUP);
         }
 
