@@ -35,6 +35,9 @@ public class Item {
         this(shortDesc, longDesc, value, timeStamp, date, comments, location, category, "No picture available");
     }
 
+    public Item() {
+        this("", "", "", "", "", "","", "", ""); }
+
     // to string method
     @Override
     public String toString() {
