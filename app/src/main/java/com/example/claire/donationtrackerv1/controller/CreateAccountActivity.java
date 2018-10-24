@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class CreateAccountScreen extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -93,7 +93,7 @@ public class CreateAccountScreen extends AppCompatActivity implements View.OnCli
                         if(task.isSuccessful()) {
 
                             // call to change activity to main application landing.
-                            Toast.makeText(CreateAccountScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
 
                             // Add new user to database
                             //TODO: change to using unique uid
@@ -101,14 +101,14 @@ public class CreateAccountScreen extends AppCompatActivity implements View.OnCli
                             mDatabase.child("users").child(uid).setValue(_user);
 
                             // navigate to logged in screen
-                            Intent intentSignUP = new Intent(getApplicationContext(),AppHome.class);
+                            Intent intentSignUP = new Intent(getApplicationContext(),AppHomeActivity.class);
                             intentSignUP.putExtra("userType", _user.getUserType());
                             startActivity(intentSignUP);
 
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast.makeText(CreateAccountScreen.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -125,7 +125,7 @@ public class CreateAccountScreen extends AppCompatActivity implements View.OnCli
 
         if (view == goToSignInButton) {
             // navigate to logged in screen(currently causing app crash
-            Intent intentSignUP = new Intent(getApplicationContext(),SignInScreen.class);
+            Intent intentSignUP = new Intent(getApplicationContext(),SignInActivity.class);
             startActivity(intentSignUP);
         }
 

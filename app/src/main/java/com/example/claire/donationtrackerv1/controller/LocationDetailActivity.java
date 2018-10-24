@@ -44,7 +44,7 @@ public class LocationDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location_detail);
+        setContentView(R.layout.activity_location_detail);
 
         locInfo = (TextView) findViewById(R.id.loc_info);
         locationName = (TextView) findViewById(R.id.location_name);
