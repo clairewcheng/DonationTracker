@@ -47,7 +47,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.location_detail);
 
         locInfo = (TextView) findViewById(R.id.loc_info);
-        locationName = (TextView) findViewById(R.id.locationName);
+        locationName = (TextView) findViewById(R.id.location_name);
 
         Intent intent = getIntent();
         String locIndex = intent.getStringExtra("locationID");
