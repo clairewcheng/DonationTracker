@@ -137,7 +137,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         public LocationDetailActivity.MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
             //create new view
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.itemslistforrecylerview, parent, false);
+                    .inflate(R.layout.item_card_rv, parent, false);
             return new LocationDetailActivity.MyAdapter.MyViewHolder(view);
         }
 

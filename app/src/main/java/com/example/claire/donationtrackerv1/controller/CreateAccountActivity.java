@@ -43,7 +43,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_account_screen);
+        setContentView(R.layout.activity_create_account);
 
         emailField = (EditText) findViewById(R.id.emailcreate);
         passwordField = (EditText) findViewById(R.id.passwordcreate);

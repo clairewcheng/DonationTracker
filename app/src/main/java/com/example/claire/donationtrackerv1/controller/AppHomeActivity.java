@@ -115,7 +115,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
            View view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.location_list_content, parent, false);
+                   .inflate(R.layout.location_card_rv, parent, false);
            return new MyViewHolder(view);
         }
         
