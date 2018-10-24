@@ -28,6 +28,7 @@
         <activity android:name=".controller.AddItem" />
         <activity android:name=".controller.LocationDetailActivity" />
         <activity android:name=".controller.LocationItems"></activity>
+        <activity android:name=".controller.ItemDetailActivity"/>
     </application>
 
 </manifest>
