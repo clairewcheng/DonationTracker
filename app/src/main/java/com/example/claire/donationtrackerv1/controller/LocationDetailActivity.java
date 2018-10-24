@@ -39,11 +39,13 @@ public class LocationDetailActivity extends AppCompatActivity {
     private RecyclerView mItemsRecyclerView;
     private RecyclerView.Adapter mItemsAdpater;
     private RecyclerView.LayoutManager mItemsLayoutManager;
+    private Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_detail);
+
         locInfo = (TextView) findViewById(R.id.loc_info);
         locationName = (TextView) findViewById(R.id.locationName);
 
@@ -51,9 +53,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         String locIndex = intent.getStringExtra("locationID");
         mLocRef = FirebaseDatabase.getInstance().getReference().child("locations").child(locIndex);
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
-        Query query = mItemsRef.orderByChild("location").equalTo(location.getName());
 
-        query.addListenerForSingleValueEvent(mItemsListener);
 
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemlistrecylerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
@@ -66,6 +66,8 @@ public class LocationDetailActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Location object and use the values to update the UI
                 location = dataSnapshot.getValue(Location.class);
+                query = mItemsRef.orderByChild("location").equalTo(location.getName());
+                query.addListenerForSingleValueEvent(mItemsListener);
 
                 if (location == null) {
                     Toast.makeText(LocationDetailActivity.this,

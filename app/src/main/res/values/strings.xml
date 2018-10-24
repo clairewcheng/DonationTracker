@@ -35,10 +35,10 @@
     <string name="todo3">TODO</string>
     <string name="name">Name</string>
     <string name="productvalue">$</string>
-    <string name="this_is_a_short_description">This is a short description.</string>
+    <string name="this_is_a_short_description">This is a short description</string>
     <string name="full_description">Full Description*</string>
     <string name="category">Category*</string>
-    <string name="this_is_a_long_description_of_the_product">This is a long description of the product.</string>
+    <string name="this_is_a_long_description_of_the_product">This is a long description of the product</string>
     <string name="march_5_2018">March 5, 2018</string>
     <string name="comments">Comments</string>
     <string name="add_item">Add Item</string>
