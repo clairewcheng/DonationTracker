@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.example.claire.donationtrackerv1.R;
 
 import java.util.ArrayList;
 
@@ -19,53 +19,40 @@ import java.util.ArrayList;
  * Created by Dushyant Mainwal on 29-Oct-17.
  */
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
+public class searchAdapter extends RecyclerView.Adapter<searchAdapter.SearchViewHolder> {
     Context context;
     ArrayList<String> nameList;
-    ArrayList<String> userNameList;
-    ArrayList<String> profilePicList;
+    ArrayList<String> categoryList;
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
-        ImageView profileImage;
-        TextView full_name, user_name;
-
+        TextView name, category;
         public SearchViewHolder(View itemView) {
             super(itemView);
-            profileImage = (ImageView) itemView.findViewById(R.id.profileImage);
-            full_name = (TextView) itemView.findViewById(R.id.full_name);
-            user_name = (TextView) itemView.findViewById(R.id.user_name);
+            name = (TextView) itemView.findViewById(R.id.name);
+            category = (TextView) itemView.findViewById(R.id.category);
         }
     }
 
-    public SearchAdapter(Context context, ArrayList<String> fullNameList, ArrayList<String> userNameList, ArrayList<String> profilePicList) {
+    public searchAdapter(Context context, ArrayList<String> nameList, ArrayList<String> categoryList) {
         this.context = context;
-        this.fullNameList = fullNameList;
-        this.userNameList = userNameList;
-        this.profilePicList = profilePicList;
+        this.nameList = nameList;
+        this.categoryList = categoryList;
     }
 
     @Override
-    public SearchAdapter.SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.search_list_items, parent, false);
-        return new SearchAdapter.SearchViewHolder(view);
+    public searchAdapter.SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.searchlistitems, parent, false);
+        return new searchAdapter.SearchViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(SearchViewHolder holder, int position) {
-        holder.full_name.setText(fullNameList.get(position));
-        holder.user_name.setText(userNameList.get(position));
-        Glide.with(context).load(profilePicList.get(position)).asBitmap().placeholder(R.mipmap.ic_launcher_round).into(holder.profileImage);
-
-        holder.full_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Full Name Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
+        holder.name.setText(nameList.get(position));
+        holder.category.setText(categoryList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return fullNameList.size();
+        return nameList.size();
     }
 }

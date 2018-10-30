@@ -32,7 +32,7 @@ public class searchItemActivity extends AppCompatActivity {
     private Query query;
     ArrayList<String> nameList;
     ArrayList<String> categoryList;
-    SearchAdapter searchAdapter;
+    searchAdapter searchAdapter;
 
 
 
@@ -92,7 +92,7 @@ public class searchItemActivity extends AppCompatActivity {
                  * */
 
 
-                searchAdapter = new SearchAdapter(searchItemActivity.this, nameList, categoryList);
+                searchAdapter = new searchAdapter(searchItemActivity.this, nameList, categoryList);
                 recyclerView.setAdapter(searchAdapter);
             }
 

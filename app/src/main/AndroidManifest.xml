@@ -29,6 +29,7 @@
         <activity android:name=".controller.LocationDetailActivity" />
         <activity android:name=".controller.LocationItems"></activity>
         <activity android:name=".controller.ItemDetailActivity"/>
+        <activity android:name=".controller.searchItemActivity"/>
     </application>
 
 </manifest>

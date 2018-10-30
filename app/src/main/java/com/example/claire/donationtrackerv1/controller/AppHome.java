@@ -38,6 +38,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
 
     private Button backbutton;
     private Button donateItemButton;
+    private Button viewItemsButton;
     private TextView userType;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -51,9 +52,11 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         backbutton = (Button) findViewById(R.id.tempsignoutbutton);
         userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
+        viewItemsButton = (Button) findViewById(R.id.viewItems);
 
         backbutton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
+        viewItemsButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -209,6 +212,11 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         if (view == donateItemButton) {
             Intent intentDonateItem = new Intent(getApplicationContext(), AddItem.class);
             startActivity(intentDonateItem);
+        }
+
+        if (view == viewItemsButton) {
+            Intent intentViewItem = new Intent( getApplicationContext(), searchItemActivity.class);
+            startActivity(intentViewItem);
         }
 
     }
