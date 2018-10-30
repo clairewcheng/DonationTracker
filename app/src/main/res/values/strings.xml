@@ -46,4 +46,14 @@
     <string name="_12_00am">12:00AM</string>
     <string name="location">Location*</string>
     <string name="time_of_dropoff">Time of Dropoff*</string>
+    <string name="query">query</string>
+    <string name="search_filters">Search Filters:</string>
+    <string name="explore">EXPLORE</string>
+    <string name="filter_string_todo1">filter @string/todo1</string>
+    <string name="hats">Hats</string>
+    <string name="household">Household</string>
+    <string name="other">Other</string>
+    <string name="electronics">Electronics</string>
+    <string name="clothing">Clothing</string>
+    <string name="kitchen">Kitchen</string>
 </resources>

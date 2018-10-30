@@ -39,6 +39,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     //TODO: make backButton more intuitive
     private Button backButton;
     private Button donateItemButton;
+    private Button searchButton;
+
     //TODO: get rid of userType display, instead use to give correct capabilities
     private TextView userType;
     private RecyclerView mRecyclerView;
@@ -53,9 +55,11 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         backButton = (Button) findViewById(R.id.tempsignoutbutton);
         userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
+        searchButton = (Button) findViewById(R.id.search_button);
 
         backButton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
+        searchButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -213,5 +217,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(intentDonateItem);
         }
 
+        if (view == searchButton) {
+             Intent intentGoToSearch = new Intent(getApplicationContext(), SearchAndFiltersActivity.class);
+             startActivity(intentGoToSearch);
+        }
     }
 }

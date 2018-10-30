@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.SearchAndFiltersActivity">
+
+    <ImageView
+        android:id="@+id/search_bar_green"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/searchbargreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/search_icon"
+        android:layout_width="17.5dp"
+        android:layout_height="17.5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar_green"
+        app:layout_constraintEnd_toEndOf="@+id/search_bar_green"
+        app:layout_constraintTop_toTopOf="@+id/search_bar_green" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:hint="Search for something..."
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar_green"
+        app:layout_constraintEnd_toStartOf="@+id/search_icon"
+        app:layout_constraintStart_toStartOf="@+id/search_bar_green"
+        app:layout_constraintTop_toTopOf="@+id/search_bar_green" />
+
+    <Button
+        android:id="@+id/exit_search"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/closeicon"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar_green"
+        app:layout_constraintStart_toStartOf="@+id/search_bar_green"
+        app:layout_constraintTop_toTopOf="@+id/search_bar_green" />
+
+    <TextView
+        android:id="@+id/search_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/search_filters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/search_filters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:text="Categories:" />
+
+    <TextView
+        android:id="@+id/categories2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/search_filters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        tools:text="Locations:" />
+
+    <Button
+        android:id="@+id/add_filter_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/add_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_filters" />
+
+    <View
+        android:id="@+id/greybar_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="148dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/explore_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/explore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/greybar_3" />
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/closeicon"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_bubble"
+        app:layout_constraintEnd_toEndOf="@+id/filter_bubble"
+        app:layout_constraintTop_toTopOf="@+id/filter_bubble" />
+
+    <Button
+        android:id="@+id/filter_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_border"
+        android:paddingLeft="15dp"
+        android:paddingRight="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/explore_label"
+        app:layout_constraintStart_toEndOf="@+id/add_filter_button"
+        app:layout_constraintTop_toBottomOf="@+id/search_filters"
+        app:layout_constraintVertical_bias="0.321"
+        tools:text="Filter One" />
+
+    <View
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explore_label" />
+
+    <View
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="130dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explore_label" />
+
+    <Button
+        android:id="@+id/clothing_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/hats_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories" />
+
+    <Button
+        android:id="@+id/hat_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/hats_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories" />
+
+    <Button
+        android:id="@+id/household_button"
+        android:layout_width="39dp"
+        android:layout_height="23.3dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/household_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/hat_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/kitchen_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/kitchen_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories" />
+
+    <Button
+        android:id="@+id/electronics_button"
+        android:layout_width="39dp"
+        android:layout_height="26.7dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/electronics_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/kitchen_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/other_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/other_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/clothing"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/clothing_button"
+        app:layout_constraintStart_toStartOf="@+id/clothing_button"
+        app:layout_constraintTop_toBottomOf="@+id/clothing_button" />
+
+    <TextView
+        android:id="@+id/hats_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/hats"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/hat_button"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/hat_button"
+        app:layout_constraintTop_toBottomOf="@+id/clothing_button" />
+
+    <TextView
+        android:id="@+id/household_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/household"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/household_button"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/household_button"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/kitchen_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/kitchen"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/kitchen_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/kitchen_button"
+        app:layout_constraintTop_toBottomOf="@+id/clothing_button" />
+
+    <TextView
+        android:id="@+id/electronics_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/electronics"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/electronics_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/electronics_button"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/other_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/other"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/other_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/other_button"
+        app:layout_constraintTop_toBottomOf="@+id/other_button" />
+
+    <ImageView
+        android:id="@+id/location_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/imagecontainertemp" />
+
+    <ImageView
+        android:id="@+id/location_image2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/location_image"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/imagecontainertemp" />
+
+    <ImageView
+        android:id="@+id/location_image3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/location_image2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/imagecontainertemp" />
+
+    <ImageView
+        android:id="@+id/location_image4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/location_image3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/imagecontainertemp" />
+
+    <ImageView
+        android:id="@+id/location_image5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/location_image4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/imagecontainertemp" />
+
+    <Button
+        android:id="@+id/see_more"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_margin="0dp"
+        android:layout_marginEnd="1dp"
+        android:padding="0dp"
+        android:text="See More >"
+        android:textColor="@color/common_google_signin_btn_text_light_focused"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/location_image5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/location_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/location_image"
+        app:layout_constraintStart_toStartOf="@+id/location_image"
+        app:layout_constraintTop_toBottomOf="@+id/location_image" />
+
+    <TextView
+        android:id="@+id/location_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/location_image2"
+        app:layout_constraintStart_toStartOf="@+id/location_image2"
+        app:layout_constraintTop_toBottomOf="@+id/location_image2" />
+
+    <TextView
+        android:id="@+id/location_label3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/location_image3"
+        app:layout_constraintStart_toStartOf="@+id/location_image3"
+        app:layout_constraintTop_toBottomOf="@+id/location_image3" />
+
+    <TextView
+        android:id="@+id/location_label4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/location_image4"
+        app:layout_constraintStart_toStartOf="@+id/location_image4"
+        app:layout_constraintTop_toBottomOf="@+id/location_image4" />
+
+    <TextView
+        android:id="@+id/location_label5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Location"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/location_image5"
+        app:layout_constraintStart_toStartOf="@+id/location_image5"
+        app:layout_constraintTop_toBottomOf="@+id/location_image5" />
+
+</android.support.constraint.ConstraintLayout>
