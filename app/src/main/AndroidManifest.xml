@@ -27,7 +27,13 @@
         <activity android:name=".controller.AppHomeActivity" />
         <activity android:name=".controller.AddItemActivity" />
         <activity android:name=".controller.LocationDetailActivity" />
-        <activity android:name=".controller.ItemDetailActivity"/>
+        <activity android:name=".controller.ItemDetailActivity" />
+        <activity android:name=".controller.SearchAndFiltersActivity" />
+        <activity android:name=".controller.SearchFilterMenuActivity" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@drawable/category_clothing_button" />
     </application>
 
 </manifest>
