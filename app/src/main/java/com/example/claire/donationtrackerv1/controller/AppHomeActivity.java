@@ -40,6 +40,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     private Button backButton;
     private Button donateItemButton;
     private Button searchButton;
+
     //TODO: get rid of userType display, instead use to give correct capabilities
     private TextView userType;
     private RecyclerView mRecyclerView;

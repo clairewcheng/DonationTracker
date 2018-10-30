@@ -12,6 +12,7 @@ import com.example.claire.donationtrackerv1.R;
 
 public class SearchFilterMenuActivity extends AppCompatActivity implements View.OnClickListener{
 
+
     //Navigation Buttons
     private Button returnButton;
 

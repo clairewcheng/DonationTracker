@@ -34,6 +34,8 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@drawable/category_clothing_button" />
+
+        <activity android:name=".controller.SearchResultsActivity"></activity>
     </application>
 
 </manifest>

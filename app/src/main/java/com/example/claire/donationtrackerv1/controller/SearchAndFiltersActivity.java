@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
 
@@ -15,6 +17,7 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
     private Button exitSearch;
     private Button processSearch;
     private Button addFilters;
+    private EditText queryEditText;
 
     // Explore category navigation buttons(go to category)
     private Button clothingCategoryButton;
@@ -23,7 +26,6 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
     private Button kitchenCategoryButton;
     private Button electronicsCategoryButton;
     private Button otherCategoryButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
         kitchenCategoryButton = (Button) findViewById(R.id.kitchen_button);
         electronicsCategoryButton = (Button) findViewById(R.id.electronics_button);
         otherCategoryButton = (Button) findViewById(R.id.other_button);
+
+        clothingCategoryButton.setOnClickListener(this);
     }
 
     @Override
@@ -62,5 +66,12 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
             startActivity(intentGoToFiltersMenu);
         }
 
+        if(view == clothingCategoryButton) {
+            Intent intentGoToClothingResults = new Intent(this, SearchResultsActivity.class);
+            intentGoToClothingResults.putExtra("category", "Clothing");
+            startActivity(intentGoToClothingResults);
+        }
+
     }
+
 }
