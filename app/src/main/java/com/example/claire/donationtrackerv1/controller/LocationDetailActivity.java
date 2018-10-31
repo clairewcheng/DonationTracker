@@ -37,7 +37,7 @@ public class LocationDetailActivity extends AppCompatActivity {
     private TextView locInfo;
     private TextView locationName;
     private RecyclerView mItemsRecyclerView;
-    private RecyclerView.Adapter mItemsAdapter;
+    private ItemsRVAdapter mItemsAdapter;
     private RecyclerView.LayoutManager mItemsLayoutManager;
     private Query query;
 
@@ -101,7 +101,7 @@ public class LocationDetailActivity extends AppCompatActivity {
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
                     items.add(itemSnapshot.getValue(Item.class));
                 }
-                mItemsAdapter = new MyAdapter(items);
+                mItemsAdapter = new ItemsRVAdapter(getApplicationContext(), items);
                 mItemsRecyclerView.setAdapter(mItemsAdapter);
             }
 
@@ -112,68 +112,6 @@ public class LocationDetailActivity extends AppCompatActivity {
         };
         mItemsRef.addValueEventListener(itemsListener);
         mItemsListener = itemsListener;
-    }
-
-    public class MyAdapter extends RecyclerView.Adapter<LocationDetailActivity.MyAdapter.MyViewHolder> {
-        private ArrayList<Item> mDataset;
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-            public View mView;
-            public TextView mContentView;
-            public Item mItem;
-
-            public MyViewHolder(View view) {
-                super(view);
-                mView = view;
-                mContentView = (TextView) view.findViewById(R.id.itemForList);
-            }
-        }
-
-        public MyAdapter(ArrayList<Item> myDataset) {
-            mDataset = myDataset;
-        }
-
-        @Override
-        public LocationDetailActivity.MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
-            //create new view
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_card_rv, parent, false);
-            return new LocationDetailActivity.MyAdapter.MyViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final LocationDetailActivity.MyAdapter.MyViewHolder holder, final int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
-            holder.mItem = mDataset.get(position);
-            holder.mContentView.setText(mDataset.get(position).getShortDesc());
-
-            /*
-             * set up a listener to handle if the user clicks on this list item, what should happen?
-             */
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //on a phone, we need to change windows to the detail view
-                    //create our new intent with the new screen (activity)
-                    Intent intent = new Intent(getApplicationContext(), ItemDetailActivity.class);
-                /*
-                    pass along the id of the location so we can retrieve the correct data in
-                    the next window
-                 */
-
-                    // TODO: 10/23/18  Please change item ref to a unique key
-                    intent.putExtra("itemID", "" + "ID:" + holder.mItem.getShortDesc());
-
-                    //now just display the new window
-                    startActivity(intent);
-                }
-            });
-        }
-        @Override
-        public int getItemCount() {
-            return mDataset.size();
-        }
     }
 
     @Override

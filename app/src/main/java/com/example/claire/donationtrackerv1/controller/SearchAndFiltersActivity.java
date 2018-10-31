@@ -24,6 +24,7 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
     private EditText searchTerm;
 
     //Locations quick jump filters will launch activity with particular location filter
+    // TODO: at some point handle adding new locations, this will break
     private ImageView Location1;
     private ImageView Location2;
     private ImageView Location3;
