@@ -46,4 +46,5 @@
     <string name="_12_00am">12:00AM</string>
     <string name="location">Location*</string>
     <string name="time_of_dropoff">Time of Dropoff*</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

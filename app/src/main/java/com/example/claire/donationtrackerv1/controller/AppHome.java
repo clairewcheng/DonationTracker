@@ -215,7 +215,7 @@ public class AppHome extends AppCompatActivity implements View.OnClickListener{
         }
 
         if (view == viewItemsButton) {
-            Intent intentViewItem = new Intent( getApplicationContext(), searchItemActivity.class);
+            Intent intentViewItem = new Intent( getApplicationContext(), MapsActivity.class);
             startActivity(intentViewItem);
         }
 
