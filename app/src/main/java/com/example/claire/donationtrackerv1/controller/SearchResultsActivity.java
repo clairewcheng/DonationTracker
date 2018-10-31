@@ -135,22 +135,25 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         results = new ArrayList<>();
         for (Item i: allItems) {
             if (searchTerm != null && category != null && locationName != null) {
-                if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
+                        && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
             } else if (searchTerm != null && category != null) {
-                if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category)) {
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
+                        && i.getCategory().equals(category)) {
                     results.add(i);
                 }
             } else if (searchTerm != null && locationName != null) {
-                if (i.getShortDesc().equals(searchTerm) && i.getLocation().equals(locationName)) {
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
+                        && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
             } else if (category != null && locationName != null) {
                 if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null && i.getShortDesc().equals(searchTerm))
+            } else if ((searchTerm != null && (i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())))
                     || (category != null && i.getCategory().equals(category))
                     || (locationName != null && i.getLocation().equals(locationName))) {
                 results.add(i);
