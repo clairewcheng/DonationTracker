@@ -10,47 +10,53 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
+import com.example.claire.donationtrackerv1.model.Location;
 
 public class SearchAndFiltersActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // Basic navigation buttons
+    // x button to return to previous screen
     private Button exitSearch;
-    private Button processSearch;
-    private Button addFilters;
-    private EditText queryEditText;
 
-    // Explore category navigation buttons(go to category)
-    private Button clothingCategoryButton;
-    private Button hatsCategoryButton;
-    private Button householdCategoryButton;
-    private Button kitchenCategoryButton;
-    private Button electronicsCategoryButton;
-    private Button otherCategoryButton;
+    // search GO button to activate search-- will launch results activity
+    private Button processSearch;
+
+    // will hold the users search term to be passed to results
+    private EditText searchTerm;
+
+    //Locations quick jump filters will launch activity with particular location filter
+    private ImageView Location1;
+    private ImageView Location2;
+    private ImageView Location3;
+    private ImageView Location4;
+    private ImageView Location5;
+    private ImageView Location6;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_and_filters);
 
-        // Basic navigation buttons view id
         exitSearch = (Button)  findViewById(R.id.exit_search);
         processSearch = (Button) findViewById(R.id.search_icon);
-        addFilters = (Button) findViewById(R.id.add_filter_button);
+        searchTerm = (EditText) findViewById(R.id.search_edit_text);
+        Location1 = (ImageView) findViewById(R.id.location_image);
+        Location2 = (ImageView) findViewById(R.id.location_image2);
+        Location3 = (ImageView) findViewById(R.id.location_image3);
+        Location4 = (ImageView) findViewById(R.id.location_image4);
+        Location5 = (ImageView) findViewById(R.id.location_image5);
+        Location6 = (ImageView) findViewById(R.id.location_image6);
 
-        // Basic navigation buttons set listeners
+
         exitSearch.setOnClickListener(this);
         processSearch.setOnClickListener(this);
-        addFilters.setOnClickListener(this);
+        Location1.setOnClickListener(this);
+        Location2.setOnClickListener(this);
+        Location3.setOnClickListener(this);
+        Location4.setOnClickListener(this);
+        Location5.setOnClickListener(this);
+        Location6.setOnClickListener(this);
 
-        // Explore category navigation buttons(go to category) view by id
-        clothingCategoryButton = (Button) findViewById(R.id.clothing_button);
-        hatsCategoryButton = (Button) findViewById(R.id.hat_button);
-        householdCategoryButton = (Button) findViewById(R.id.household_button);
-        kitchenCategoryButton = (Button) findViewById(R.id.kitchen_button);
-        electronicsCategoryButton = (Button) findViewById(R.id.electronics_button);
-        otherCategoryButton = (Button) findViewById(R.id.other_button);
-
-        clothingCategoryButton.setOnClickListener(this);
     }
 
     @Override
@@ -61,15 +67,60 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
             finish();
         }
 
-        if(view == addFilters) {
-            Intent intentGoToFiltersMenu = new Intent(getApplicationContext(), SearchFilterMenuActivity.class);
-            startActivity(intentGoToFiltersMenu);
+
+        if(view == processSearch) {
+            Intent intentGoToSearchResults = new Intent(this, SearchResultsActivity.class);
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToSearchResults.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToSearchResults);
         }
 
-        if(view == clothingCategoryButton) {
-            Intent intentGoToClothingResults = new Intent(this, SearchResultsActivity.class);
-            intentGoToClothingResults.putExtra("category", "Clothing");
-            startActivity(intentGoToClothingResults);
+        if(view == Location1) {
+            Intent intentGoToLocation1Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation1Results.putExtra("location", "AFD Station 4");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation1Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation1Results);
+        }
+
+        if(view == Location2) {
+            Intent intentGoToLocation2Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation2Results.putExtra("location", "BOYS & GILRS CLUB W.W. WOOLFOLK");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation2Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation2Results);
+        }
+
+        if(view == Location3) {
+            Intent intentGoToLocation3Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation3Results.putExtra("location", "PATHWAY UPPER ROOM CHRISTIAN MINISTRIES");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation3Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation3Results);
+        }
+
+        if(view == Location4) {
+            Intent intentGoToLocation4Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation4Results.putExtra("location", "PAVILION OF HOPE INC");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation4Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation4Results);
+        }
+
+        if(view == Location5) {
+            Intent intentGoToLocation5Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation5Results.putExtra("location", "D&D CONVENIENCE STORE");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation5Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation5Results);
+        }
+
+        if(view == Location6) {
+            Intent intentGoToLocation6Results = new Intent(this, SearchResultsActivity.class);
+            intentGoToLocation6Results.putExtra("location", "KEEP NORTH FULTON BEAUTIFUL");
+            String searchTermToPass = searchTerm.getText().toString();
+            intentGoToLocation6Results.putExtra("searchTerm", searchTermToPass);
+            startActivity(intentGoToLocation6Results);
         }
 
     }
