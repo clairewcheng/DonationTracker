@@ -34,7 +34,6 @@ public class SearchResultsActivity extends AppCompatActivity {
     private RecyclerView mItemsRecyclerView;
     private RecyclerView.Adapter mItemsAdapter;
     private RecyclerView.LayoutManager mItemsLayoutManager;
-    private Query query;
 
 
     @Override
@@ -42,14 +41,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        Intent intent = getIntent();
-        searchTerm = intent.getStringExtra("searchTerm");
-        if (searchTerm.equals("")) {
-            searchTerm = null;
-        }
-        //TODO: change this based on selected category
-        category = null;
-        locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
         //TODO: check for correct recycler ID
@@ -65,14 +56,27 @@ public class SearchResultsActivity extends AppCompatActivity {
                 //Get items objects and update values
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
                     Item i = itemSnapshot.getValue(Item.class);
-                    if (searchTerm != null && category != null) {
+                    if (searchTerm != null && category != null && locationName != null) {
+                        if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                            results.add(i);
+                        }
+                    } else if (searchTerm != null && category != null) {
                         if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category)) {
                             results.add(i);
                         }
+                    } else if (searchTerm != null && locationName != null) {
+                        if (i.getShortDesc().equals(searchTerm) && i.getLocation().equals(locationName)) {
+                            results.add(i);
+                        }
+                    } else if (category != null && locationName != null) {
+                        if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                            results.add(i);
+                        }
                     } else if ((searchTerm != null && i.getShortDesc().equals(searchTerm))
-                            || (category != null && i.getCategory().equals(i))) {
+                            || (category != null && i.getCategory().equals(category))
+                            || (locationName != null && i.getLocation().equals(locationName))) {
                         results.add(i);
-                    } else if (searchTerm == null && category == null){
+                    } else if (searchTerm == null && category == null && locationName == null){
                         results.add(i);
                     }
                 }
@@ -87,13 +91,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         };
         mItemsRef.addValueEventListener(itemsListener);
         mItemsListener = itemsListener;
-
-        if (locationName != null) {
-            Toast toast = Toast.makeText(getApplicationContext(), locationName, Toast.LENGTH_LONG);
-            toast.show();
-            query = mItemsRef.orderByChild("location").equalTo(locationName);
-            query.addListenerForSingleValueEvent(mItemsListener);
-        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<SearchResultsActivity.MyAdapter.MyViewHolder> {
@@ -156,6 +153,20 @@ public class SearchResultsActivity extends AppCompatActivity {
         public int getItemCount() {
             return mDataset.size();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Intent intent = getIntent();
+        searchTerm = intent.getStringExtra("searchTerm");
+        if (searchTerm.equals("")) {
+            searchTerm = null;
+        }
+        //TODO: change this based on selected category
+        category = null;
+        locationName = intent.getStringExtra("location");
     }
 
     @Override
