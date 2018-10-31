@@ -57,11 +57,6 @@ public class SearchResultsActivity extends AppCompatActivity {
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
-        if (locationName != null) {
-            query = mItemsRef.orderByChild("location").equalTo(locationName);
-            query.addListenerForSingleValueEvent(mItemsListener);
-        }
-
         //Add items event listener to the items list
         ValueEventListener itemsListener = new ValueEventListener() {
             @Override
@@ -92,6 +87,13 @@ public class SearchResultsActivity extends AppCompatActivity {
         };
         mItemsRef.addValueEventListener(itemsListener);
         mItemsListener = itemsListener;
+
+        if (locationName != null) {
+            Toast toast = Toast.makeText(getApplicationContext(), locationName, Toast.LENGTH_LONG);
+            toast.show();
+            query = mItemsRef.orderByChild("location").equalTo(locationName);
+            query.addListenerForSingleValueEvent(mItemsListener);
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<SearchResultsActivity.MyAdapter.MyViewHolder> {
@@ -126,7 +128,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.mItem = mDataset.get(position);
-            //holder.mContentView.setText(mDataset.get(position).getShortDesc());
+            holder.mContentView.setText(mDataset.get(position).getShortDesc());
 
             /*
              * set up a listener to handle if the user clicks on this list item, what should happen?
