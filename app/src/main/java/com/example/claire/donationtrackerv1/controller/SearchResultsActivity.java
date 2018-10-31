@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.claire.donationtrackerv1.R;
@@ -97,15 +98,14 @@ public class SearchResultsActivity extends AppCompatActivity {
         private ArrayList<Item> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            //TODO: fill in with correct views for recycler
             public View mView;
-            //public TextView mContentView;
+            public TextView mContentView;
             public Item mItem;
 
             public MyViewHolder(View view) {
                 super(view);
-                //mView = view;
-                //mContentView = (TextView) view.findViewById(R.id.itemForList);
+                mView = view;
+                mContentView = (TextView) view.findViewById(R.id.itemForList);
             }
         }
 
@@ -116,9 +116,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         @Override
         public SearchResultsActivity.MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
             //create new view
-            //TODO: switch to correct rv xml file
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout., parent, false);
+                    .inflate(R.layout.item_card_rv, parent, false);
             return new SearchResultsActivity.MyAdapter.MyViewHolder(view);
         }
 
