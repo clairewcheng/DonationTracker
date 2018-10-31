@@ -52,8 +52,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     private ImageView electronicsFilterButton;
     private ImageView otherFilterButton;
 
-    private String activeCategoryFilter;
-
     private DatabaseReference mItemsRef;
     private ValueEventListener mItemsListener;
     private ArrayList<Item> results;
@@ -100,6 +98,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
+        locationIndicatorText.setText(locationName);
+
         //TODO: check for correct recycler ID
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
@@ -109,6 +109,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         ValueEventListener itemsListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d("Message", "Things are called");
                 results = new ArrayList<>();
                 //Get items objects and update values
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
@@ -212,6 +213,15 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    private void updateRV() {
+        mItemsRecyclerView.setAdapter(null);
+        mItemsRecyclerView.setLayoutManager(null);
+        mItemsRecyclerView.setAdapter(mItemsAdapter);
+        mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
+        mItemsAdapter.notifyDataSetChanged();
+        Log.d("Message", "Calling update at least");
+    }
+
     @Override
     public void onClick(View view) {
 
@@ -224,28 +234,29 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
 
         if(view == clothingFilterButton) {
-            updateActiveCategoryFilter(clothingFilterButton);
+            updateActiveCategoryFilter(clothingFilterButton, "Clothing");
         }
 
         if(view == hatFilterButton) {
-            updateActiveCategoryFilter(hatFilterButton);
+            updateActiveCategoryFilter(hatFilterButton, "Hat");
         }
 
         if(view == householdFilterButton) {
-            updateActiveCategoryFilter(householdFilterButton);
+            updateActiveCategoryFilter(householdFilterButton, "Household");
         }
 
         if(view == kitchenFilterButton) {
-            updateActiveCategoryFilter(kitchenFilterButton);
+            updateActiveCategoryFilter(kitchenFilterButton, "Kitchen");
         }
 
         if(view == electronicsFilterButton) {
-            updateActiveCategoryFilter(electronicsFilterButton);
+            updateActiveCategoryFilter(electronicsFilterButton, "Electronics");
         }
 
         if(view == otherFilterButton) {
-            updateActiveCategoryFilter(otherFilterButton);
+            updateActiveCategoryFilter(otherFilterButton, "Other");
         }
+
 
     }
 
@@ -261,19 +272,18 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
     // method that a text view can call that will clear the other category selected and
     // make the new category selected the active filter stored
-    private void updateActiveCategoryFilter(ImageView imageView) {
+    private void updateActiveCategoryFilter(ImageView imageView, String category) {
 
         if(imageView.isActivated() == false) {
             clearSelectedCategoryFilters();
             imageView.setActivated(true);
-            activeCategoryFilter = imageView.toString();
-            activeCategoryFilter = activeCategoryFilter.substring(0, 1).toUpperCase() +
-                    activeCategoryFilter.substring(1, activeCategoryFilter.length()-12);
+            this.category = category;
         } else {
             clearSelectedCategoryFilters();
-            activeCategoryFilter = null;
+            this.category = null;
         }
-
+        Log.d("Message", "got through view clickin");
+        updateRV();
     }
 
     @Override
