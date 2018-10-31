@@ -279,7 +279,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onStart() {
         super.onStart();
-
+/*
         Intent intent = getIntent();
         searchTerm = intent.getStringExtra("searchTerm");
         if (searchTerm.equals("")) {
@@ -288,6 +288,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         //TODO: change this based on selected category
         category = null;
         locationName = intent.getStringExtra("location");
+        */
     }
 
     @Override
