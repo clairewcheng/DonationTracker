@@ -18,10 +18,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        Intent intent = getIntent();
-        String queryPassed = intent.getExtras().getString("category");
 
-        Log.d("hello", queryPassed);
 
 
     }
