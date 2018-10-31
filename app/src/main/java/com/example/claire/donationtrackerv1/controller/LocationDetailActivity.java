@@ -54,7 +54,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         mLocRef = FirebaseDatabase.getInstance().getReference().child("locations").child(locIndex);
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-
+        // TODO: display "No Items" message if no items
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemlistrecylerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);

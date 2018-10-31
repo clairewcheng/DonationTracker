@@ -101,6 +101,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             locationIndicatorText.setText(locationName);
         }
 
+        // TODO: display "No Results" message if no results
+
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
@@ -128,6 +130,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         mItemsListener = itemsListener;
     }
 
+    // TODO: fuzzy search: check for shortDesc containing searchTerm, not exact match
     private void filterResults() {
         results = new ArrayList<>();
         for (Item i: allItems) {
