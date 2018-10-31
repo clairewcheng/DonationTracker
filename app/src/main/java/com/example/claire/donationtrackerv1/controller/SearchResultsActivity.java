@@ -2,6 +2,7 @@ package com.example.claire.donationtrackerv1.controller;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
@@ -23,7 +30,29 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SearchResultsActivity extends AppCompatActivity {
+public class SearchResultsActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //exit search button X in top left corner
+    private Button exitSearch;
+
+    // Search edit text is where user types search terms
+    private EditText searchTermEdit;
+
+    //refresh search button/search GO button
+    private Button processSearch;
+
+    //Current Location defined on previous screen. Default is All location results
+    private TextView locationIndicatorText;
+
+    //Category Filter Toggles on and off only one on at a time
+    private ImageView clothingFilterButton;
+    private ImageView hatFilterButton;
+    private ImageView householdFilterButton;
+    private ImageView kitchenFilterButton;
+    private ImageView electronicsFilterButton;
+    private ImageView otherFilterButton;
+
+    private String activeCategoryFilter;
 
     private DatabaseReference mItemsRef;
     private ValueEventListener mItemsListener;
@@ -41,6 +70,34 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
+        exitSearch = (Button) findViewById(R.id.exit_button);
+        searchTermEdit = (EditText) findViewById(R.id.search_edit_text);
+        processSearch = (Button) findViewById(R.id.search_icon);
+        locationIndicatorText = (TextView) findViewById(R.id.location_filter_label);
+        clothingFilterButton = (ImageView) findViewById(R.id.clothing_button);
+        hatFilterButton = (ImageView) findViewById(R.id.hat_button);
+        householdFilterButton = (ImageView) findViewById(R.id.household_button);
+        kitchenFilterButton = (ImageView) findViewById(R.id.kitchen_button);
+        electronicsFilterButton = (ImageView) findViewById(R.id.electronics_button);
+        otherFilterButton = (ImageView) findViewById(R.id.other_button);
+
+        exitSearch.setOnClickListener(this);
+        processSearch.setOnClickListener(this);
+        clothingFilterButton.setOnClickListener(this);
+        hatFilterButton.setOnClickListener(this);
+        householdFilterButton.setOnClickListener(this);
+        kitchenFilterButton.setOnClickListener(this);
+        electronicsFilterButton.setOnClickListener(this);
+        otherFilterButton.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        searchTerm = intent.getStringExtra("searchTerm");
+        if (searchTerm.equals("")) {
+            searchTerm = null;
+        }
+        //TODO: change this based on selected category
+        category = null;
+        locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
         //TODO: check for correct recycler ID
@@ -153,6 +210,70 @@ public class SearchResultsActivity extends AppCompatActivity {
         public int getItemCount() {
             return mDataset.size();
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(view == exitSearch) {
+            finish();
+        }
+
+        if(view == processSearch) {
+            //update the recycler view and update the value of the query
+        }
+
+        if(view == clothingFilterButton) {
+            updateActiveCategoryFilter(clothingFilterButton);
+        }
+
+        if(view == hatFilterButton) {
+            updateActiveCategoryFilter(hatFilterButton);
+        }
+
+        if(view == householdFilterButton) {
+            updateActiveCategoryFilter(householdFilterButton);
+        }
+
+        if(view == kitchenFilterButton) {
+            updateActiveCategoryFilter(kitchenFilterButton);
+        }
+
+        if(view == electronicsFilterButton) {
+            updateActiveCategoryFilter(electronicsFilterButton);
+        }
+
+        if(view == otherFilterButton) {
+            updateActiveCategoryFilter(otherFilterButton);
+        }
+
+    }
+
+    //method that clears all selected categories
+    private void clearSelectedCategoryFilters() {
+        clothingFilterButton.setActivated(false);
+        hatFilterButton.setActivated(false);
+        householdFilterButton.setActivated(false);
+        kitchenFilterButton.setActivated(false);
+        electronicsFilterButton.setActivated(false);
+        otherFilterButton.setActivated(false);
+    }
+
+    // method that a text view can call that will clear the other category selected and
+    // make the new category selected the active filter stored
+    private void updateActiveCategoryFilter(ImageView imageView) {
+
+        if(imageView.isActivated() == false) {
+            clearSelectedCategoryFilters();
+            imageView.setActivated(true);
+            activeCategoryFilter = imageView.toString();
+            activeCategoryFilter = activeCategoryFilter.substring(0, 1).toUpperCase() +
+                    activeCategoryFilter.substring(1, activeCategoryFilter.length()-12);
+        } else {
+            clearSelectedCategoryFilters();
+            activeCategoryFilter = null;
+        }
+
     }
 
     @Override

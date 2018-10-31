@@ -10,11 +10,217 @@
         android:id="@+id/itemresultsrecyclerview"
         android:layout_width="395dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="180dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/searchbargreen" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/closeicon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Search for an Item..."
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toStartOf="@+id/search_icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/exit_button"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/search_icon"
+        android:layout_width="17.5dp"
+        android:layout_height="17.5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/location_filter_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Current Location Filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <ImageView
+        android:id="@+id/clothing_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/category_clothing_button"
+        app:layout_constraintEnd_toStartOf="@+id/hat_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <TextView
+        android:id="@+id/clothing_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:text="Clothing"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/clothing_button"
+        app:layout_constraintStart_toStartOf="@+id/clothing_button"
+        app:layout_constraintTop_toBottomOf="@+id/clothing_button" />
+
+    <ImageView
+        android:id="@+id/household_button"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/category_household_button"
+        app:layout_constraintBottom_toBottomOf="@+id/hat_button"
+        app:layout_constraintEnd_toStartOf="@+id/kitchen_button"
+        app:layout_constraintTop_toTopOf="@+id/hat_button"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <ImageView
+        android:id="@+id/kitchen_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/category_kitchen_button"
+        app:layout_constraintEnd_toStartOf="@+id/electronics_button"
+        app:layout_constraintTop_toBottomOf="@+id/location_filter_label" />
+
+    <ImageView
+        android:id="@+id/electronics_button"
+        android:layout_width="39dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/category_electronics_button"
+        app:layout_constraintEnd_toStartOf="@+id/other_button"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <ImageView
+        android:id="@+id/other_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/category_other_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <ImageView
+        android:id="@+id/hat_button"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/category_hats_button"
+        app:layout_constraintEnd_toStartOf="@+id/household_button"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <TextView
+        android:id="@+id/hats_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Hats"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/hat_button"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/hat_button"
+        app:layout_constraintTop_toBottomOf="@+id/hat_button" />
+
+    <TextView
+        android:id="@+id/household_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Household"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/household_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/household_button"
+        app:layout_constraintTop_toTopOf="@+id/hats_textview" />
+
+    <TextView
+        android:id="@+id/kitchen_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Kitchen"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/kitchen_button"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/kitchen_button"
+        app:layout_constraintTop_toBottomOf="@+id/kitchen_button" />
+
+    <TextView
+        android:id="@+id/electronics_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Electronics"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/electronics_button"
+        app:layout_constraintStart_toStartOf="@+id/electronics_button"
+        app:layout_constraintTop_toTopOf="@+id/kitchen_textview" />
+
+    <TextView
+        android:id="@+id/other_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="Other"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/other_button"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/other_button"
+        app:layout_constraintTop_toBottomOf="@+id/other_button" />
+
+    <View
+        android:id="@+id/greybar_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kitchen_textview" />
+
+
 </android.support.constraint.ConstraintLayout>
