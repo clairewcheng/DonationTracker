@@ -37,7 +37,7 @@ public class LocationDetailActivity extends AppCompatActivity {
     private TextView locInfo;
     private TextView locationName;
     private RecyclerView mItemsRecyclerView;
-    private RecyclerView.Adapter mItemsAdpater;
+    private RecyclerView.Adapter mItemsAdapter;
     private RecyclerView.LayoutManager mItemsLayoutManager;
     private Query query;
 
@@ -101,8 +101,8 @@ public class LocationDetailActivity extends AppCompatActivity {
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
                     items.add(itemSnapshot.getValue(Item.class));
                 }
-                mItemsAdpater = new MyAdapter(items);
-                mItemsRecyclerView.setAdapter(mItemsAdpater);
+                mItemsAdapter = new MyAdapter(items);
+                mItemsRecyclerView.setAdapter(mItemsAdapter);
             }
 
             @Override
@@ -174,13 +174,6 @@ public class LocationDetailActivity extends AppCompatActivity {
         public int getItemCount() {
             return mDataset.size();
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
     }
 
     @Override
