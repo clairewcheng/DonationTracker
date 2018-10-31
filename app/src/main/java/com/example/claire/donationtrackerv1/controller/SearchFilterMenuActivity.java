@@ -103,6 +103,7 @@ public class SearchFilterMenuActivity extends AppCompatActivity implements View.
                 clothingFilterButton.setActivated(true);
                 categoryFilterTextView.setText("Clothing");
             }
+
         }
 
         if(view == hatFilterButton) {
