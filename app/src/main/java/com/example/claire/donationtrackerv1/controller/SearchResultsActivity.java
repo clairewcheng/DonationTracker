@@ -94,14 +94,13 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         if (searchTerm.equals("")) {
             searchTerm = null;
         }
-        //TODO: change this based on selected category
-        category = null;
         locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-        locationIndicatorText.setText(locationName);
+        if (locationName != null) {
+            locationIndicatorText.setText(locationName);
+        }
 
-        //TODO: check for correct recycler ID
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
@@ -110,7 +109,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         ValueEventListener itemsListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("Message", "In listener");
                 allItems = new ArrayList<>();
                 //Get items objects and update values
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
@@ -131,7 +129,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     }
 
     private void filterResults() {
-        Log.d("Message", "In filter");
         results = new ArrayList<>();
         for (Item i: allItems) {
             if (searchTerm != null && category != null && locationName != null) {
@@ -162,15 +159,32 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
     private void updateRV() {
         filterResults();
-        /*
-        mItemsRecyclerView.setAdapter(null);
-        mItemsRecyclerView.setLayoutManager(null);
-        mItemsRecyclerView.setAdapter(mItemsAdapter);
-        mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
-        mItemsAdapter.notifyDataSetChanged();
-        */
         mItemsAdapter.refreshItems(results);
-        Log.d("Message", "In update");
+    }
+
+    //method that clears all selected categories
+    private void clearSelectedCategoryFilters() {
+        clothingFilterButton.setActivated(false);
+        hatFilterButton.setActivated(false);
+        householdFilterButton.setActivated(false);
+        kitchenFilterButton.setActivated(false);
+        electronicsFilterButton.setActivated(false);
+        otherFilterButton.setActivated(false);
+    }
+
+    // method that a text view can call that will clear the other category selected and
+    // make the new category selected the active filter stored
+    private void updateActiveCategoryFilter(ImageView imageView, String category) {
+
+        if(!imageView.isActivated()) {
+            clearSelectedCategoryFilters();
+            imageView.setActivated(true);
+            this.category = category;
+        } else {
+            clearSelectedCategoryFilters();
+            this.category = null;
+        }
+        updateRV();
     }
 
     @Override
@@ -182,6 +196,11 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
         if(view == processSearch) {
             //update the recycler view and update the value of the query
+            searchTerm = searchTermEdit.getText().toString();
+            if (searchTerm.equals("")) {
+                searchTerm = null;
+            }
+            updateRV();
         }
 
         if(view == clothingFilterButton) {
@@ -207,49 +226,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         if(view == otherFilterButton) {
             updateActiveCategoryFilter(otherFilterButton, "Other");
         }
-
-
-    }
-
-    //method that clears all selected categories
-    private void clearSelectedCategoryFilters() {
-        clothingFilterButton.setActivated(false);
-        hatFilterButton.setActivated(false);
-        householdFilterButton.setActivated(false);
-        kitchenFilterButton.setActivated(false);
-        electronicsFilterButton.setActivated(false);
-        otherFilterButton.setActivated(false);
-    }
-
-    // method that a text view can call that will clear the other category selected and
-    // make the new category selected the active filter stored
-    private void updateActiveCategoryFilter(ImageView imageView, String category) {
-
-        if(imageView.isActivated() == false) {
-            clearSelectedCategoryFilters();
-            imageView.setActivated(true);
-            this.category = category;
-        } else {
-            clearSelectedCategoryFilters();
-            this.category = null;
-        }
-        Log.d("Message", "calling update");
-        updateRV();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-/*
-        Intent intent = getIntent();
-        searchTerm = intent.getStringExtra("searchTerm");
-        if (searchTerm.equals("")) {
-            searchTerm = null;
-        }
-        //TODO: change this based on selected category
-        category = null;
-        locationName = intent.getStringExtra("location");
-        */
     }
 
     @Override
