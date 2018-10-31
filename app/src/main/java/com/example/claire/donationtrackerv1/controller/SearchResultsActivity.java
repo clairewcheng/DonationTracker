@@ -52,8 +52,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-        //TODO: put correct recycler ID
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.);
+        //TODO: check for correct recycler ID
+        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
