@@ -54,6 +54,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
     private DatabaseReference mItemsRef;
     private ValueEventListener mItemsListener;
+    private ArrayList<Item> allItems;
     private ArrayList<Item> results;
     private String searchTerm;
     private String category;
@@ -109,35 +110,13 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         ValueEventListener itemsListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("Message", "Things are called");
-                results = new ArrayList<>();
+                Log.d("Message", "In listener");
+                allItems = new ArrayList<>();
                 //Get items objects and update values
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
-                    Item i = itemSnapshot.getValue(Item.class);
-                    if (searchTerm != null && category != null && locationName != null) {
-                        if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
-                            results.add(i);
-                        }
-                    } else if (searchTerm != null && category != null) {
-                        if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category)) {
-                            results.add(i);
-                        }
-                    } else if (searchTerm != null && locationName != null) {
-                        if (i.getShortDesc().equals(searchTerm) && i.getLocation().equals(locationName)) {
-                            results.add(i);
-                        }
-                    } else if (category != null && locationName != null) {
-                        if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
-                            results.add(i);
-                        }
-                    } else if ((searchTerm != null && i.getShortDesc().equals(searchTerm))
-                            || (category != null && i.getCategory().equals(category))
-                            || (locationName != null && i.getLocation().equals(locationName))) {
-                        results.add(i);
-                    } else if (searchTerm == null && category == null && locationName == null){
-                        results.add(i);
-                    }
+                    allItems.add(itemSnapshot.getValue(Item.class));
                 }
+                filterResults();
                 mItemsAdapter = new SearchResultsActivity.MyAdapter(results);
                 mItemsRecyclerView.setAdapter(mItemsAdapter);
             }
@@ -168,6 +147,12 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
         public MyAdapter(ArrayList<Item> myDataset) {
             mDataset = myDataset;
+        }
+
+        public void refreshItems(ArrayList<Item> items) {
+            this.mDataset.clear();
+            this.mDataset.addAll(items);
+            notifyDataSetChanged();
         }
 
         @Override
@@ -213,13 +198,47 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    private void filterResults() {
+        Log.d("Message", "In filter");
+        results = new ArrayList<>();
+        for (Item i: allItems) {
+            if (searchTerm != null && category != null && locationName != null) {
+                if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                    results.add(i);
+                }
+            } else if (searchTerm != null && category != null) {
+                if (i.getShortDesc().equals(searchTerm) && i.getCategory().equals(category)) {
+                    results.add(i);
+                }
+            } else if (searchTerm != null && locationName != null) {
+                if (i.getShortDesc().equals(searchTerm) && i.getLocation().equals(locationName)) {
+                    results.add(i);
+                }
+            } else if (category != null && locationName != null) {
+                if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                    results.add(i);
+                }
+            } else if ((searchTerm != null && i.getShortDesc().equals(searchTerm))
+                    || (category != null && i.getCategory().equals(category))
+                    || (locationName != null && i.getLocation().equals(locationName))) {
+                results.add(i);
+            } else if (searchTerm == null && category == null && locationName == null){
+                results.add(i);
+            }
+        }
+    }
+
     private void updateRV() {
+        filterResults();
+        /*
         mItemsRecyclerView.setAdapter(null);
         mItemsRecyclerView.setLayoutManager(null);
         mItemsRecyclerView.setAdapter(mItemsAdapter);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
         mItemsAdapter.notifyDataSetChanged();
-        Log.d("Message", "Calling update at least");
+        */
+        mItemsAdapter.refreshItems(results);
+        Log.d("Message", "In update");
     }
 
     @Override
@@ -282,7 +301,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             clearSelectedCategoryFilters();
             this.category = null;
         }
-        Log.d("Message", "got through view clickin");
+        Log.d("Message", "calling update");
         updateRV();
     }
 
