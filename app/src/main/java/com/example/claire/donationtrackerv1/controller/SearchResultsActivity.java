@@ -10,9 +10,6 @@ import com.example.claire.donationtrackerv1.R;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
