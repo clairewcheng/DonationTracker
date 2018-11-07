@@ -71,6 +71,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        //too allow for JUnit validation of login success
+        Toast.makeText(AppHomeActivity.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
+
         // Add value event listener to the locations
         ValueEventListener locationsListener = new ValueEventListener() {
             @Override
