@@ -42,6 +42,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     private Button searchButton;
 
     //TODO: get rid of userType display, instead use to give correct capabilities
+    private Button viewItemsButton;
     private TextView userType;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -56,10 +57,12 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
         searchButton = (Button) findViewById(R.id.search_button);
+        viewItemsButton = (Button) findViewById(R.id.viewItems);
 
         backButton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
+        viewItemsButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -221,5 +224,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
              Intent intentGoToSearch = new Intent(getApplicationContext(), SearchAndFiltersActivity.class);
              startActivity(intentGoToSearch);
         }
+        if (view == viewItemsButton) {
+            Intent intentViewItem = new Intent( getApplicationContext(), MapsActivity.class);
+            startActivity(intentViewItem);
+        }
+
     }
 }
