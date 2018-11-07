@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 
 public class SignInUnitTest {
-    //created by bthornburgh3 
+    //created by bthornburgh3
     /** this line is preferred way to hook up to activity */
     @Rule
     public ActivityTestRule<SignInActivity> mSignInActivityRule =
