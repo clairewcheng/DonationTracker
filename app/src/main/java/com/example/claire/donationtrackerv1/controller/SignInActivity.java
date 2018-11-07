@@ -40,6 +40,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         signInButton.setOnClickListener(this);
         goBackToCreate.setOnClickListener(this);
+        emailField.setOnClickListener(this);
+        passwordField.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -96,6 +98,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         if (view == signInButton) {
             signIn();
 
+        }
+
+        if (view == passwordField) {
+            passwordField.getText().clear();
+        }
+
+        if (view == emailField) {
+            emailField.getText().clear();
         }
 
     }
