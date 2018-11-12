@@ -70,7 +70,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 locationNames = new ArrayList<>();
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
-                    locationNames.add(locSnapshot.getValue(Location.class).getName());
+                    Location l = locSnapshot.getValue(Location.class);
+                    locationNames.add(l.getName());
                 }
                 ArrayAdapter<String> locAdapter = new ArrayAdapter(getApplicationContext(),
                         android.R.layout.simple_spinner_item, locationNames);
@@ -80,8 +81,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AddItemActivity.this, "Failed to load locations.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(AddItemActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -95,13 +96,33 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void createItem() {
-        String _shortDesc = shortDescField.getText().toString().trim();
-        String _longDesc = longDescField.getText().toString().trim();
-        String _value = valueField.getText().toString().trim();
-        String _time = timeField.getText().toString().trim();
-        String _date = dateField.getText().toString().trim();
-        String _comment = commentField.getText().toString().trim();
+        // Short description
+        android.text.Editable input = shortDescField.getText();
+        String inputString = input.toString();
+        String _shortDesc = inputString.trim();
+        // Long description
+        input = longDescField.getText();
+        inputString = input.toString();
+        String _longDesc = inputString.trim();
+        // Value
+        input = valueField.getText();
+        inputString = input.toString();
+        String _value = inputString.trim();
+        // Time
+        input = timeField.getText();
+        inputString = input.toString();
+        String _time = inputString.trim();
+        // Date
+        input = dateField.getText();
+        inputString = input.toString();
+        String _date = inputString.trim();
+        // Comment
+        input = commentField.getText();
+        inputString = input.toString();
+        String _comment = inputString.trim();
+        // Location
         String _location = (String) locationSpinner.getSelectedItem();
+        // Category
         String _category = (String) categorySpinner.getSelectedItem();
 
         _item = new Item(_shortDesc,

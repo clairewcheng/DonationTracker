@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -99,7 +100,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private ArrayList<Location> mDataset;
+        private java.util.List<Location> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
               public View mView;
@@ -113,7 +114,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
               }
         }
 
-        public MyAdapter(ArrayList<Location> myDataset) {
+        public MyAdapter(java.util.List<Location> myDataset) {
                 mDataset = myDataset;
         }
 

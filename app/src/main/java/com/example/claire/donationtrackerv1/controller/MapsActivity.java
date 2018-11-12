@@ -32,7 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     private DatabaseReference mLocationsRef;
-    private ArrayList<Location> locations;
+    private java.util.List<Location> locations;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public  class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.MyViewHolder> {
-        private ArrayList<Location> mDataset;
+        private java.util.List<Location> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public View mView;
@@ -87,7 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
 
-        public MapsAdapter(ArrayList<Location> myDataset) {
+        public MapsAdapter(java.util.List<Location> myDataset) {
             mDataset = myDataset;
         }
 

@@ -54,8 +54,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
     private DatabaseReference mItemsRef;
     private ValueEventListener mItemsListener;
-    private ArrayList<Item> allItems;
-    private ArrayList<Item> results;
+    private java.util.List<Item> allItems;
+    private java.util.List<Item> results;
     private String searchTerm;
     private String category;
     private String locationName;

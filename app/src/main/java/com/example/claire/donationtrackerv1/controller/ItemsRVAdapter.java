@@ -14,7 +14,7 @@ import com.example.claire.donationtrackerv1.model.Item;
 import java.util.ArrayList;
 
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
-    private ArrayList<Item> mDataset;
+    private java.util.List<Item> mDataset;
     private Context mContext;
 
     public class ItemsRVViewHolder extends RecyclerView.ViewHolder {
@@ -29,12 +29,12 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
         }
     }
 
-    public ItemsRVAdapter(Context myContext, ArrayList<Item> myDataset) {
+    public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataset) {
         mContext = myContext;
         mDataset = myDataset;
     }
 
-    public void refreshItems(ArrayList<Item> items) {
+    public void refreshItems(java.util.Collection<Item> items) {
         this.mDataset.clear();
         this.mDataset.addAll(items);
         notifyDataSetChanged();
