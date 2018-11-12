@@ -95,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         public MapsAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
             //create new view
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.location_list_content, parent, false);
+                    .inflate(R.layout.location_card_rv, parent, false);
             return  new MyViewHolder(view);
         }
 
@@ -104,7 +104,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataset.get(position);
-            holder.mContentView.setText(mDataset.get(position).getName());
+            String text = mDataset.get(position).getName() + "\n" + mDataset.get(position).getPhone();
+            holder.mContentView.setText(text);
 
             /*
              * set up a listener to handle if the user clicks on this list item, what should happen?
@@ -146,11 +147,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         if (locations.size()>0) {
             LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()), Float.valueOf(locations.get(0).getLongitude()));
+            mMap.addMarker(new MarkerOptions().position(start).title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
                 float latitude = Float.valueOf(locations.get(i).getLatitude());
                 float longitude = Float.valueOf(locations.get(i).getLongitude());
                 LatLng temp = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(temp).title(locations.get(i).getName()));
+                mMap.addMarker(new MarkerOptions().position(temp).title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
             }
 
             // Add a marker in Sydney and move the camera
