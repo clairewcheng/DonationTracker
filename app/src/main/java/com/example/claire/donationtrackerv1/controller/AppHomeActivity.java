@@ -189,6 +189,12 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         // Keep copy of listeners so we can remove them when app stops
         mUserListener = userListener;
 
+        // Display successful add item message, if applicable
+        Intent intent = getIntent();
+        String t = intent.getStringExtra("add");
+        if (t != null && !t.equals("")) {
+            Toast.makeText(getApplicationContext(), t, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

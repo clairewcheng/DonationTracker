@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -93,22 +94,53 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void createItem() {
-        //TODO: check for valid dates, etc
+        boolean validInput = true;
         String _shortDesc = shortDescField.getText().toString().trim();
+        if ("".equals(_shortDesc) || _shortDesc.contains(".") || _shortDesc.contains("#")
+                || _shortDesc.contains("$") || _shortDesc.contains("[") || _shortDesc.contains("]")) {
+            Toast.makeText(getApplicationContext(), "Please Enter Valid Short Description", Toast.LENGTH_SHORT).show();
+            validInput = false;
+        }
         String _longDesc = longDescField.getText().toString().trim();
+        if ("".equals(_longDesc)) {
+            Toast.makeText(getApplicationContext(), "Please Enter Full Description", Toast.LENGTH_SHORT).show();
+            validInput = false;
+        }
         String _value = valueField.getText().toString().trim();
+        if (_value.contains("$")) {
+            _value = _value.substring(1);
+        }
+        try {
+            Double value = Double.valueOf(_value);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Please Enter Valid Value", Toast.LENGTH_SHORT).show();
+            validInput = false;
+        }
         String _time = timeField.getText().toString().trim();
+        if ((!_time.contains("am") && !_time.contains("pm")) || !_time.contains(":")) {
+            Toast.makeText(getApplicationContext(), "Please Enter Valid Time", Toast.LENGTH_SHORT).show();
+            validInput = false;
+        }
         String _date = dateField.getText().toString().trim();
+        ArrayList<String> months = new ArrayList<>(Arrays.asList("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"));
+        if (_date.contains(" ") && !months.contains(_date.substring(0, _date.indexOf(" ")).toLowerCase())) {
+            Toast.makeText(getApplicationContext(), "Please Enter Valid Date", Toast.LENGTH_SHORT).show();
+            validInput = false;
+        }
         String _comment = commentField.getText().toString().trim();
         String _location = (String) locationSpinner.getSelectedItem();
         String _category = (String) categorySpinner.getSelectedItem();
 
-        _item = new Item(_shortDesc, _longDesc, _value, _time, _date, _comment, _location, _category);
-        //TODO: change to add by unique ids (currently name but paths can't contain . or # or $ or [ or ]
-        mDatabase.child("items").child("ID:" + _shortDesc).setValue(_item);
+        if (validInput) {
+            _item = new Item(_shortDesc, _longDesc, _value, _time, _date, _comment, _location, _category);
+            //TODO: change to add by unique ids, currently using shortDesc, new items with same desc replace old data
+            mDatabase.child("items").child("ID:" + _shortDesc).setValue(_item);
 
-        Intent intentHome = new Intent(getApplicationContext(),AppHomeActivity.class);
-        startActivity(intentHome);
+            Intent intentHome = new Intent(getApplicationContext(), AppHomeActivity.class);
+            intentHome.putExtra("add", "Add Item Successful");
+            //Toast.makeText(getApplicationContext(), "Add Item Successful", Toast.LENGTH_SHORT).show();
+            startActivity(intentHome);
+        }
     }
 
     @Override
