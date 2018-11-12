@@ -14,8 +14,8 @@ import com.example.claire.donationtrackerv1.model.Item;
 import java.util.ArrayList;
 
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
-    private java.util.List<Item> mDataset;
-    private Context mContext;
+    private final java.util.List<Item> mDataset;
+    private final Context mContext;
 
     public class ItemsRVViewHolder extends RecyclerView.ViewHolder {
         public View mView;
@@ -43,8 +43,8 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     @Override
     public ItemsRVAdapter.ItemsRVViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
         //create new view
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_card_rv, parent, false);
+        android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_card_rv, parent, false);
         return new ItemsRVAdapter.ItemsRVViewHolder(view);
     }
 
@@ -54,7 +54,8 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mItem = mDataset.get(position);
-        holder.mContentView.setText(mDataset.get(position).getShortDesc());
+        String text = holder.mItem.getShortDesc();
+        holder.mContentView.setText(text);
 
         /*
          * set up a listener to handle if the user clicks on this list item, what should happen?
