@@ -66,15 +66,20 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private void createAccount() {
         _user = new User();
-        final String email = emailField.getText().toString().trim();
+        android.text.Editable input = emailField.getText();
+        String inputString = input.toString();
+        final String email = inputString.trim();
         _user.setEmail(email);
-        String password = passwordField.getText().toString().trim();
+        input = passwordField.getText();
+        inputString = input.toString();
+        String password = inputString.trim();
         _user.setPassword(password);
         _user.setUserType((String) userTypeSpinner.getSelectedItem());
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
-            Toast.makeText(this, "Please enter valid email...", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Please enter valid email...", Toast.LENGTH_SHORT);
+            toast.show();
 
             return;
         }
@@ -82,7 +87,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if(TextUtils.isEmpty(password)) {
             //send error message password field is empty
 
-            Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_SHORT);
+            toast.show();
 
             return;
         }
@@ -94,8 +100,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         if(task.isSuccessful()) {
 
                             // call to change activity to main application landing.
-                            Toast.makeText(CreateAccountActivity.this,
-                                    "Account Created", Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(CreateAccountActivity.this,
+                                    "Account Created", Toast.LENGTH_SHORT);
+                            toast.show();
 
                             // Add new user to database
                             String uid = email.substring(0, email.indexOf("."));
@@ -110,9 +117,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast.makeText(CreateAccountActivity.this,
-                                    "Failed Registration: "+e.getMessage(),
-                                    Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(CreateAccountActivity.this,
+                                    "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT);
+                            toast.show();
                             return;
                         }
                     }

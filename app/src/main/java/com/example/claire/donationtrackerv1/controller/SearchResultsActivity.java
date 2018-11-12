@@ -91,7 +91,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
         Intent intent = getIntent();
         searchTerm = intent.getStringExtra("searchTerm");
-        if (searchTerm.equals("")) {
+        if ("".equals(searchTerm)) {
             searchTerm = null;
         }
         locationName = intent.getStringExtra("location");
@@ -207,7 +207,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         if(view == processSearch) {
             //update the recycler view and update the value of the query
             searchTerm = searchTermEdit.getText().toString();
-            if (searchTerm.equals("")) {
+            if ("".equals(searchTerm)) {
                 searchTerm = null;
             }
             updateRV();
