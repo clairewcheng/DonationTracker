@@ -54,7 +54,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         mLocRef = FirebaseDatabase.getInstance().getReference().child("locations").child(locIndex);
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemlistrecylerview);
+        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemListRecyclerView);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 

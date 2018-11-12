@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
-        android:id="@+id/active_filters_textview"
+        android:id="@+id/active_filters_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_filters_screen_header" />
 
     <TextView
-        android:id="@+id/active_filters_textview2"
+        android:id="@+id/active_filters_text_view2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -62,10 +62,10 @@
         android:text="Category Filters:"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_1" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_1" />
 
     <TextView
-        android:id="@+id/location_filters_textview"
+        android:id="@+id/location_filters_text_view"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:layout_marginStart="20dp"
@@ -73,10 +73,10 @@
         android:text="Location Filters:"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_2" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_2" />
 
     <View
-        android:id="@+id/greybar_1"
+        android:id="@+id/grey_bar_1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="85dp"
@@ -96,7 +96,7 @@
         android:paddingRight="35dp"
         android:text="No Category Filter Active"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/active_filters_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/active_filters_text_view" />
 
     <Button
         android:id="@+id/delete"
@@ -118,10 +118,10 @@
         android:src="@drawable/category_clothing_button"
         app:layout_constraintEnd_toStartOf="@+id/hat_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_1" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_1" />
 
     <TextView
-        android:id="@+id/clothing_textview"
+        android:id="@+id/clothing_text_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -149,7 +149,7 @@
         android:layout_marginEnd="25dp"
         android:src="@drawable/category_kitchen_button"
         app:layout_constraintEnd_toStartOf="@+id/electronics_button"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_1" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_1" />
 
     <ImageView
         android:id="@+id/electronics_button"
@@ -169,7 +169,7 @@
         android:layout_marginEnd="20dp"
         android:src="@drawable/category_other_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_1" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_1" />
 
     <ImageView
         android:id="@+id/hat_button"
@@ -179,10 +179,10 @@
         android:layout_marginEnd="25dp"
         android:src="@drawable/category_hats_button"
         app:layout_constraintEnd_toStartOf="@+id/household_button"
-        app:layout_constraintTop_toBottomOf="@+id/greybar_1" />
+        app:layout_constraintTop_toBottomOf="@+id/grey_bar_1" />
 
     <TextView
-        android:id="@+id/hats_textview"
+        android:id="@+id/hats_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -193,17 +193,17 @@
         app:layout_constraintTop_toBottomOf="@+id/hat_button" />
 
     <TextView
-        android:id="@+id/household_textview"
+        android:id="@+id/household_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Household"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/household_button"
         app:layout_constraintStart_toStartOf="@+id/household_button"
-        app:layout_constraintTop_toTopOf="@+id/hats_textview" />
+        app:layout_constraintTop_toTopOf="@+id/hats_text_view" />
 
     <TextView
-        android:id="@+id/kitchen_textview"
+        android:id="@+id/kitchen_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -214,17 +214,17 @@
         app:layout_constraintTop_toBottomOf="@+id/kitchen_button" />
 
     <TextView
-        android:id="@+id/electronics_textview"
+        android:id="@+id/electronics_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Electronics"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/electronics_button"
         app:layout_constraintStart_toStartOf="@+id/electronics_button"
-        app:layout_constraintTop_toTopOf="@+id/kitchen_textview" />
+        app:layout_constraintTop_toTopOf="@+id/kitchen_text_view" />
 
     <TextView
-        android:id="@+id/other_textview"
+        android:id="@+id/other_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -237,7 +237,7 @@
 
 
     <View
-        android:id="@+id/greybar_2"
+        android:id="@+id/grey_bar_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="220dp"
@@ -247,7 +247,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
-        android:id="@+id/location_textview"
+        android:id="@+id/location_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -258,7 +258,7 @@
         tools:text="Location_1" />
 
     <TextView
-        android:id="@+id/location_textview2"
+        android:id="@+id/location_text_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -269,7 +269,7 @@
         tools:text="Location_2" />
 
     <TextView
-        android:id="@+id/location_textview3"
+        android:id="@+id/location_text_view3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -281,7 +281,7 @@
         tools:text="Location_3" />
 
     <TextView
-        android:id="@+id/location_textview4"
+        android:id="@+id/location_text_view4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -292,7 +292,7 @@
         tools:text="Location_4" />
 
     <TextView
-        android:id="@+id/location_textview5"
+        android:id="@+id/location_text_view5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -303,7 +303,7 @@
         tools:text="Location_7" />
 
     <TextView
-        android:id="@+id/location_textview8"
+        android:id="@+id/location_text_view8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -314,7 +314,7 @@
         tools:text="Location_8" />
 
     <TextView
-        android:id="@+id/location_textview7"
+        android:id="@+id/location_text_view7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -325,7 +325,7 @@
         tools:text="Location_6" />
 
     <TextView
-        android:id="@+id/location_textview6"
+        android:id="@+id/location_text_view6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -343,7 +343,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/add_icon_inactive"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_filters_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/location_filters_text_view" />
 
     <Button
         android:id="@+id/location_button2"

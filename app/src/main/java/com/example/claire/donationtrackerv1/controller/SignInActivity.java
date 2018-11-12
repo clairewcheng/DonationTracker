@@ -33,10 +33,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        emailField = (EditText) findViewById(R.id.emailsignin);
-        passwordField = (EditText) findViewById(R.id.passwordsignin);
-        signInButton = (Button) findViewById(R.id.signinbutton);
-        goBackToCreate= (Button) findViewById(R.id.createscreen);
+        emailField = (EditText) findViewById(R.id.emailSignIn);
+        passwordField = (EditText) findViewById(R.id.passwordSignIn);
+        signInButton = (Button) findViewById(R.id.signInButton);
+        goBackToCreate= (Button) findViewById(R.id.createScreen);
 
         signInButton.setOnClickListener(this);
         goBackToCreate.setOnClickListener(this);

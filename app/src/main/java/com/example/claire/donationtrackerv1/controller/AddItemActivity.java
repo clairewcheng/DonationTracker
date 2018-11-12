@@ -48,8 +48,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         shortDescField = (EditText) findViewById(R.id.shortDescriptionEntry);
         longDescField = (EditText) findViewById(R.id.fullDescriptionEntry);
         valueField = (EditText) findViewById(R.id.valueEntry);
-        timeField = (EditText) findViewById(R.id.timeOfDropoffTimeEntry);
-        dateField = (EditText) findViewById(R.id.timeOfDropoffDateEntry);
+        timeField = (EditText) findViewById(R.id.timeOfDropOffTimeEntry);
+        dateField = (EditText) findViewById(R.id.timeOfDropOffDateEntry);
         commentField = (EditText) findViewById(R.id.commentsEntry);
         addItemButton = (Button) findViewById(R.id.addItemButton);
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);

@@ -89,7 +89,7 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
             Intent intentGoToLocation2Results = new Intent(this,
                     SearchResultsActivity.class);
             intentGoToLocation2Results.putExtra("location",
-                    "BOYS & GILRS CLUB W.W. WOOLFOLK");
+                    "BOYS & GIRLS CLUB W.W. WOOLFOLK");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation2Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation2Results);

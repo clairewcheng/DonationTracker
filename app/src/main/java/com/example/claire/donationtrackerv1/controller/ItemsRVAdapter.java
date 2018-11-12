@@ -14,7 +14,7 @@ import com.example.claire.donationtrackerv1.model.Item;
 import java.util.ArrayList;
 
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
-    private java.util.List<Item> mDataset;
+    private java.util.List<Item> mDataSet;
     private Context mContext;
 
     public class ItemsRVViewHolder extends RecyclerView.ViewHolder {
@@ -29,14 +29,14 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
         }
     }
 
-    public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataset) {
+    public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataSet) {
         mContext = myContext;
-        mDataset = myDataset;
+        mDataSet = myDataSet;
     }
 
     public void refreshItems(java.util.Collection<Item> items) {
-        this.mDataset.clear();
-        this.mDataset.addAll(items);
+        this.mDataSet.clear();
+        this.mDataSet.addAll(items);
         notifyDataSetChanged();
     }
 
@@ -51,10 +51,10 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     @Override
     public void onBindViewHolder(final ItemsRVAdapter.ItemsRVViewHolder holder,
                                  final int position) {
-        // - get element from your dataset at this position
+        // - get element from your data set at this position
         // - replace the contents of the view with that element
-        holder.mItem = mDataset.get(position);
-        holder.mContentView.setText(mDataset.get(position).getShortDesc());
+        holder.mItem = mDataSet.get(position);
+        holder.mContentView.setText(mDataSet.get(position).getShortDesc());
 
         /*
          * set up a listener to handle if the user clicks on this list item, what should happen?
@@ -79,6 +79,6 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataSet.size();
     }
 }

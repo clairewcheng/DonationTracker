@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ValueEventListener locationsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Empty arraylist
+                // Empty arrayList
                 locations = new ArrayList<>();
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public  class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.MyViewHolder> {
-        private java.util.List<Location> mDataset;
+        private java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public View mView;
@@ -87,8 +87,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
 
-        public MapsAdapter(java.util.List<Location> myDataset) {
-            mDataset = myDataset;
+        public MapsAdapter(java.util.List<Location> myDataSet) {
+            mDataSet = myDataSet;
         }
 
         @Override
@@ -101,10 +101,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public void onBindViewHolder(final MapsAdapter.MyViewHolder holder, final int position) {
-            // - get element from your dataset at this position
+            // - get element from your data set at this position
             // - replace the contents of the view with that element
-            holder.mLocation = mDataset.get(position);
-            String text = mDataset.get(position).getName() + "\n" + mDataset.get(position).getPhone();
+            holder.mLocation = mDataSet.get(position);
+            String text = mDataSet.get(position).getName() + "\n" + mDataSet.get(position).getPhone();
             holder.mContentView.setText(text);
 
             /*
@@ -129,7 +129,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return mDataSet.size();
         }
     }
 

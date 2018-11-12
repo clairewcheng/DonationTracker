@@ -8,7 +8,7 @@
     tools:context=".controller.AppHomeActivity">
 
     <Button
-        android:id="@+id/tempsignoutbutton"
+        android:id="@+id/tempSignOutButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"

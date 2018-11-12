@@ -50,7 +50,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
 
-        backButton = (Button) findViewById(R.id.tempsignoutbutton);
+        backButton = (Button) findViewById(R.id.tempSignOutButton);
         //userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
         searchButton = (Button) findViewById(R.id.search_button);
@@ -100,7 +100,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private java.util.List<Location> mDataset;
+        private java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
               public View mView;
@@ -114,8 +114,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
               }
         }
 
-        public MyAdapter(java.util.List<Location> myDataset) {
-                mDataset = myDataset;
+        public MyAdapter(java.util.List<Location> myDataSet) {
+                mDataSet = myDataSet;
         }
 
         //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
@@ -129,10 +129,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            //Get element from your dataset at this position
+            //Get element from your data set at this position
             //Replace the contents of the view with that element
-            holder.mLocation = mDataset.get(position);
-            holder.mContentView.setText(mDataset.get(position).getName());
+            holder.mLocation = mDataSet.get(position);
+            holder.mContentView.setText(mDataSet.get(position).getName());
 
 
             //Set up a listener to handle if the user clicks on this list item.
@@ -157,7 +157,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return mDataSet.size();
         }
     }
 
