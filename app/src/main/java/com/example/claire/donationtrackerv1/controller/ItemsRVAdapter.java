@@ -49,7 +49,8 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
 
     @Override
-    public void onBindViewHolder(final ItemsRVAdapter.ItemsRVViewHolder holder, final int position) {
+    public void onBindViewHolder(final ItemsRVAdapter.ItemsRVViewHolder holder,
+                                 final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mItem = mDataset.get(position);
@@ -69,7 +70,6 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
                     the next window
                  */
 
-                // TODO: 10/23/18  Please change item ref to a unique key
                 intent.putExtra("itemID", "" + "ID:" + holder.mItem.getShortDesc());
 
                 //now just display the new window

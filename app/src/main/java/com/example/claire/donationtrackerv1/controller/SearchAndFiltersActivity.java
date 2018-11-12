@@ -24,7 +24,6 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
     private EditText searchTerm;
 
     //Locations quick jump filters will launch activity with particular location filter
-    // TODO: at some point handle adding new locations, this will break
     private ImageView Location1;
     private ImageView Location2;
     private ImageView Location3;
@@ -70,14 +69,16 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
 
 
         if(view == processSearch) {
-            Intent intentGoToSearchResults = new Intent(this, SearchResultsActivity.class);
+            Intent intentGoToSearchResults = new Intent(this,
+                    SearchResultsActivity.class);
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToSearchResults.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToSearchResults);
         }
 
         if(view == Location1) {
-            Intent intentGoToLocation1Results = new Intent(this, SearchResultsActivity.class);
+            Intent intentGoToLocation1Results = new Intent(this,
+                    SearchResultsActivity.class);
             intentGoToLocation1Results.putExtra("location", "AFD Station 4");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation1Results.putExtra("searchTerm", searchTermToPass);
@@ -85,31 +86,38 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
         }
 
         if(view == Location2) {
-            Intent intentGoToLocation2Results = new Intent(this, SearchResultsActivity.class);
-            intentGoToLocation2Results.putExtra("location", "BOYS & GILRS CLUB W.W. WOOLFOLK");
+            Intent intentGoToLocation2Results = new Intent(this,
+                    SearchResultsActivity.class);
+            intentGoToLocation2Results.putExtra("location",
+                    "BOYS & GILRS CLUB W.W. WOOLFOLK");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation2Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation2Results);
         }
 
         if(view == Location3) {
-            Intent intentGoToLocation3Results = new Intent(this, SearchResultsActivity.class);
-            intentGoToLocation3Results.putExtra("location", "PATHWAY UPPER ROOM CHRISTIAN MINISTRIES");
+            Intent intentGoToLocation3Results = new Intent(this,
+                    SearchResultsActivity.class);
+            intentGoToLocation3Results.putExtra("location",
+                    "PATHWAY UPPER ROOM CHRISTIAN MINISTRIES");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation3Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation3Results);
         }
 
         if(view == Location4) {
-            Intent intentGoToLocation4Results = new Intent(this, SearchResultsActivity.class);
-            intentGoToLocation4Results.putExtra("location", "PAVILION OF HOPE INC");
+            Intent intentGoToLocation4Results = new Intent(this,
+                    SearchResultsActivity.class);
+            intentGoToLocation4Results.putExtra("location",
+                    "PAVILION OF HOPE INC");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation4Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation4Results);
         }
 
         if(view == Location5) {
-            Intent intentGoToLocation5Results = new Intent(this, SearchResultsActivity.class);
+            Intent intentGoToLocation5Results = new Intent(this,
+                    SearchResultsActivity.class);
             intentGoToLocation5Results.putExtra("location", "D&D CONVENIENCE STORE");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation5Results.putExtra("searchTerm", searchTermToPass);
@@ -117,8 +125,10 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
         }
 
         if(view == Location6) {
-            Intent intentGoToLocation6Results = new Intent(this, SearchResultsActivity.class);
-            intentGoToLocation6Results.putExtra("location", "KEEP NORTH FULTON BEAUTIFUL");
+            Intent intentGoToLocation6Results = new Intent(
+                    this, SearchResultsActivity.class);
+            intentGoToLocation6Results.putExtra("location",
+                    "KEEP NORTH FULTON BEAUTIFUL");
             String searchTermToPass = searchTerm.getText().toString();
             intentGoToLocation6Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation6Results);

@@ -101,7 +101,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             locationIndicatorText.setText(locationName);
         }
 
-        // TODO: display "No Results" message if no results
 
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
@@ -123,29 +122,32 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(SearchResultsActivity.this, "Failed to load items.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchResultsActivity.this, "Failed to load items.",
+                        Toast.LENGTH_SHORT).show();
             }
         };
         mItemsRef.addValueEventListener(itemsListener);
         mItemsListener = itemsListener;
     }
 
-    // TODO: fuzzy search: check for shortDesc containing searchTerm, not exact match
     private void filterResults() {
         results = new ArrayList<>();
         for (Item i: allItems) {
             if (searchTerm != null && category != null && locationName != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
-                        && i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())) &&
+                        i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
             } else if (searchTerm != null && category != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
                         && i.getCategory().equals(category)) {
                     results.add(i);
                 }
             } else if (searchTerm != null && locationName != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
+                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
                         && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
@@ -153,7 +155,9 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
                 if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null && (i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) || searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())))
+            } else if ((searchTerm != null &&
+                    (i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                            searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())))
                     || (category != null && i.getCategory().equals(category))
                     || (locationName != null && i.getLocation().equals(locationName))) {
                 results.add(i);

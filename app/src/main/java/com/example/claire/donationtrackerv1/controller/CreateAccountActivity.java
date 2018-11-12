@@ -51,7 +51,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         createAccountButton= (Button) findViewById(R.id.createaccountbutton);
         userTypeSpinner = (Spinner) findViewById(R.id.spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.userType);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, User.userType);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userTypeSpinner.setAdapter(adapter);
 
@@ -93,22 +94,25 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         if(task.isSuccessful()) {
 
                             // call to change activity to main application landing.
-                            Toast.makeText(CreateAccountActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this,
+                                    "Account Created", Toast.LENGTH_SHORT).show();
 
                             // Add new user to database
-                            //TODO: change to using unique uid
                             String uid = email.substring(0, email.indexOf("."));
                             mDatabase.child("users").child(uid).setValue(_user);
 
                             // navigate to logged in screen
-                            Intent intentSignUP = new Intent(getApplicationContext(),AppHomeActivity.class);
+                            Intent intentSignUP = new Intent(getApplicationContext(),
+                                    AppHomeActivity.class);
                             intentSignUP.putExtra("userType", _user.getUserType());
                             startActivity(intentSignUP);
 
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast.makeText(CreateAccountActivity.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this,
+                                    "Failed Registration: "+e.getMessage(),
+                                    Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }

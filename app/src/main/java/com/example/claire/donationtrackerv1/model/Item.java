@@ -10,14 +10,15 @@ public class Item {
     private String value;
     private String timeStamp;
     private String date;
-    public static List<String> _category = Arrays.asList("Clothing", "Hat", "Kitchen", "Electronics", "Household", "Other");
+    public static List<String> _category = Arrays.asList("Clothing",
+            "Hat", "Kitchen", "Electronics", "Household", "Other");
     private String comments;
     private String location;
     private String category;
     private String picture;
 
-    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date, String comments,
-            String location, String category, String picture) {
+    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date,
+                String comments, String location, String category, String picture) {
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         this.value = value;
@@ -30,13 +31,22 @@ public class Item {
     }
 
     // constructor chaining
-    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date, String comments,
-                String location, String category) {
-        this(shortDesc, longDesc, value, timeStamp, date, comments, location, category, "No picture available");
+    public Item(String shortDesc, String longDesc, String value, String timeStamp, String date,
+                String comments, String location, String category) {
+        this(shortDesc, longDesc, value, timeStamp, date, comments, location, category,
+                "No picture available");
     }
 
     public Item() {
-        this("", "", "", "", "", "","", "", ""); }
+        this("",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""); }
 
     // to string method
     @Override

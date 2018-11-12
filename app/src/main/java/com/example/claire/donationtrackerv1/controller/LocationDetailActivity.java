@@ -54,7 +54,6 @@ public class LocationDetailActivity extends AppCompatActivity {
         mLocRef = FirebaseDatabase.getInstance().getReference().child("locations").child(locIndex);
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-        // TODO: display "No Items" message if no items
         mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemlistrecylerview);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
@@ -107,7 +106,8 @@ public class LocationDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(LocationDetailActivity.this, "Failed to load items.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LocationDetailActivity.this, "Failed to load items.",
+                        Toast.LENGTH_SHORT).show();
             }
         };
         mItemsRef.addValueEventListener(itemsListener);

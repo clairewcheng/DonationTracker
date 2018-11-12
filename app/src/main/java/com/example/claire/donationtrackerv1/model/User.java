@@ -5,7 +5,10 @@ import java.util.List;
 
 public class User {
     /** allows us to assign a type to a user*/
-    public static List<String> userType = Arrays.asList("User", "Manager", "Admin", "Location Employee");
+    public static List<String> userType = Arrays.asList("User",
+            "Manager",
+            "Admin",
+            "Location Employee");
 
     /** saves the userType of the user*/
 

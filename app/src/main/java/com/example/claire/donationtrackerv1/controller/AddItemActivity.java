@@ -36,7 +36,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private Button addItemButton;
     private Spinner categorySpinner;
     private Spinner locationSpinner;
-    //TODO: add picture capability
 
     private Item _item;
     private ArrayList<String> locationNames;
@@ -56,7 +55,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
 
-        ArrayAdapter<String> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Item._category);
+        ArrayAdapter<String> catAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, Item._category);
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
 
@@ -72,14 +72,16 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
                     locationNames.add(locSnapshot.getValue(Location.class).getName());
                 }
-                ArrayAdapter<String> locAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, locationNames);
+                ArrayAdapter<String> locAdapter = new ArrayAdapter(getApplicationContext(),
+                        android.R.layout.simple_spinner_item, locationNames);
                 locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 locationSpinner.setAdapter(locAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AddItemActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddItemActivity.this, "Failed to load locations.",
+                        Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -93,7 +95,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void createItem() {
-        //TODO: check for valid dates, etc
         String _shortDesc = shortDescField.getText().toString().trim();
         String _longDesc = longDescField.getText().toString().trim();
         String _value = valueField.getText().toString().trim();
@@ -103,8 +104,15 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         String _location = (String) locationSpinner.getSelectedItem();
         String _category = (String) categorySpinner.getSelectedItem();
 
-        _item = new Item(_shortDesc, _longDesc, _value, _time, _date, _comment, _location, _category);
-        //TODO: change to add by unique ids (currently name but paths can't contain . or # or $ or [ or ]
+        _item = new Item(_shortDesc,
+                _longDesc,
+                _value,
+                _time,
+                _date,
+                _comment,
+                _location,
+                _category);
+        // (currently name but paths can't contain . or # or $ or [ or ]
         mDatabase.child("items").child("ID:" + _shortDesc).setValue(_item);
 
         Intent intentHome = new Intent(getApplicationContext(),AppHomeActivity.class);

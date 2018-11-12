@@ -24,8 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-// TODO: pass location by id not index
-
 public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
@@ -36,14 +34,12 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     private User user;
     private ArrayList<Location> locations;
 
-    //TODO: make backButton more intuitive
     private Button backButton;
     private Button donateItemButton;
     private Button searchButton;
 
-    //TODO: get rid of userType display, instead use to give correct capabilities
-    private Button viewItemsButton;
-    private TextView userType;
+    private Button viewMapButton;
+    //private TextView userType;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -54,19 +50,20 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_app_home);
 
         backButton = (Button) findViewById(R.id.tempsignoutbutton);
-        userType = (TextView) findViewById(R.id.user_type_field);
+        //userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
         searchButton = (Button) findViewById(R.id.search_button);
-        viewItemsButton = (Button) findViewById(R.id.viewItems);
+        viewMapButton = (Button) findViewById(R.id.viewItems);
 
         backButton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
-        viewItemsButton.setOnClickListener(this);
+        viewMapButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
-        mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(email.substring(0, email.indexOf(".")));
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(email.substring(0, email.indexOf(".")));
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
@@ -78,24 +75,26 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         ValueEventListener locationsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Empty arraylist
+                // Empty ArrayList on Data Change to prevent duplicates
                 locations = new ArrayList<>();
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
                     locations.add(locSnapshot.getValue(Location.class));
                 }
+                // Connect Locations ArrayList to RecyclerView
                 mAdapter = new MyAdapter(locations);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
+            // If no data to display, notify user with TOAST message
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AppHomeActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AppHomeActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
-        // [END locations_event_listener]
-        // mLocationsListener = locationsListener;
+        //Save copy of Location Listener for onStop so it can be removed later
         mLocationsListener = locationsListener;
     }
 
@@ -118,6 +117,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                 mDataset = myDataset;
         }
 
+        //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
         @Override
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
@@ -128,14 +128,14 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
+            //Get element from your dataset at this position
+            //Replace the contents of the view with that element
             holder.mLocation = mDataset.get(position);
             holder.mContentView.setText(mDataset.get(position).getName());
 
-            /*
-             * set up a listener to handle if the user clicks on this list item, what should happen?
-             */
+
+            //Set up a listener to handle if the user clicks on this list item.
+
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -145,6 +145,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                 /*
                     pass along the id of the location so we can retrieve the correct data in
                     the next window
+                    position = position of location in list of locations
                  */
                 intent.putExtra("locationID", "" + position);
 
@@ -165,27 +166,32 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onStart();
 
         // Add value event listener to the user
-        // [START user_event_listener]
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
                 user = dataSnapshot.getValue(User.class);
                 if (user == null) {
-                    Toast.makeText(AppHomeActivity.this, "Unable to retrieve user from database.", Toast.LENGTH_LONG).show();
-                } else {
+                    // Notify User Object Failure
+                    Toast.makeText(AppHomeActivity.this,
+                            "Unable to retrieve user from database.",
+                            Toast.LENGTH_LONG).show();
+                }
+                /*
+                else {
                     userType.setText(user.getUserType());
                 }
+                */
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                //Notify Database Failure
                 Toast.makeText(AppHomeActivity.this, "Failed to load user.",
                         Toast.LENGTH_SHORT).show();
             }
         };
         mUserRef.addValueEventListener(userListener);
-        // [END user_event_listener]
         // Keep copy of listeners so we can remove them when app stops
         mUserListener = userListener;
 
@@ -210,23 +216,27 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
 
         if (view == backButton) {
-            // navigate to logged in screen
+            // navigate to log in screen
             Intent intentLogOut = new Intent(getApplicationContext(),SignInActivity.class);
             startActivity(intentLogOut);
         }
 
         if (view == donateItemButton) {
+            // navigate to donate item screen
             Intent intentDonateItem = new Intent(getApplicationContext(), AddItemActivity.class);
             startActivity(intentDonateItem);
         }
 
         if (view == searchButton) {
-             Intent intentGoToSearch = new Intent(getApplicationContext(), SearchAndFiltersActivity.class);
+            // navigate to search screen
+            Intent intentGoToSearch = new Intent(getApplicationContext(),
+                    SearchAndFiltersActivity.class);
              startActivity(intentGoToSearch);
         }
-        if (view == viewItemsButton) {
-            Intent intentViewItem = new Intent( getApplicationContext(), MapsActivity.class);
-            startActivity(intentViewItem);
+        if (view == viewMapButton) {
+            // navigate to Maps
+            Intent intentViewMap = new Intent( getApplicationContext(), MapsActivity.class);
+            startActivity(intentViewMap);
         }
 
     }
