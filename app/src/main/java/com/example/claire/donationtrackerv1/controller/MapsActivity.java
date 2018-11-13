@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.annotation.NonNull;
 
 import com.example.claire.donationtrackerv1.model.Location;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -56,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MapsActivity.this,
                         "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
@@ -95,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        public MapsAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
+        @NonNull public MapsAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
             //create new view
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.location_card_rv, parent, false);
@@ -103,7 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        public void onBindViewHolder(final MapsAdapter.MyViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final MapsAdapter.MyViewHolder holder, final int position) {
             // - get element from your data set at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);

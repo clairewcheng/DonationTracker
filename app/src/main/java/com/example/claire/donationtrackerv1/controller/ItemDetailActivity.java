@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.annotation.NonNull;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
@@ -59,7 +60,7 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(ItemDetailActivity.this, "Failed to load item.",
                         Toast.LENGTH_SHORT).show();
             }

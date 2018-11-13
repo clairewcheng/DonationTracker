@@ -2,6 +2,7 @@ package com.example.claire.donationtrackerv1.model;
 
 import java.util.Arrays;
 import java.util.List;
+import android.support.annotation.NonNull;
 
 /**
  * Item defines what a valid donation item is and has methods for creating objects of type Item.
@@ -79,7 +80,7 @@ public class Item {
 
     // to string method
     @Override
-    public String toString() {
+    @NonNull public String toString() {
         if ((comments == null) && (picture == null)) {
             return "Name: " + shortDesc
                     + "\nTime Stamp: " + timeStamp

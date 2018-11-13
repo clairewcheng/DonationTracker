@@ -77,7 +77,7 @@ public class LocationDetailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(LocationDetailActivity.this, "Failed to load location.",
                         Toast.LENGTH_SHORT).show();
             }

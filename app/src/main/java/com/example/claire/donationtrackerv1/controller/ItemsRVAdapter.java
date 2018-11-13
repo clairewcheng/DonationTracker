@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.support.annotation.NonNull;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
@@ -52,7 +53,7 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
 
     @Override
-    public ItemsRVAdapter.ItemsRVViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
+    @NonNull public ItemsRVAdapter.ItemsRVViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
         //create new view
         android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_card_rv, parent, false);
@@ -60,7 +61,7 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
 
     @Override
-    public void onBindViewHolder(final ItemsRVAdapter.ItemsRVViewHolder holder,
+    public void onBindViewHolder(@NonNull final ItemsRVAdapter.ItemsRVViewHolder holder,
                                  final int position) {
         // - get element from your data set at this position
         // - replace the contents of the view with that element

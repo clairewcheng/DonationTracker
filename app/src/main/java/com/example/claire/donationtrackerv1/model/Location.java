@@ -1,4 +1,5 @@
 package com.example.claire.donationtrackerv1.model;
+import android.support.annotation.NonNull;
 
 public class Location {
 
@@ -124,7 +125,7 @@ public class Location {
 
 
     @Override
-    public String toString() {
+    @NonNull public String toString() {
         return "Name: " + name
                 + "\nCity: " + city
                 + "\nStreet Address: " + streetAddress

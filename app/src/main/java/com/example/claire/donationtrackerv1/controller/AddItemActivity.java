@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.support.annotation.NonNull;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
@@ -85,7 +86,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast toast = Toast.makeText(AddItemActivity.this,
                         "Failed to load locations.", Toast.LENGTH_SHORT);
                 toast.show();

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.annotation.NonNull;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Location;
@@ -96,7 +97,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 
             // If no data to display, notify user with TOAST message
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(AppHomeActivity.this,
                         "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
@@ -135,7 +136,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 
         //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
         @Override
-        public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
+        @NonNull public MyAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
            //create new view
            View view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.location_card_rv, parent, false);
@@ -143,7 +144,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
         
         @Override
-        public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
             //Get element from your data set at this position
             //Replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
@@ -201,7 +202,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 //Notify Database Failure
                 Toast.makeText(AppHomeActivity.this, "Failed to load user.",
                         Toast.LENGTH_SHORT).show();
