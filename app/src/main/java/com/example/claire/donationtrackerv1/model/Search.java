@@ -3,6 +3,7 @@ package com.example.claire.donationtrackerv1.model;
 import android.widget.Button;
 
 // --Commented out by Inspection START (11/13/2018 10:47 AM):
+//this class was never used so it was removed (commented out)
 //class Search {
 //
 //    // Category Filters (most were converted to local variables)
