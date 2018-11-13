@@ -57,8 +57,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MapsActivity.this,
-                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(MapsActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -67,7 +68,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationsListener = locationsListener;
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        SupportMapFragment mapFragment = (SupportMapFragment) manager
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         // Add value event listener to the locations
@@ -95,8 +97,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public MapsAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
             //create new view
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.location_card_rv, parent, false);
+            android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = inflater.inflate(R.layout.location_card_rv, parent, false);
             return  new MyViewHolder(view);
         }
 
@@ -105,8 +107,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // - get element from your data set at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
-            String text = mDataSet.get(position).getName()
-                    + "\n" + mDataSet.get(position).getPhone();
+            Location location = mDataSet.get(position);
+            String text = location.getName()
+                    + "\n" + location.getPhone();
             holder.mContentView.setText(text);
 
             /*
@@ -149,16 +152,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         if (!locations.isEmpty()) {
-            LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()),
-                    Float.valueOf(locations.get(0).getLongitude()));
+            Location l = locations.get(0);
+            LatLng start = new LatLng(Float.valueOf(l.getLatitude()),
+                    Float.valueOf(l.getLongitude()));
             mMap.addMarker(new MarkerOptions().position(start)
-                    .title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
+                    .title(l.getName()).snippet(l.getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
-                float latitude = Float.valueOf(locations.get(i).getLatitude());
-                float longitude = Float.valueOf(locations.get(i).getLongitude());
+                l = locations.get(i);
+                float latitude = Float.valueOf(l.getLatitude());
+                float longitude = Float.valueOf(l.getLongitude());
                 LatLng temp = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().position(temp)
-                        .title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
+                        .title(l.getName()).snippet(l.getPhone()));
             }
 
             // Add a marker in Sydney and move the camera
