@@ -65,7 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationsRef.addValueEventListener(locationsListener);
         // [END locations_event_listener]
         // mLocationsListener = locationsListener;
-        ValueEventListener mLocationsListener = locationsListener;
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
@@ -155,25 +154,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        GoogleMap mMap = googleMap;
         if (!locations.isEmpty()) {
             Location l = locations.get(0);
             LatLng start = new LatLng(Float.valueOf(l.getLatitude()),
                     Float.valueOf(l.getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(start)
+            googleMap.addMarker(new MarkerOptions().position(start)
                     .title(l.getName()).snippet(l.getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
                 l = locations.get(i);
                 float latitude = Float.valueOf(l.getLatitude());
                 float longitude = Float.valueOf(l.getLongitude());
                 LatLng temp = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(temp)
+                googleMap.addMarker(new MarkerOptions().position(temp)
                         .title(l.getName()).snippet(l.getPhone()));
             }
 
             // Add a marker in Sydney and move the camera
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(start));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(start));
         }
     }
 
