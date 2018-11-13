@@ -51,7 +51,7 @@ public class Item {
     // to string method
     @Override
     public String toString() {
-        if (comments == null && picture == null) {
+        if ((comments == null) && (picture == null)) {
             return "Name: " + shortDesc
                     + "\nTime Stamp: " + timeStamp
                     + "\nDate: " + date

@@ -45,21 +45,27 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void signIn() {
-        String email = emailField.getText().toString().trim();
-        String password = passwordField.getText().toString().trim();
+        android.text.Editable input = emailField.getText();
+        String inputString = input.toString();
+        String email = inputString.trim();
+        input = passwordField.getText();
+        inputString = input.toString();
+        String password = inputString.trim();
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
-            Toast.makeText(this, "Please enter valid email...",
-                    Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Please enter valid email...",
+                    Toast.LENGTH_SHORT);
+            toast.show();
 
             return;
         }
 
         if(TextUtils.isEmpty(password)) {
             //send error message password field is empty
-            Toast.makeText(this, "Please enter valid password...",
-                    Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Please enter valid password...",
+                    Toast.LENGTH_SHORT);
+            toast.show();
 
             return;
         }
@@ -70,8 +76,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SignInActivity.this, "Sign In Successful",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(SignInActivity.this, "Sign In Successful",
+                                    Toast.LENGTH_SHORT);
+                            toast.show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
                             Intent intentLaunchApp = new Intent(getApplicationContext(),
@@ -80,9 +87,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignInActivity.this,
-                                    "Please Correct Email and or Password",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(SignInActivity.this,
+                                    "Please Correct Email and or Password", Toast.LENGTH_SHORT);
+                            toast.show();
                         }
 
                         // ...

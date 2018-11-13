@@ -122,8 +122,9 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(SearchResultsActivity.this, "Failed to load items.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(SearchResultsActivity.this, "Failed to load items.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mItemsRef.addValueEventListener(itemsListener);
@@ -133,35 +134,42 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     private void filterResults() {
         results = new ArrayList<>();
         for (Item i: allItems) {
-            if (searchTerm != null && category != null && locationName != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())) &&
-                        i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+            String orig = i.getShortDesc();
+            String _shortDesc = orig.toLowerCase();
+            String _category = i.getCategory();
+            String _location = i.getLocation();
+            if ((searchTerm != null) && (category != null) && (locationName != null)) {
+                String _searchTerm = searchTerm.toLowerCase();
+                if ((_shortDesc.contains(searchTerm.toLowerCase()) ||
+                        _searchTerm.contains(_shortDesc.toLowerCase())) &&
+                        _category.equals(category) && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if (searchTerm != null && category != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
-                        && i.getCategory().equals(category)) {
+            } else if ((searchTerm != null) && (category != null)) {
+                String _searchTerm = searchTerm.toLowerCase();
+                if ((_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc))
+                        && _category.equals(category)) {
                     results.add(i);
                 }
-            } else if (searchTerm != null && locationName != null) {
-                if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                        searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
-                        && i.getLocation().equals(locationName)) {
+            } else if ((searchTerm != null) && (locationName != null)) {
+                String _searchTerm = searchTerm.toLowerCase();
+                if ((_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc))
+                        && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if (category != null && locationName != null) {
-                if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
+            } else if ((category != null) && (locationName != null)) {
+                if (_category.equals(category) && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null &&
-                    (i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                            searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())))
-                    || (category != null && i.getCategory().equals(category))
-                    || (locationName != null && i.getLocation().equals(locationName))) {
+            } else if (searchTerm != null) {
+                String _searchTerm = searchTerm.toLowerCase();
+                if (_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc)) {
+                    results.add(i);
+                }
+            } else if (((category != null) && _category.equals(category))
+                    || ((locationName != null) && _location.equals(locationName))) {
                 results.add(i);
-            } else if (searchTerm == null && category == null && locationName == null){
+            } else if ((searchTerm == null) && (category == null) && (locationName == null)){
                 results.add(i);
             }
         }
@@ -206,7 +214,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
         if(view == processSearch) {
             //update the recycler view and update the value of the query
-            searchTerm = searchTermEdit.getText().toString();
+            android.text.Editable input = searchTermEdit.getText();
+            searchTerm = input.toString();
             if ("".equals(searchTerm)) {
                 searchTerm = null;
             }

@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public  class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.MyViewHolder> {
-        private java.util.List<Location> mDataset;
+        private final java.util.List<Location> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public View mView;
@@ -145,7 +145,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (locations.size()>0) {
+        if (!locations.isEmpty()) {
             LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()), Float.valueOf(locations.get(0).getLongitude()));
             mMap.addMarker(new MarkerOptions().position(start).title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
