@@ -41,7 +41,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DatabaseReference mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
+        DatabaseReference mLocationsRef = FirebaseDatabase.getInstance().getReference()
+                .child("locations");
         super.onCreate(savedInstanceState);
 
         ValueEventListener locationsListener = new ValueEventListener() {
@@ -92,15 +93,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         /**
-         * Pulls the locations dataset for display in activity
-         * @param myDataSet dataset of locations for display
+         * Pulls the locations data set for display in activity
+         * @param myDataSet data set of locations for display
          */
         public MapsAdapter(java.util.List<Location> myDataSet) {
             mDataSet = myDataSet;
         }
 
         @Override
-        @NonNull public MapsAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
+        @NonNull public MapsAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent,
+                                                                     int viewType) {
             //create new view
             android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             View view = inflater.inflate(R.layout.location_card_rv, parent, false);
@@ -108,7 +110,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final MapsAdapter.MyViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final MapsAdapter.MyViewHolder holder,
+                                     final int position) {
             // - get element from your data set at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);

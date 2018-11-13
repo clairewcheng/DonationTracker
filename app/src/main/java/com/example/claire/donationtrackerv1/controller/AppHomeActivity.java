@@ -129,7 +129,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         /**
-         * MyAdapter connecting the local copy of data set to the Firebase data set
+         * MyAdapter connecting the local copy of data set to the FireBase data set
          * @param myDataSet data set that will update and replace the local data set
          */
         MyAdapter(java.util.List<Location> myDataSet) {
@@ -138,7 +138,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 
         //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
         @Override
-        @NonNull public MyAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
+        @NonNull public MyAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent,
+                                                                   int viewType) {
            //create new view
            android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
            View view = inflater.inflate(R.layout.location_card_rv, parent, false);

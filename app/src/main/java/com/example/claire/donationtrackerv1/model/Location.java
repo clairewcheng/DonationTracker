@@ -26,7 +26,7 @@ public class Location {
      * @param longitude longitude
      * @param name name of location
      * @param phone phone number
-     * @param state State adress eg CA, WI
+     * @param state State address eg CA, WI
      * @param streetAddress Street Address
      * @param type Location type
      * @param website website link

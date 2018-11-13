@@ -129,14 +129,16 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             String _shortDesc = orig.toLowerCase();
             String _category = i.getCategory();
             String _location = i.getLocation();
-            if (((searchTerm != null) && !"".equals(searchTerm)) && ((category != null) && !"".equals(category)) && (locationName != null)) {
+            if (((searchTerm != null) && !"".equals(searchTerm))
+                    && ((category != null) && !"".equals(category)) && (locationName != null)) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if ((_shortDesc.contains(searchTerm.toLowerCase()) ||
                         _searchTerm.contains(_shortDesc.toLowerCase())) &&
                         _category.equals(category) && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if (((searchTerm != null) && !"".equals(searchTerm)) && ((category != null) && !"".equals(category))) {
+            } else if (((searchTerm != null) && !"".equals(searchTerm)) && ((category != null)
+                    && !"".equals(category))) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if ((_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc))
                         && _category.equals(category)) {
@@ -160,7 +162,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             } else if ((((category != null) && !"".equals(category)) && _category.equals(category))
                     || ((locationName != null) && _location.equals(locationName))) {
                 results.add(i);
-            } else if (((searchTerm == null) || "".equals(searchTerm)) && ((category == null) || "".equals(category)) && (locationName == null)){
+            } else if (((searchTerm == null) || "".equals(searchTerm)) && ((category == null)
+                    || "".equals(category)) && (locationName == null)){
                 results.add(i);
             }
         }

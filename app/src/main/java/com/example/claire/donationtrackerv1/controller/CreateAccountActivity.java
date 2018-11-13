@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
- * CreateAccountActivity controls the account creation screen for new users. Checks with Firebase
+ * CreateAccountActivity controls the account creation screen for new users. Checks with FireBase
  * that the new account addition is valid and requests a user type. Also has a button to go
  * to sign in screen
  */
@@ -125,7 +125,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
                             if (e != null) {
                                 Toast toast = Toast.makeText(CreateAccountActivity.this,
-                                        "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT);
+                                        "Failed Registration: " + e.getMessage(),
+                                        Toast.LENGTH_SHORT);
                                 toast.show();
                             }
                         }

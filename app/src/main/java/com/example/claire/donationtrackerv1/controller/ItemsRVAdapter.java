@@ -14,7 +14,7 @@ import com.example.claire.donationtrackerv1.model.Item;
 
 
 /**
- * ItemsRVAdapter controls the items recycler view-- controls dataset that populates it
+ * ItemsRVAdapter controls the items recycler view-- controls data set that populates it
  */
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
     private final java.util.List<Item> mDataSet;
@@ -35,7 +35,7 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     /**
      * ItemsRVAdapter allow local data and context to be set
      * @param myContext context
-     * @param myDataSet dataset for replacing the old one
+     * @param myDataSet data set for replacing the old one
      */
     public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataSet) {
         mContext = myContext;
@@ -43,7 +43,7 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
 
     /**
-     * refreshItems method helps clear and refresh the data in the recycler view dataset local store
+     * refreshItems method helps clear and refresh data in the recycler view data set local store
      * @param items new items for update
      */
     public void refreshItems(java.util.Collection<Item> items) {
@@ -53,7 +53,8 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
 
     @Override
-    @NonNull public ItemsRVAdapter.ItemsRVViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
+    @NonNull public ItemsRVAdapter.ItemsRVViewHolder onCreateViewHolder (@NonNull ViewGroup parent,
+                                                                         int viewType) {
         //create new view
         android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_card_rv, parent, false);

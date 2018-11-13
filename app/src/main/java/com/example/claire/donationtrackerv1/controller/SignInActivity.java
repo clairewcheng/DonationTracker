@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 /**
  * SignInActivity controls the sign in screen-- it checks that the information provided is valid
- * with firebase and will either display warnings or bring the user to the home screen of the apps
+ * with FireBase and will either display warnings or bring the user to the home screen of the apps
  */
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
