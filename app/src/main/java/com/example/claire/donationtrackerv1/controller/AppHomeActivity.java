@@ -47,7 +47,6 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     //private TextView userType;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         locations = new ArrayList<>();
 
         mRecyclerView = findViewById(R.id.locationList);
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // Add value event listener to the locations

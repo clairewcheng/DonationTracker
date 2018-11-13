@@ -33,19 +33,15 @@ import java.util.ArrayList;
  */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
-    private DatabaseReference mLocationsRef;
     private java.util.List<Location> locations;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ValueEventListener mLocationsListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
+        DatabaseReference mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         super.onCreate(savedInstanceState);
 
         ValueEventListener locationsListener = new ValueEventListener() {
@@ -69,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationsRef.addValueEventListener(locationsListener);
         // [END locations_event_listener]
         // mLocationsListener = locationsListener;
-        mLocationsListener = locationsListener;
+        ValueEventListener mLocationsListener = locationsListener;
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
@@ -159,7 +155,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        GoogleMap mMap = googleMap;
         if (!locations.isEmpty()) {
             Location l = locations.get(0);
             LatLng start = new LatLng(Float.valueOf(l.getLatitude()),

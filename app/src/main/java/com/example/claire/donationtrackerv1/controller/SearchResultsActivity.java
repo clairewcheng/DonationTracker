@@ -38,9 +38,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     //refresh search button/search GO button
     private Button processSearch;
 
-    //Current Location defined on previous screen. Default is All location results
-    private TextView locationIndicatorText;
-
     //Category Filter Toggles on and off only one on at a time
     private ImageView clothingFilterButton;
     private ImageView hatFilterButton;
@@ -58,7 +55,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     private String locationName;
     private RecyclerView mItemsRecyclerView;
     private ItemsRVAdapter mItemsAdapter;
-    private RecyclerView.LayoutManager mItemsLayoutManager;
 
 
     @Override
@@ -69,7 +65,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         exitSearch = findViewById(R.id.exit_button);
         searchTermEdit = findViewById(R.id.search_edit_text);
         processSearch = findViewById(R.id.search_icon);
-        locationIndicatorText = findViewById(R.id.location_filter_label);
+        //Current Location defined on previous screen. Default is All location results
+        TextView locationIndicatorText = findViewById(R.id.location_filter_label);
         clothingFilterButton = findViewById(R.id.clothing_button);
         hatFilterButton = findViewById(R.id.hat_button);
         householdFilterButton = findViewById(R.id.household_button);
@@ -97,7 +94,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
 
         mItemsRecyclerView = findViewById(R.id.itemResultsRecyclerView);
-        mItemsLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
         //Add items event listener to the items list

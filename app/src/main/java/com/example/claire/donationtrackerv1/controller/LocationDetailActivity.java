@@ -39,7 +39,6 @@ public class LocationDetailActivity extends AppCompatActivity {
     private TextView locationName;
     private RecyclerView mItemsRecyclerView;
     private ItemsRVAdapter mItemsAdapter;
-    private RecyclerView.LayoutManager mItemsLayoutManager;
     private Query query;
 
     @Override
@@ -56,7 +55,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
         mItemsRecyclerView = findViewById(R.id.itemListRecyclerView);
-        mItemsLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
         // Add value event listener to the location
