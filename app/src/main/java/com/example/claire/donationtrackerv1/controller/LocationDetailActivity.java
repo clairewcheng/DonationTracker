@@ -21,6 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * LocationDetailActivity controls the screen with the location details after clicking on the
+ * general location cards
+ */
 public class LocationDetailActivity extends AppCompatActivity {
 
     private DatabaseReference mLocRef;
