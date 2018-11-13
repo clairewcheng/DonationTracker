@@ -2,7 +2,7 @@ package com.example.claire.donationtrackerv1.model;
 
 import android.widget.Button;
 
-public class Search {
+class Search {
 
     // Category Filters
     private boolean clothingFilterIsOff;

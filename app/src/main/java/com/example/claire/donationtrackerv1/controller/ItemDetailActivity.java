@@ -14,6 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * ItemDetailActivity controls the page that shows the details for an item when it's general
+ * card is clicked.
+ */
 public class ItemDetailActivity extends AppCompatActivity {
     private DatabaseReference mItemRef;
     private ValueEventListener mItemListener;

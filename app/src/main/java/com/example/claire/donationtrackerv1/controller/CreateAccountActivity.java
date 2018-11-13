@@ -23,6 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+/**
+ * CreateAccountActivity controls the account creation screen for new users. Checks with firebase
+ * that the new account addition is valid and requests a user type. Also has a button to go
+ * to sign in screen
+ */
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
@@ -45,10 +50,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        emailField = (EditText) findViewById(R.id.emailcreate);
-        passwordField = (EditText) findViewById(R.id.passwordcreate);
-        goToSignInButton = (Button) findViewById(R.id.signinscreen);
-        createAccountButton= (Button) findViewById(R.id.createaccountbutton);
+        emailField = (EditText) findViewById(R.id.emailCreate);
+        passwordField = (EditText) findViewById(R.id.passwordCreate);
+        goToSignInButton = (Button) findViewById(R.id.signInScreen);
+        createAccountButton= (Button) findViewById(R.id.createAccountButton);
         userTypeSpinner = (Spinner) findViewById(R.id.spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,
@@ -87,7 +92,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if(TextUtils.isEmpty(password)) {
             //send error message password field is empty
 
-            Toast toast = Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this,
+                    "Please enter valid password...", Toast.LENGTH_SHORT);
             toast.show();
 
             return;

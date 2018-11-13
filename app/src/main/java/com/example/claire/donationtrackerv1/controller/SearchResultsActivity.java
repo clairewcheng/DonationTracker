@@ -102,7 +102,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
 
 
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemresultsrecyclerview);
+        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemResultsRecyclerView);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 

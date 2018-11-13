@@ -14,29 +14,29 @@ import com.example.claire.donationtrackerv1.model.Item;
 import java.util.ArrayList;
 
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
-    private final java.util.List<Item> mDataset;
+    private final java.util.List<Item> mDataSet;
     private final Context mContext;
 
     public class ItemsRVViewHolder extends RecyclerView.ViewHolder {
-        public View mView;
-        public TextView mContentView;
-        public Item mItem;
+        View mView;
+        TextView mContentView;
+        Item mItem;
 
-        public ItemsRVViewHolder(View view) {
+        ItemsRVViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.itemForList);
         }
     }
 
-    public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataset) {
+    public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataSet) {
         mContext = myContext;
-        mDataset = myDataset;
+        mDataSet = myDataSet;
     }
 
     public void refreshItems(java.util.Collection<Item> items) {
-        this.mDataset.clear();
-        this.mDataset.addAll(items);
+        this.mDataSet.clear();
+        this.mDataSet.addAll(items);
         notifyDataSetChanged();
     }
 
@@ -51,9 +51,9 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     @Override
     public void onBindViewHolder(final ItemsRVAdapter.ItemsRVViewHolder holder,
                                  final int position) {
-        // - get element from your dataset at this position
+        // - get element from your data set at this position
         // - replace the contents of the view with that element
-        holder.mItem = mDataset.get(position);
+        holder.mItem = mDataSet.get(position);
         String text = holder.mItem.getShortDesc();
         holder.mContentView.setText(text);
 
@@ -80,6 +80,6 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     }
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataSet.size();
     }
 }

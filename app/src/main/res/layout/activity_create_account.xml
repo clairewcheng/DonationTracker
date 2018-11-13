@@ -8,7 +8,7 @@
     tools:context=".controller.CreateAccountActivity">
 
     <ImageView
-        android:id="@+id/logocreate"
+        android:id="@+id/logoCreate"
         android:layout_width="146dp"
         android:layout_height="172dp"
         android:layout_marginStart="8dp"
@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/donationtrackertitle"
+        android:id="@+id/donationTrackerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logocreate" />
+        app:layout_constraintTop_toBottomOf="@+id/logoCreate" />
 
     <EditText
-        android:id="@+id/emailcreate"
+        android:id="@+id/emailCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,10 +49,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donationtrackertitle" />
+        app:layout_constraintTop_toBottomOf="@+id/donationTrackerTitle" />
 
     <EditText
-        android:id="@+id/passwordcreate"
+        android:id="@+id/passwordCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
@@ -61,14 +61,14 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/createaccountbutton"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailcreate" />
+        app:layout_constraintTop_toBottomOf="@+id/emailCreate" />
 
     <Button
-        android:id="@+id/createaccountbutton"
+        android:id="@+id/createAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -78,10 +78,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordcreate" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCreate" />
 
     <Button
-        android:id="@+id/signinscreen"
+        android:id="@+id/signInScreen"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createaccountbutton"
+        app:layout_constraintTop_toBottomOf="@+id/createAccountButton"
         app:layout_constraintVertical_bias="0.933" />
 
     <Spinner
@@ -106,7 +106,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/createaccountbutton"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +121,7 @@
         android:text="Account Type"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordcreate" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCreate" />
 
 
 </android.support.constraint.ConstraintLayout>

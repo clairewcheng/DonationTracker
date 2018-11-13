@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ValueEventListener locationsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Empty arraylist
+                // Empty arrayList
                 locations = new ArrayList<>();
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
@@ -57,7 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MapsActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -73,22 +74,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public  class MapsAdapter extends RecyclerView.Adapter<MapsAdapter.MyViewHolder> {
-        private final java.util.List<Location> mDataset;
+        private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public View mView;
-            public TextView mContentView;
-            public Location mLocation;
+            View mView;
+            TextView mContentView;
+            Location mLocation;
 
-            public MyViewHolder(View view) {
+            MyViewHolder(View view) {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
         }
 
-        public MapsAdapter(java.util.List<Location> myDataset) {
-            mDataset = myDataset;
+        public MapsAdapter(java.util.List<Location> myDataSet) {
+            mDataSet = myDataSet;
         }
 
         @Override
@@ -101,10 +102,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public void onBindViewHolder(final MapsAdapter.MyViewHolder holder, final int position) {
-            // - get element from your dataset at this position
+            // - get element from your data set at this position
             // - replace the contents of the view with that element
-            holder.mLocation = mDataset.get(position);
-            String text = mDataset.get(position).getName() + "\n" + mDataset.get(position).getPhone();
+            holder.mLocation = mDataSet.get(position);
+            String text = mDataSet.get(position).getName()
+                    + "\n" + mDataSet.get(position).getPhone();
             holder.mContentView.setText(text);
 
             /*
@@ -115,7 +117,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onClick(View v) {
                     //on a phone, we need to change windows to the detail view
                     //create our new intent with the new screen (activity)
-                    Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),
+                            LocationDetailActivity.class);
                 /*
                     pass along the id of the location so we can retrieve the correct data in
                     the next window
@@ -129,7 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return mDataSet.size();
         }
     }
 
@@ -146,13 +149,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         if (!locations.isEmpty()) {
-            LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()), Float.valueOf(locations.get(0).getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(start).title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
+            LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()),
+                    Float.valueOf(locations.get(0).getLongitude()));
+            mMap.addMarker(new MarkerOptions().position(start)
+                    .title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
                 float latitude = Float.valueOf(locations.get(i).getLatitude());
                 float longitude = Float.valueOf(locations.get(i).getLongitude());
                 LatLng temp = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(temp).title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
+                mMap.addMarker(new MarkerOptions().position(temp)
+                        .title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
             }
 
             // Add a marker in Sydney and move the camera

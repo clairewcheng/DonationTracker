@@ -21,6 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * AddItemActivity controls the Add Item Screen so that users may enter a donation item's info
+ * and store it to the database for later view
+ */
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mDatabase;
@@ -37,7 +41,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner categorySpinner;
     private Spinner locationSpinner;
 
-    private Item _item;
     private ArrayList<String> locationNames;
 
     @Override
@@ -48,8 +51,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         shortDescField = (EditText) findViewById(R.id.shortDescriptionEntry);
         longDescField = (EditText) findViewById(R.id.fullDescriptionEntry);
         valueField = (EditText) findViewById(R.id.valueEntry);
-        timeField = (EditText) findViewById(R.id.timeOfDropoffTimeEntry);
-        dateField = (EditText) findViewById(R.id.timeOfDropoffDateEntry);
+        timeField = (EditText) findViewById(R.id.timeOfDropOffTimeEntry);
+        dateField = (EditText) findViewById(R.id.timeOfDropOffDateEntry);
         commentField = (EditText) findViewById(R.id.commentsEntry);
         addItemButton = (Button) findViewById(R.id.addItemButton);
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
@@ -81,7 +84,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast toast = Toast.makeText(AddItemActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(AddItemActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT);
                 toast.show();
             }
         };
@@ -125,7 +129,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         // Category
         String _category = (String) categorySpinner.getSelectedItem();
 
-        _item = new Item(_shortDesc,
+        Item _item = new Item(_shortDesc,
                 _longDesc,
                 _value,
                 _time,
