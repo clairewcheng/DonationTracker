@@ -23,6 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+/**
+ * CreateAccountActivity controls the account creation screen for new users. Checks with firebase
+ * that the new account addition is valid and requests a user type. Also has a button to go
+ * to sign in screen
+ */
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;

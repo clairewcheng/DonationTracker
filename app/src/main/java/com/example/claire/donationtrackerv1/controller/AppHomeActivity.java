@@ -16,7 +16,6 @@ import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Location;
 import com.example.claire.donationtrackerv1.model.User;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,11 +23,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * AppHomeActivity controls the Home Screen of the app so that the user can navigate to other
+ * screens(Sign out, Add Item, View Items, View Locations, View Maps)
+ */
 public class AppHomeActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private FirebaseAuth mAuth;
     private DatabaseReference mUserRef;
     private DatabaseReference mLocationsRef;
     private ValueEventListener mUserListener;
@@ -51,7 +52,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
 
-        backButton = (Button) findViewById(R.id.tempSignOutButton);
+        backButton = (Button) findViewById(R.id.tempsignoutbutton);
         //userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
         searchButton = (Button) findViewById(R.id.search_button);
@@ -62,9 +63,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         searchButton.setOnClickListener(this);
         viewMapButton.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String email = user.getEmail();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String email = mAuth.getCurrentUser().getEmail();
         mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
                 .child(email.substring(0, email.indexOf(".")));
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
@@ -92,9 +92,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             // If no data to display, notify user with TOAST message
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast toast = Toast.makeText(AppHomeActivity.this,
-                        "Failed to load locations.", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(AppHomeActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -103,40 +102,47 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private final java.util.List<Location> mDataSet;
+        private ArrayList<Location> mDataset;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            View mView;
-            TextView mContentView;
-            Location mLocation;
+              public View mView;
+              public TextView mContentView;
+              public Location mLocation;
 
-            MyViewHolder(View view) {
+            /**
+             * MyViewHolder piece to build Recycler View
+             * @param view the variable reference to the view that will hold the RecyclerView
+             */
+              public MyViewHolder(View view) {
                   super(view);
                   mView = view;
                   mContentView = (TextView) view.findViewById(R.id.content);
-            }
+              }
         }
 
-        MyAdapter(java.util.List<Location> myDataSet) {
-                mDataSet = myDataSet;
+        /**
+         * MyAdapter connecting the local copy of dataset to the Firebase Dataset
+         * @param myDataset dataset that will update and replace the local dataset
+         */
+        public MyAdapter(ArrayList<Location> myDataset) {
+                mDataset = myDataset;
         }
 
         //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
         @Override
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
-           android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-           View view = inflater.inflate(R.layout.location_card_rv, parent, false);
+           View view = LayoutInflater.from(parent.getContext())
+                   .inflate(R.layout.location_card_rv, parent, false);
            return new MyViewHolder(view);
         }
         
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            //Get element from your data set at this position
+            //Get element from your dataset at this position
             //Replace the contents of the view with that element
-            holder.mLocation = mDataSet.get(position);
-            String name = mDataSet.get(position).getName();
-            holder.mContentView.setText(name);
+            holder.mLocation = mDataset.get(position);
+            holder.mContentView.setText(mDataset.get(position).getName());
 
 
             //Set up a listener to handle if the user clicks on this list item.
@@ -161,7 +167,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         public int getItemCount() {
-            return mDataSet.size();
+            return mDataset.size();
         }
     }
 
@@ -178,10 +184,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                 user = dataSnapshot.getValue(User.class);
                 if (user == null) {
                     // Notify User Object Failure
-                    Toast toast = Toast.makeText(AppHomeActivity.this,
+                    Toast.makeText(AppHomeActivity.this,
                             "Unable to retrieve user from database.",
-                            Toast.LENGTH_LONG);
-                    toast.show();
+                            Toast.LENGTH_LONG).show();
                 }
                 /*
                 else {
@@ -193,9 +198,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 //Notify Database Failure
-                Toast toast = Toast.makeText(AppHomeActivity.this, "Failed to load user.",
-                        Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(AppHomeActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT).show();
             }
         };
         mUserRef.addValueEventListener(userListener);

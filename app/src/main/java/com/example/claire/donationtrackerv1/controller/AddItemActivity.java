@@ -21,6 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * AddItemActivity controls the Add Item Screen so that users may enter a donation item's info
+ * and store it to the database for later view
+ */
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mDatabase;
@@ -37,7 +41,6 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner categorySpinner;
     private Spinner locationSpinner;
 
-    private Item _item;
     private ArrayList<String> locationNames;
 
     @Override
@@ -126,7 +129,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         // Category
         String _category = (String) categorySpinner.getSelectedItem();
 
-        _item = new Item(_shortDesc,
+        Item _item = new Item(_shortDesc,
                 _longDesc,
                 _value,
                 _time,
