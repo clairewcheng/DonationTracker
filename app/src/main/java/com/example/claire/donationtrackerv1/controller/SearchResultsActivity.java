@@ -23,6 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * SearchResultsActivity controls the search results screen with live updates on the active filters,
+ * location, and items with regards to the filters
+ */
 public class SearchResultsActivity extends AppCompatActivity implements View.OnClickListener {
 
     //exit search button X in top left corner

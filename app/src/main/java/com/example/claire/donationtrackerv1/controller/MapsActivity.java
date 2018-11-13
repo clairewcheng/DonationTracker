@@ -28,6 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * MapsActivity controls the Map UI and data for display
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -93,6 +96,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
 
+        /**
+         * Pulls the locations dataset for display in activity
+         * @param myDataSet dataset of locations for display
+         */
         public MapsAdapter(java.util.List<Location> myDataSet) {
             mDataSet = myDataSet;
         }

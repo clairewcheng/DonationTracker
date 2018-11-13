@@ -10,6 +10,9 @@ import android.widget.ImageView;
 
 import com.example.claire.donationtrackerv1.R;
 
+/**
+ *
+ */
 public class SearchAndFiltersActivity extends AppCompatActivity implements View.OnClickListener {
 
     // x button to return to previous screen

@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
 
+/**
+ * SearchFilterMenuActivity controls the search filters activity
+ */
 public class SearchFilterMenuActivity extends AppCompatActivity implements View.OnClickListener{
 
 

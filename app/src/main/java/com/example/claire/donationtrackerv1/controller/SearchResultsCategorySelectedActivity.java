@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.claire.donationtrackerv1.R;
 
+/**
+ * SearchResultsCategorySelectedAcvtivity controls the activity with a category selected
+ */
 public class SearchResultsCategorySelectedActivity extends AppCompatActivity {
 
     @Override
