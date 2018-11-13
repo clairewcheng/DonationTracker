@@ -117,9 +117,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // - get element from your data set at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
-            Location location = mDataSet.get(position);
-            String text = location.getName()
-                    + "\n" + location.getPhone();
+            String text = holder.mLocation.getName()
+                    + "\n" + holder.mLocation.getPhone();
             holder.mContentView.setText(text);
 
             /*
@@ -136,7 +135,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     pass along the id of the location so we can retrieve the correct data in
                     the next window
                  */
-                    intent.putExtra("locationID", "" + position);
+                    intent.putExtra("locationID", "" + holder.getAdapterPosition());
 
                     //now just display the new window
                     startActivity(intent);

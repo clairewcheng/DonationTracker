@@ -37,6 +37,7 @@
         <activity android:name=".controller.ItemDetailActivity" />
         <activity android:name=".controller.SearchAndFiltersActivity" />
         <activity android:name=".controller.SearchFilterMenuActivity" />
+        <activity android:name=".controller.SearchResultsCategorySelectedActivity" />
 
         <meta-data
             android:name="com.google.android.actions"

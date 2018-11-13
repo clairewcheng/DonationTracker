@@ -168,7 +168,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                     the next window
                     position = position of location in list of locations
                  */
-                intent.putExtra("locationID", "" + position);
+                intent.putExtra("locationID", "" + holder.getAdapterPosition());
 
                 //now just display the new window
                 startActivity(intent);
