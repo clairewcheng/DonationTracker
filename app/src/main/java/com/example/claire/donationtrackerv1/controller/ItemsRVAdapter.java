@@ -13,6 +13,9 @@ import com.example.claire.donationtrackerv1.model.Item;
 
 import java.util.ArrayList;
 
+/**
+ * ItemsRVAdapter controls the items recycler view-- controls dataset that populates it
+ */
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
     private final java.util.List<Item> mDataSet;
     private final Context mContext;
@@ -29,11 +32,20 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
         }
     }
 
+    /**
+     * ItemsRVAdapter allow local data and context to be set
+     * @param myContext context
+     * @param myDataSet dataset for replacing the old one
+     */
     public ItemsRVAdapter(Context myContext, java.util.List<Item> myDataSet) {
         mContext = myContext;
         mDataSet = myDataSet;
     }
 
+    /**
+     * refreshItems method helps clear and refresh the data in the recycler view dataset local store
+     * @param items new items for update
+     */
     public void refreshItems(java.util.Collection<Item> items) {
         this.mDataSet.clear();
         this.mDataSet.addAll(items);
