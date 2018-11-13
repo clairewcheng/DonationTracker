@@ -52,7 +52,6 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
 
-        backButton = (Button) findViewById(R.id.tempsignoutbutton);
         //userType = (TextView) findViewById(R.id.user_type_field);
         donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
         searchButton = (Button) findViewById(R.id.search_button);

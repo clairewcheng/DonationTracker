@@ -151,12 +151,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (locations.size()>0) {
             LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()),
                     Float.valueOf(locations.get(0).getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(start).title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
+            mMap.addMarker(new MarkerOptions().position(start)
+                    .title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
                 float latitude = Float.valueOf(locations.get(i).getLatitude());
                 float longitude = Float.valueOf(locations.get(i).getLongitude());
                 LatLng temp = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(temp).title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
+                mMap.addMarker(new MarkerOptions().position(temp)
+                        .title(locations.get(i).getName()).snippet(locations.get(i).getPhone()));
             }
 
             // Add a marker in Sydney and move the camera
