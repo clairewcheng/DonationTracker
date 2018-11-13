@@ -66,9 +66,14 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        String email = user.getEmail();
-        mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(email.substring(0, email.indexOf(".")));
+        String email = null;
+        if (user != null) {
+            email = user.getEmail();
+        }
+        if (email != null) {
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
+                    .child(email.substring(0, email.indexOf(".")));
+        }
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
@@ -116,7 +121,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
              * MyViewHolder piece to build Recycler View
              * @param view the variable reference to the view that will hold the RecyclerView
              */
-              public MyViewHolder(View view) {
+            MyViewHolder(View view) {
                   super(view);
                   mView = view;
                   mContentView = view.findViewById(R.id.content);
@@ -124,10 +129,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         /**
-         * MyAdapter connecting the local copy of dataset to the Firebase Dataset
-         * @param myDataSet dataset that will update and replace the local dataset
+         * MyAdapter connecting the local copy of data set to the Firebase data set
+         * @param myDataSet data set that will update and replace the local data set
          */
-        public MyAdapter(java.util.List<Location> myDataSet) {
+        MyAdapter(java.util.List<Location> myDataSet) {
                 mDataSet = myDataSet;
         }
 
@@ -142,7 +147,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            //Get element from your dataset at this position
+            //Get element from your data set at this position
             //Replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
             String name = holder.mLocation.getName();

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
 
-import java.util.ArrayList;
 
 /**
  * ItemsRVAdapter controls the items recycler view-- controls dataset that populates it

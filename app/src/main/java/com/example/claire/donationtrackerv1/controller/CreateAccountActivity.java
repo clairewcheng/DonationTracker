@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
- * CreateAccountActivity controls the account creation screen for new users. Checks with firebase
+ * CreateAccountActivity controls the account creation screen for new users. Checks with Firebase
  * that the new account addition is valid and requests a user type. Also has a button to go
  * to sign in screen
  */
@@ -56,7 +56,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         createAccountButton= findViewById(R.id.createAccountButton);
         userTypeSpinner = findViewById(R.id.spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, User.userType);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userTypeSpinner.setAdapter(adapter);
@@ -123,9 +123,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                         }
                         if(!task.isSuccessful()){
                             FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            Toast toast = Toast.makeText(CreateAccountActivity.this,
-                                    "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT);
-                            toast.show();
+                            if (e != null) {
+                                Toast toast = Toast.makeText(CreateAccountActivity.this,
+                                        "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
                         }
                     }
                 });

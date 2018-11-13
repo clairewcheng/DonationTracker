@@ -71,7 +71,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         SupportMapFragment mapFragment = (SupportMapFragment) manager
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
         // Add value event listener to the locations
     }
 
