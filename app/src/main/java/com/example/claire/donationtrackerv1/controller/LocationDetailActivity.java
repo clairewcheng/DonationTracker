@@ -66,9 +66,10 @@ public class LocationDetailActivity extends AppCompatActivity {
                 query.addListenerForSingleValueEvent(mItemsListener);
 
                 if (location == null) {
-                    Toast.makeText(LocationDetailActivity.this,
+                    Toast toast = Toast.makeText(LocationDetailActivity.this,
                             "Unable to retrieve location from database.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG);
+                    toast.show();
                 } else {
                     locInfo.setText(location.toString());
                     locationName.setText(location.getName());
@@ -78,8 +79,9 @@ public class LocationDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(LocationDetailActivity.this, "Failed to load location.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(LocationDetailActivity.this, "Failed to load location.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mLocRef.addValueEventListener(locListener);
@@ -103,8 +105,9 @@ public class LocationDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(LocationDetailActivity.this, "Failed to load items.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(LocationDetailActivity.this, "Failed to load items.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mItemsRef.addValueEventListener(itemsListener);

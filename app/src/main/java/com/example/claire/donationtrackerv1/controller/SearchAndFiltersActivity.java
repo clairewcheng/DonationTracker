@@ -69,7 +69,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
         if(view == processSearch) {
             Intent intentGoToSearchResults = new Intent(this,
                     SearchResultsActivity.class);
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToSearchResults.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToSearchResults);
         }
@@ -78,7 +79,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
             Intent intentGoToLocation1Results = new Intent(this,
                     SearchResultsActivity.class);
             intentGoToLocation1Results.putExtra("location", "AFD Station 4");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation1Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation1Results);
         }
@@ -88,7 +90,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
                     SearchResultsActivity.class);
             intentGoToLocation2Results.putExtra("location",
                     "BOYS & GIRLS CLUB W.W. WOOLFOLK");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation2Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation2Results);
         }
@@ -98,7 +101,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
                     SearchResultsActivity.class);
             intentGoToLocation3Results.putExtra("location",
                     "PATHWAY UPPER ROOM CHRISTIAN MINISTRIES");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation3Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation3Results);
         }
@@ -108,7 +112,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
                     SearchResultsActivity.class);
             intentGoToLocation4Results.putExtra("location",
                     "PAVILION OF HOPE INC");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation4Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation4Results);
         }
@@ -117,7 +122,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
             Intent intentGoToLocation5Results = new Intent(this,
                     SearchResultsActivity.class);
             intentGoToLocation5Results.putExtra("location", "D&D CONVENIENCE STORE");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation5Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation5Results);
         }
@@ -127,7 +133,8 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
                     this, SearchResultsActivity.class);
             intentGoToLocation6Results.putExtra("location",
                     "KEEP NORTH FULTON BEAUTIFUL");
-            String searchTermToPass = searchTerm.getText().toString();
+            android.text.Editable input = searchTerm.getText();
+            String searchTermToPass = input.toString();
             intentGoToLocation6Results.putExtra("searchTerm", searchTermToPass);
             startActivity(intentGoToLocation6Results);
         }

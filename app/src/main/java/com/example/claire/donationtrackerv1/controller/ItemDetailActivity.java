@@ -51,9 +51,10 @@ public class ItemDetailActivity extends AppCompatActivity {
                 item = dataSnapshot.getValue(Item.class);
 
                 if (item == null) {
-                    Toast.makeText(ItemDetailActivity.this,
+                    Toast toast = Toast.makeText(ItemDetailActivity.this,
                             "Unable to retrieve item from database.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG);
+                    toast.show();
                 } else {
                     itemInfo.setText(item.toString());
                 }
@@ -61,8 +62,9 @@ public class ItemDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(ItemDetailActivity.this, "Failed to load item.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(ItemDetailActivity.this, "Failed to load item.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mItemRef.addValueEventListener(itemListener);

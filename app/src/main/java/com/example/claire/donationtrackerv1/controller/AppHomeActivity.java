@@ -17,6 +17,7 @@ import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Location;
 import com.example.claire.donationtrackerv1.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,9 +66,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         viewMapButton.setOnClickListener(this);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
         String email = null;
-        if (mAuth.getCurrentUser() != null) {
-            email = mAuth.getCurrentUser().getEmail();
+        if (user != null) {
+            email = user.getEmail();
         }
         if (email != null) {
             mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
@@ -98,8 +100,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             // If no data to display, notify user with TOAST message
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(AppHomeActivity.this,
-                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(AppHomeActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -138,8 +141,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         @Override
         @NonNull public MyAdapter.MyViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
            //create new view
-           View view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.location_card_rv, parent, false);
+           android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+           View view = inflater.inflate(R.layout.location_card_rv, parent, false);
            return new MyViewHolder(view);
         }
         
@@ -148,7 +151,8 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             //Get element from your data set at this position
             //Replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
-            holder.mContentView.setText(mDataSet.get(position).getName());
+            String name = holder.mLocation.getName();
+            holder.mContentView.setText(name);
 
 
             //Set up a listener to handle if the user clicks on this list item.
@@ -190,9 +194,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
                 user = dataSnapshot.getValue(User.class);
                 if (user == null) {
                     // Notify User Object Failure
-                    Toast.makeText(AppHomeActivity.this,
+                    Toast toast = Toast.makeText(AppHomeActivity.this,
                             "Unable to retrieve user from database.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG);
+                    toast.show();
                 }
                 /*
                 else {
@@ -204,8 +209,9 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //Notify Database Failure
-                Toast.makeText(AppHomeActivity.this, "Failed to load user.",
-                        Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(AppHomeActivity.this, "Failed to load user.",
+                        Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
         mUserRef.addValueEventListener(userListener);
