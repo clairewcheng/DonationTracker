@@ -64,9 +64,14 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         viewMapButton.setOnClickListener(this);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String email = mAuth.getCurrentUser().getEmail();
-        mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(email.substring(0, email.indexOf(".")));
+        String email = null;
+        if (mAuth.getCurrentUser() != null) {
+            email = mAuth.getCurrentUser().getEmail();
+        }
+        if (email != null) {
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("users")
+                    .child(email.substring(0, email.indexOf(".")));
+        }
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
@@ -102,7 +107,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private ArrayList<Location> mDataSet;
+        private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             final View mView;
@@ -113,7 +118,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
              * MyViewHolder piece to build Recycler View
              * @param view the variable reference to the view that will hold the RecyclerView
              */
-              public MyViewHolder(View view) {
+            MyViewHolder(View view) {
                   super(view);
                   mView = view;
                   mContentView = view.findViewById(R.id.content);
@@ -121,10 +126,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         /**
-         * MyAdapter connecting the local copy of dataset to the Firebase Dataset
-         * @param myDataSet dataset that will update and replace the local dataset
+         * MyAdapter connecting the local copy of data set to the Firebase data set
+         * @param myDataSet data set that will update and replace the local data set
          */
-        public MyAdapter(ArrayList<Location> myDataSet) {
+        MyAdapter(java.util.List<Location> myDataSet) {
                 mDataSet = myDataSet;
         }
 
@@ -139,10 +144,10 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-            //Get element from your dataset at this position
+            //Get element from your data set at this position
             //Replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
-            holder.mContentView.setText(mDataset.get(position).getName());
+            holder.mContentView.setText(mDataSet.get(position).getName());
 
 
             //Set up a listener to handle if the user clicks on this list item.

@@ -2,22 +2,16 @@ package com.example.claire.donationtrackerv1.controller;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
@@ -25,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -158,8 +151,8 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             } else if (((searchTerm != null) &&
                     ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase())) ||
                             (searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))))
-                    || (((category != null) && (i.getCategory().equals(category))))
-                    || (((locationName != null) && (i.getLocation().equals(locationName))))) {
+                    || (i.getCategory().equals(category))
+                    || (i.getLocation().equals(locationName))) {
                 results.add(i);
             } else if ((searchTerm == null) && (category == null) && (locationName == null)) {
                 results.add(i);

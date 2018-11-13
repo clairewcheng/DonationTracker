@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     /**
-     * Sample Test-- This is a filler Javadocto hold back warnings
+     * Sample Test-- This is a filler Javadoc to hold back warnings
      */
     @Test
     public void addition_isCorrect() {

@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.example.claire.donationtrackerv1.R;
 import com.example.claire.donationtrackerv1.model.Item;
 
-import java.util.ArrayList;
-
 public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVViewHolder> {
     private final java.util.List<Item> mDataSet;
     private final Context mContext;

@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.claire.donationtrackerv1.R;
-import com.example.claire.donationtrackerv1.model.Location;
 
 public class SearchAndFiltersActivity extends AppCompatActivity implements View.OnClickListener {
 

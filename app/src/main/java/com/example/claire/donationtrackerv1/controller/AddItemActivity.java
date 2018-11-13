@@ -58,7 +58,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         categorySpinner = findViewById(R.id.categorySpinner);
         locationSpinner = findViewById(R.id.locationSpinner);
 
-        ArrayAdapter<String> catAdapter = new ArrayAdapter(this,
+        ArrayAdapter<String> catAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Item._category);
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
@@ -74,9 +74,11 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 // Get Location objects and use the values to update the UI
                 for (DataSnapshot locSnapshot: dataSnapshot.getChildren()) {
                     Location l = locSnapshot.getValue(Location.class);
-                    locationNames.add(l.getName());
+                    if (l != null) {
+                        locationNames.add(l.getName());
+                    }
                 }
-                ArrayAdapter<String> locAdapter = new ArrayAdapter(getApplicationContext(),
+                ArrayAdapter<String> locAdapter = new ArrayAdapter<>(getApplicationContext(),
                         android.R.layout.simple_spinner_item, locationNames);
                 locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 locationSpinner.setAdapter(locAdapter);
