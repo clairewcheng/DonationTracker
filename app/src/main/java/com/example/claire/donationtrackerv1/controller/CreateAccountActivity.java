@@ -50,11 +50,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        emailField = (EditText) findViewById(R.id.emailCreate);
-        passwordField = (EditText) findViewById(R.id.passwordCreate);
-        goToSignInButton = (Button) findViewById(R.id.signInScreen);
-        createAccountButton= (Button) findViewById(R.id.createAccountButton);
-        userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+        emailField = findViewById(R.id.emailCreate);
+        passwordField = findViewById(R.id.passwordCreate);
+        goToSignInButton = findViewById(R.id.signInScreen);
+        createAccountButton= findViewById(R.id.createAccountButton);
+        userTypeSpinner = findViewById(R.id.spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, User.userType);
@@ -126,7 +126,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                             Toast toast = Toast.makeText(CreateAccountActivity.this,
                                     "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT);
                             toast.show();
-                            return;
                         }
                     }
                 });

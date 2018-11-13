@@ -53,12 +53,13 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
 
+        backButton = findViewById(R.id.tempSignOutButton);
         //userType = (TextView) findViewById(R.id.user_type_field);
-        donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
-        searchButton = (Button) findViewById(R.id.search_button);
-        viewMapButton = (Button) findViewById(R.id.viewItems);
+        donateItemButton = findViewById(R.id.goToDonateItemButton);
+        searchButton = findViewById(R.id.search_button);
+        viewMapButton = findViewById(R.id.viewItems);
 
-        //backButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
         viewMapButton.setOnClickListener(this);
@@ -71,7 +72,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
+        mRecyclerView = findViewById(R.id.locationList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -104,12 +105,12 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private final java.util.List<Location> mDataset;
+        private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-              public View mView;
-              public TextView mContentView;
-              public Location mLocation;
+            final View mView;
+            final TextView mContentView;
+            Location mLocation;
 
             /**
              * MyViewHolder piece to build Recycler View
@@ -118,23 +119,23 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
               public MyViewHolder(View view) {
                   super(view);
                   mView = view;
-                  mContentView = (TextView) view.findViewById(R.id.content);
-              }
+                  mContentView = view.findViewById(R.id.content);
+            }
         }
 
         /**
          * MyAdapter connecting the local copy of dataset to the Firebase Dataset
-         * @param myDataset dataset that will update and replace the local dataset
+         * @param myDataSet dataset that will update and replace the local dataset
          */
-        public MyAdapter(java.util.List<Location> myDataset) {
-                mDataset = myDataset;
+        public MyAdapter(java.util.List<Location> myDataSet) {
+                mDataSet = myDataSet;
         }
 
         //Attaching Location Card for RecyclerView to the View Holder when displaying locations.
         @Override
         public MyAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
            //create new view
-            android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+           android.view.LayoutInflater inflater = LayoutInflater.from(parent.getContext());
            View view = inflater.inflate(R.layout.location_card_rv, parent, false);
            return new MyViewHolder(view);
         }
@@ -143,7 +144,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
             //Get element from your dataset at this position
             //Replace the contents of the view with that element
-            holder.mLocation = mDataset.get(position);
+            holder.mLocation = mDataSet.get(position);
             String name = holder.mLocation.getName();
             holder.mContentView.setText(name);
 
@@ -170,7 +171,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         public int getItemCount() {
-            return mDataset.size();
+            return mDataSet.size();
         }
     }
 

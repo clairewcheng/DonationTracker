@@ -79,14 +79,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            View mView;
-            TextView mContentView;
+            final View mView;
+            final TextView mContentView;
             Location mLocation;
 
             MyViewHolder(View view) {
                 super(view);
                 mView = view;
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mContentView = view.findViewById(R.id.content);
             }
         }
 

@@ -13,7 +13,7 @@ public class Item {
     private String value;
     private String timeStamp;
     private String date;
-    public static List<String> _category = Arrays.asList("Clothing",
+    public static final List<String> _category = Arrays.asList("Clothing",
             "Hat", "Kitchen", "Electronics", "Household", "Other");
     private String comments;
     private String location;

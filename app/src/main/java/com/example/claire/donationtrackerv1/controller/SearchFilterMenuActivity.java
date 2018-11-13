@@ -47,27 +47,27 @@ public class SearchFilterMenuActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_filter_menu);
 
-        returnButton = (Button) findViewById(R.id.back_button);
+        returnButton = findViewById(R.id.back_button);
 
-        removeFilterBubbleButton = (Button) findViewById(R.id.delete);
+        removeFilterBubbleButton = findViewById(R.id.delete);
 
         categoryFilterTextView = (Button) findViewById(R.id.active_category_filter_bubble);
 
-        clothingFilterButton = (ImageView) findViewById(R.id.clothing_button);
-        hatFilterButton = (ImageView) findViewById(R.id.hat_button);
-        householdFilterButton = (ImageView) findViewById(R.id.household_button);
-        kitchenFilterButton = (ImageView) findViewById(R.id.kitchen_button);
-        electronicsFilterButton = (ImageView) findViewById(R.id.electronics_button);
-        otherFilterButton = (ImageView) findViewById(R.id.other_button);
+        clothingFilterButton = findViewById(R.id.clothing_button);
+        hatFilterButton = findViewById(R.id.hat_button);
+        householdFilterButton = findViewById(R.id.household_button);
+        kitchenFilterButton = findViewById(R.id.kitchen_button);
+        electronicsFilterButton = findViewById(R.id.electronics_button);
+        otherFilterButton = findViewById(R.id.other_button);
 
-        location1Toggle = (Button) findViewById(R.id.location_button);
-        location2Toggle = (Button) findViewById(R.id.location_button2);
-        location3Toggle = (Button) findViewById(R.id.location_button3);
-        location4Toggle = (Button) findViewById(R.id.location_button4);
-        location5Toggle = (Button) findViewById(R.id.location_button5);
-        location6Toggle = (Button) findViewById(R.id.location_button6);
-        location7Toggle = (Button) findViewById(R.id.location_button7);
-        location8Toggle = (Button) findViewById(R.id.location_button8);
+        location1Toggle = findViewById(R.id.location_button);
+        location2Toggle = findViewById(R.id.location_button2);
+        location3Toggle = findViewById(R.id.location_button3);
+        location4Toggle = findViewById(R.id.location_button4);
+        location5Toggle = findViewById(R.id.location_button5);
+        location6Toggle = findViewById(R.id.location_button6);
+        location7Toggle = findViewById(R.id.location_button7);
+        location8Toggle = findViewById(R.id.location_button8);
 
         returnButton.setOnClickListener(this);
         removeFilterBubbleButton.setOnClickListener(this);

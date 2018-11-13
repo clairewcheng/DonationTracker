@@ -69,16 +69,16 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        exitSearch = (Button) findViewById(R.id.exit_button);
-        searchTermEdit = (EditText) findViewById(R.id.search_edit_text);
-        processSearch = (Button) findViewById(R.id.search_icon);
-        locationIndicatorText = (TextView) findViewById(R.id.location_filter_label);
-        clothingFilterButton = (ImageView) findViewById(R.id.clothing_button);
-        hatFilterButton = (ImageView) findViewById(R.id.hat_button);
-        householdFilterButton = (ImageView) findViewById(R.id.household_button);
-        kitchenFilterButton = (ImageView) findViewById(R.id.kitchen_button);
-        electronicsFilterButton = (ImageView) findViewById(R.id.electronics_button);
-        otherFilterButton = (ImageView) findViewById(R.id.other_button);
+        exitSearch = findViewById(R.id.exit_button);
+        searchTermEdit = findViewById(R.id.search_edit_text);
+        processSearch = findViewById(R.id.search_icon);
+        locationIndicatorText = findViewById(R.id.location_filter_label);
+        clothingFilterButton = findViewById(R.id.clothing_button);
+        hatFilterButton = findViewById(R.id.hat_button);
+        householdFilterButton = findViewById(R.id.household_button);
+        kitchenFilterButton = findViewById(R.id.kitchen_button);
+        electronicsFilterButton = findViewById(R.id.electronics_button);
+        otherFilterButton = findViewById(R.id.other_button);
 
         exitSearch.setOnClickListener(this);
         processSearch.setOnClickListener(this);
@@ -102,7 +102,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
 
 
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemResultsRecyclerView);
+        mItemsRecyclerView = findViewById(R.id.itemResultsRecyclerView);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
