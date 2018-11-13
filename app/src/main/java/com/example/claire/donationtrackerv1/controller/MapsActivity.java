@@ -57,7 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MapsActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT).show();
             }
         };
         mLocationsRef.addValueEventListener(locationsListener);
@@ -76,11 +77,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         private java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public View mView;
-            public TextView mContentView;
-            public Location mLocation;
+            View mView;
+            TextView mContentView;
+            Location mLocation;
 
-            public MyViewHolder(View view) {
+            MyViewHolder(View view) {
                 super(view);
                 mView = view;
                 mContentView = (TextView) view.findViewById(R.id.content);
@@ -104,7 +105,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // - get element from your data set at this position
             // - replace the contents of the view with that element
             holder.mLocation = mDataSet.get(position);
-            String text = mDataSet.get(position).getName() + "\n" + mDataSet.get(position).getPhone();
+            String text = mDataSet.get(position).getName()
+                    + "\n" + mDataSet.get(position).getPhone();
             holder.mContentView.setText(text);
 
             /*
@@ -115,7 +117,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onClick(View v) {
                     //on a phone, we need to change windows to the detail view
                     //create our new intent with the new screen (activity)
-                    Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),
+                            LocationDetailActivity.class);
                 /*
                     pass along the id of the location so we can retrieve the correct data in
                     the next window
@@ -146,7 +149,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         if (locations.size()>0) {
-            LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()), Float.valueOf(locations.get(0).getLongitude()));
+            LatLng start = new LatLng(Float.valueOf(locations.get(0).getLatitude()),
+                    Float.valueOf(locations.get(0).getLongitude()));
             mMap.addMarker(new MarkerOptions().position(start).title(locations.get(0).getName()).snippet(locations.get(0).getPhone()));
             for ( int i = 1; i < locations.size(); i++ ) {
                 float latitude = Float.valueOf(locations.get(i).getLatitude());

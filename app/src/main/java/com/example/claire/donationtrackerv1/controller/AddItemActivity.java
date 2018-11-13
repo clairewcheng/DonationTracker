@@ -81,7 +81,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast toast = Toast.makeText(AddItemActivity.this, "Failed to load locations.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(AddItemActivity.this,
+                        "Failed to load locations.", Toast.LENGTH_SHORT);
                 toast.show();
             }
         };

@@ -106,18 +106,18 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-              public View mView;
-              public TextView mContentView;
-              public Location mLocation;
+            View mView;
+            TextView mContentView;
+            Location mLocation;
 
-              public MyViewHolder(View view) {
+            MyViewHolder(View view) {
                   super(view);
                   mView = view;
                   mContentView = (TextView) view.findViewById(R.id.content);
-              }
+            }
         }
 
-        public MyAdapter(java.util.List<Location> myDataSet) {
+        MyAdapter(java.util.List<Location> myDataSet) {
                 mDataSet = myDataSet;
         }
 

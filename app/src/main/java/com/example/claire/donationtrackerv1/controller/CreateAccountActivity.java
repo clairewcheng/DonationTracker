@@ -87,7 +87,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if(TextUtils.isEmpty(password)) {
             //send error message password field is empty
 
-            Toast toast = Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this,
+                    "Please enter valid password...", Toast.LENGTH_SHORT);
             toast.show();
 
             return;

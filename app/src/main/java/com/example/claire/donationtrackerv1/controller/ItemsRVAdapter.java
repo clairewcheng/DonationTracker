@@ -18,11 +18,11 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ItemsRVV
     private final Context mContext;
 
     public class ItemsRVViewHolder extends RecyclerView.ViewHolder {
-        public View mView;
-        public TextView mContentView;
-        public Item mItem;
+        View mView;
+        TextView mContentView;
+        Item mItem;
 
-        public ItemsRVViewHolder(View view) {
+        ItemsRVViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.itemForList);

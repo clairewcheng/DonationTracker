@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".controller.SearchResultsCategorySelectedActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/itemresultsrecyclerview"
+        android:id="@+id/itemResultsRecyclerView"
         android:layout_width="395dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -92,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
 
     <TextView
-        android:id="@+id/clothing_textview"
+        android:id="@+id/clothing_text_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
@@ -154,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
 
     <TextView
-        android:id="@+id/hats_textview"
+        android:id="@+id/hats_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -166,7 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hat_button" />
 
     <TextView
-        android:id="@+id/household_textview"
+        android:id="@+id/household_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Household"
@@ -174,10 +175,10 @@
         app:layout_constraintEnd_toEndOf="@+id/household_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/household_button"
-        app:layout_constraintTop_toTopOf="@+id/hats_textview" />
+        app:layout_constraintTop_toTopOf="@+id/hats_text_view" />
 
     <TextView
-        android:id="@+id/kitchen_textview"
+        android:id="@+id/kitchen_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -189,17 +190,17 @@
         app:layout_constraintTop_toBottomOf="@+id/kitchen_button" />
 
     <TextView
-        android:id="@+id/electronics_textview"
+        android:id="@+id/electronics_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Electronics"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/electronics_button"
         app:layout_constraintStart_toStartOf="@+id/electronics_button"
-        app:layout_constraintTop_toTopOf="@+id/kitchen_textview" />
+        app:layout_constraintTop_toTopOf="@+id/kitchen_text_view" />
 
     <TextView
-        android:id="@+id/other_textview"
+        android:id="@+id/other_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -212,7 +213,7 @@
         app:layout_constraintTop_toBottomOf="@+id/other_button" />
 
     <View
-        android:id="@+id/greybar_2"
+        android:id="@+id/grey_bar_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
@@ -220,6 +221,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kitchen_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/kitchen_text_view" />
 
 </android.support.constraint.ConstraintLayout>
