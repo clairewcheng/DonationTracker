@@ -88,9 +88,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
 
         Intent intent = getIntent();
         searchTerm = intent.getStringExtra("searchTerm");
-        if ("".equals(searchTerm)) {
-            searchTerm = null;
-        }
         locationName = intent.getStringExtra("location");
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
@@ -135,38 +132,38 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             String _shortDesc = orig.toLowerCase();
             String _category = i.getCategory();
             String _location = i.getLocation();
-            if ((searchTerm != null) && (category != null) && (locationName != null)) {
+            if (((searchTerm != null) && !"".equals(searchTerm)) && ((category != null) && !"".equals(category)) && (locationName != null)) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if ((_shortDesc.contains(searchTerm.toLowerCase()) ||
                         _searchTerm.contains(_shortDesc.toLowerCase())) &&
                         _category.equals(category) && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null) && (category != null)) {
+            } else if (((searchTerm != null) && !"".equals(searchTerm)) && ((category != null) && !"".equals(category))) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if ((_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc))
                         && _category.equals(category)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null) && (locationName != null)) {
+            } else if (((searchTerm != null) && !"".equals(searchTerm)) && (locationName != null)) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if ((_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc))
                         && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((category != null) && (locationName != null)) {
+            } else if (((category != null) && !"".equals(category)) && (locationName != null)) {
                 if (_category.equals(category) && _location.equals(locationName)) {
                     results.add(i);
                 }
-            } else if (searchTerm != null) {
+            } else if ((searchTerm != null) && !"".equals(searchTerm)) {
                 String _searchTerm = searchTerm.toLowerCase();
                 if (_shortDesc.contains(_searchTerm) || _searchTerm.contains(_shortDesc)) {
                     results.add(i);
                 }
-            } else if (((category != null) && _category.equals(category))
+            } else if ((((category != null) && !"".equals(category)) && _category.equals(category))
                     || ((locationName != null) && _location.equals(locationName))) {
                 results.add(i);
-            } else if ((searchTerm == null) && (category == null) && (locationName == null)){
+            } else if (((searchTerm == null) || "".equals(searchTerm)) && ((category == null) || "".equals(category)) && (locationName == null)){
                 results.add(i);
             }
         }
@@ -197,7 +194,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             this.category = category;
         } else {
             clearSelectedCategoryFilters();
-            this.category = null;
+            this.category = "";
         }
         updateRV();
     }
@@ -213,9 +210,6 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
             //update the recycler view and update the value of the query
             android.text.Editable input = searchTermEdit.getText();
             searchTerm = input.toString();
-            if ("".equals(searchTerm)) {
-                searchTerm = null;
-            }
             updateRV();
         }
 
