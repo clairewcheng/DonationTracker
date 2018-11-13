@@ -33,6 +33,8 @@ class Search {
         return activeLocationFilter;
     }
 
+    public boolean getClothingFilterIsOff() {return clothingFilterIsOff;}
+
     public void setActiveCategoryFilter(Button button) {
         if (activeCategoryFilter == null) {
             activeCategoryFilter = button.toString();
