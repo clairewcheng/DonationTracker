@@ -35,9 +35,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private java.util.List<Location> locations;
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    //private RecyclerView mRecyclerView;
+    //private RecyclerView.Adapter mAdapter;
+    //private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

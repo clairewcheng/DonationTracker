@@ -9,17 +9,17 @@ import android.support.annotation.NonNull;
  */
 public class Item {
 
-    private String shortDesc;
-    private String longDesc;
-    private String value;
-    private String timeStamp;
-    private String date;
+    private final String shortDesc;
+    private final String longDesc;
+    private final String value;
+    private final String timeStamp;
+    private final String date;
     public static final List<String> _category = Arrays.asList("Clothing",
             "Hat", "Kitchen", "Electronics", "Household", "Other");
-    private String comments;
-    private String location;
-    private String category;
-    private String picture;
+    private final String comments;
+    private final String location;
+    private final String category;
+    private final String picture;
 
     /**
      * Method for the creation of an item.
@@ -133,29 +133,31 @@ public class Item {
         return shortDesc;
     }
 
-    /**
-     * Setter method for Short Description
-     * @param desc shortDescription
-     */
-    public void setShortDesc(String desc) {
-        shortDesc = desc;
-    }
+//    /**
+//     * Setter method for Short Description
+//     * @param desc shortDescription
+//     */
+//    public void setShortDesc(String desc) {
+//        shortDesc = desc;
+//    }
 
-    /**
-     * Getter method for Long Description
-     * @return long Description
-     */
-    public String getLongDesc() {
-        return longDesc;
-    }
 
-    /**
-     * Setter method for long Description
-     * @param desc longDescription
-     */
-    public void setLongDesc(String desc) {
-        longDesc = desc;
-    }
+//    /**
+//     * Getter method for Long Description
+//     * @return long Description
+//     */
+//    public String getLongDesc() {
+//        return longDesc;
+//    }
+
+
+//    /**
+//     * Setter method for long Description
+//     * @param desc longDescription
+//     */
+//    public void setLongDesc(String desc) {
+//        longDesc = desc;
+//    }
 
     /**
      * Getter method for Value
@@ -165,13 +167,13 @@ public class Item {
         return value;
     }
 
-    /**
-     * Setter method for Value
-     * @param value value
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
+//    /**
+//     * Setter method for Value
+//     * @param value value
+//     */
+//    public void setValue(String value) {
+//        this.value = value;
+//    }
 
     /**
      * Getter method for Time Stamp
@@ -181,13 +183,14 @@ public class Item {
         return timeStamp;
     }
 
-    /**
-     * Setter method for Time
-     * @param time time
-     */
-    public void setTimeStamp(String time) {
-        timeStamp = time;
-    }
+//    /**
+//     * Setter method for Time
+//     * @param time time
+//     */
+//    public void setTimeStamp(String time) {
+//        timeStamp = time;
+//    }
+
 
     /**
      * Getter method for date
@@ -197,13 +200,14 @@ public class Item {
         return date;
     }
 
-    /**
-     * Setter method for date
-     * @param date date
-     */
-    public void setDate(String date) {
-        this.date = date;
-    }
+//    /**
+//     * Setter method for date
+//     * @param date date
+//     */
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
+
 
     /**
      * Getter method for comments
@@ -213,13 +217,13 @@ public class Item {
         return comments;
     }
 
-    /**
-     * Setter method for comments
-     * @param comments comments
-     */
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
+//    /**
+//     * Setter method for comments
+//     * @param comments comments
+//     */
+//    public void setComments(String comments) {
+//        this.comments = comments;
+//    }
 
     /**
      * Getter method for location
@@ -229,13 +233,13 @@ public class Item {
         return location;
     }
 
-    /**
-     * Setter method for location
-     * @param location location
-     */
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    /**
+//     * Setter method for location
+//     * @param location location
+//     */
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 
     /**
      * Getter method for location
@@ -245,13 +249,13 @@ public class Item {
         return category;
     }
 
-    /**
-     * Setter method for category
-     * @param category category
-     */
-    public void setCategory(String category) {
-        this.category = category;
-    }
+//    /**
+//     * Setter method for category
+//     * @param category category
+//     */
+//    public void setCategory(String category) {
+//        this.category = category;
+//    }
 
     /**
      * Getter method for picture
@@ -261,11 +265,11 @@ public class Item {
         return picture;
     }
 
-    /**
-     * Setter method for picture
-     * @param picture picture
-     */
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
+//    /**
+//     * Setter method for picture
+//     * @param picture picture
+//     */
+//    public void setPicture(String picture) {
+//        this.picture = picture;
+//    }
 }

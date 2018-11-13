@@ -26,11 +26,13 @@ public class User {
     private String _password;
 
 
+
     /**
      * Getter method for email
      * @return email
-     */
+    */
     public String getEmail() { return _email; }
+
 
     /**
      * Setter method for email

@@ -83,7 +83,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             Toast toast = Toast.makeText(SignInActivity.this, "Sign In Successful",
                                     Toast.LENGTH_SHORT);
                             toast.show();
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
                             Intent intentLaunchApp = new Intent(getApplicationContext(),
                                     AppHomeActivity.class);
