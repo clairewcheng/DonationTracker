@@ -37,15 +37,15 @@ public class SearchAndFiltersActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_and_filters);
 
-        exitSearch = (Button)  findViewById(R.id.exit_search);
-        processSearch = (Button) findViewById(R.id.search_icon);
-        searchTerm = (EditText) findViewById(R.id.search_edit_text);
-        Location1 = (ImageView) findViewById(R.id.location_image);
-        Location2 = (ImageView) findViewById(R.id.location_image2);
-        Location3 = (ImageView) findViewById(R.id.location_image3);
-        Location4 = (ImageView) findViewById(R.id.location_image4);
-        Location5 = (ImageView) findViewById(R.id.location_image5);
-        Location6 = (ImageView) findViewById(R.id.location_image6);
+        exitSearch = findViewById(R.id.exit_search);
+        processSearch = findViewById(R.id.search_icon);
+        searchTerm = findViewById(R.id.search_edit_text);
+        Location1 = findViewById(R.id.location_image);
+        Location2 = findViewById(R.id.location_image2);
+        Location3 = findViewById(R.id.location_image3);
+        Location4 = findViewById(R.id.location_image4);
+        Location5 = findViewById(R.id.location_image5);
+        Location6 = findViewById(R.id.location_image6);
 
 
         exitSearch.setOnClickListener(this);

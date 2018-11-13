@@ -69,16 +69,16 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
-        exitSearch = (Button) findViewById(R.id.exit_button);
-        searchTermEdit = (EditText) findViewById(R.id.search_edit_text);
-        processSearch = (Button) findViewById(R.id.search_icon);
-        locationIndicatorText = (TextView) findViewById(R.id.location_filter_label);
-        clothingFilterButton = (ImageView) findViewById(R.id.clothing_button);
-        hatFilterButton = (ImageView) findViewById(R.id.hat_button);
-        householdFilterButton = (ImageView) findViewById(R.id.household_button);
-        kitchenFilterButton = (ImageView) findViewById(R.id.kitchen_button);
-        electronicsFilterButton = (ImageView) findViewById(R.id.electronics_button);
-        otherFilterButton = (ImageView) findViewById(R.id.other_button);
+        exitSearch = findViewById(R.id.exit_button);
+        searchTermEdit = findViewById(R.id.search_edit_text);
+        processSearch = findViewById(R.id.search_icon);
+        locationIndicatorText = findViewById(R.id.location_filter_label);
+        clothingFilterButton = findViewById(R.id.clothing_button);
+        hatFilterButton = findViewById(R.id.hat_button);
+        householdFilterButton = findViewById(R.id.household_button);
+        kitchenFilterButton = findViewById(R.id.kitchen_button);
+        electronicsFilterButton = findViewById(R.id.electronics_button);
+        otherFilterButton = findViewById(R.id.other_button);
 
         exitSearch.setOnClickListener(this);
         processSearch.setOnClickListener(this);
@@ -102,7 +102,7 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
         }
 
 
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemResultsRecyclerView);
+        mItemsRecyclerView = findViewById(R.id.itemResultsRecyclerView);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 
@@ -133,35 +133,35 @@ public class SearchResultsActivity extends AppCompatActivity implements View.OnC
     private void filterResults() {
         results = new ArrayList<>();
         for (Item i: allItems) {
-            if (searchTerm != null && category != null && locationName != null) {
+            if ((searchTerm != null) && (category != null) && (locationName != null)) {
                 if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
                         searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())) &&
                         i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
-            } else if (searchTerm != null && category != null) {
+            } else if ((searchTerm != null) && (category != null)) {
                 if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
                         searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
                         && i.getCategory().equals(category)) {
                     results.add(i);
                 }
-            } else if (searchTerm != null && locationName != null) {
+            } else if ((searchTerm != null) && (locationName != null)) {
                 if ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
                         searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))
                         && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
-            } else if (category != null && locationName != null) {
+            } else if ((category != null) && (locationName != null)) {
                 if (i.getCategory().equals(category) && i.getLocation().equals(locationName)) {
                     results.add(i);
                 }
-            } else if ((searchTerm != null &&
-                    (i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                            searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase())))
-                    || (category != null && i.getCategory().equals(category))
-                    || (locationName != null && i.getLocation().equals(locationName))) {
+            } else if (((searchTerm != null) &&
+                    ((i.getShortDesc().toLowerCase().contains(searchTerm.toLowerCase())) ||
+                            (searchTerm.toLowerCase().contains(i.getShortDesc().toLowerCase()))))
+                    || (((category != null) && (i.getCategory().equals(category))))
+                    || (((locationName != null) && (i.getLocation().equals(locationName))))) {
                 results.add(i);
-            } else if (searchTerm == null && category == null && locationName == null){
+            } else if ((searchTerm == null) && (category == null) && (locationName == null)) {
                 results.add(i);
             }
         }

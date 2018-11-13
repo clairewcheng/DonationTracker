@@ -45,15 +45,15 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-        shortDescField = (EditText) findViewById(R.id.shortDescriptionEntry);
-        longDescField = (EditText) findViewById(R.id.fullDescriptionEntry);
-        valueField = (EditText) findViewById(R.id.valueEntry);
-        timeField = (EditText) findViewById(R.id.timeOfDropOffTimeEntry);
-        dateField = (EditText) findViewById(R.id.timeOfDropOffDateEntry);
-        commentField = (EditText) findViewById(R.id.commentsEntry);
-        addItemButton = (Button) findViewById(R.id.addItemButton);
-        categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+        shortDescField = findViewById(R.id.shortDescriptionEntry);
+        longDescField = findViewById(R.id.fullDescriptionEntry);
+        valueField = findViewById(R.id.valueEntry);
+        timeField = findViewById(R.id.timeOfDropOffTimeEntry);
+        dateField = findViewById(R.id.timeOfDropOffDateEntry);
+        commentField = findViewById(R.id.commentsEntry);
+        addItemButton = findViewById(R.id.addItemButton);
+        categorySpinner = findViewById(R.id.categorySpinner);
+        locationSpinner = findViewById(R.id.locationSpinner);
 
         ArrayAdapter<String> catAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, Item._category);

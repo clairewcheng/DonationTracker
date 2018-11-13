@@ -10,7 +10,7 @@ public class Item {
     private String value;
     private String timeStamp;
     private String date;
-    public static List<String> _category = Arrays.asList("Clothing",
+    public static final List<String> _category = Arrays.asList("Clothing",
             "Hat", "Kitchen", "Electronics", "Household", "Other");
     private String comments;
     private String location;
@@ -51,7 +51,7 @@ public class Item {
     // to string method
     @Override
     public String toString() {
-        if (comments == null && picture == null) {
+        if ((comments == null) && (picture == null)) {
             return "Name: " + shortDesc
                     + "\nTime Stamp: " + timeStamp
                     + "\nDate: " + date

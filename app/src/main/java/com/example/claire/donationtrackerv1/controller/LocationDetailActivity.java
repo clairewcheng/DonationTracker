@@ -46,15 +46,15 @@ public class LocationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_detail);
 
-        locInfo = (TextView) findViewById(R.id.loc_info);
-        locationName = (TextView) findViewById(R.id.location_name);
+        locInfo = findViewById(R.id.loc_info);
+        locationName = findViewById(R.id.location_name);
 
         Intent intent = getIntent();
         String locIndex = intent.getStringExtra("locationID");
         mLocRef = FirebaseDatabase.getInstance().getReference().child("locations").child(locIndex);
         mItemsRef = FirebaseDatabase.getInstance().getReference().child("items");
 
-        mItemsRecyclerView = (RecyclerView) findViewById(R.id.itemListRecyclerView);
+        mItemsRecyclerView = findViewById(R.id.itemListRecyclerView);
         mItemsLayoutManager = new LinearLayoutManager(this);
         mItemsRecyclerView.setLayoutManager(mItemsLayoutManager);
 

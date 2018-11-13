@@ -26,7 +26,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
-        itemInfo = (TextView) findViewById(R.id.itemInfo);
+        itemInfo = findViewById(R.id.itemInfo);
 
         Intent intent = getIntent();
         String itemID = intent.getStringExtra("itemID");

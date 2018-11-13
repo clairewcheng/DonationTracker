@@ -51,11 +51,11 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home);
 
-        backButton = (Button) findViewById(R.id.tempSignOutButton);
+        backButton = findViewById(R.id.tempSignOutButton);
         //userType = (TextView) findViewById(R.id.user_type_field);
-        donateItemButton = (Button) findViewById(R.id.goToDonateItemButton);
-        searchButton = (Button) findViewById(R.id.search_button);
-        viewMapButton = (Button) findViewById(R.id.viewItems);
+        donateItemButton = findViewById(R.id.goToDonateItemButton);
+        searchButton = findViewById(R.id.search_button);
+        viewMapButton = findViewById(R.id.viewItems);
 
         backButton.setOnClickListener(this);
         donateItemButton.setOnClickListener(this);
@@ -70,7 +70,7 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         mLocationsRef = FirebaseDatabase.getInstance().getReference().child("locations");
         locations = new ArrayList<>();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.locationList);
+        mRecyclerView = findViewById(R.id.locationList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -106,14 +106,14 @@ public class AppHomeActivity extends AppCompatActivity implements View.OnClickLi
         private final java.util.List<Location> mDataSet;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            View mView;
-            TextView mContentView;
+            final View mView;
+            final TextView mContentView;
             Location mLocation;
 
             MyViewHolder(View view) {
                   super(view);
                   mView = view;
-                  mContentView = (TextView) view.findViewById(R.id.content);
+                  mContentView = view.findViewById(R.id.content);
             }
         }
 
