@@ -79,7 +79,7 @@ public class SignInUnitTest {
                 getWindow().getDecorView()))).check(matches((isDisplayed())));
     }
 
-    @Test
+    @Test (timeout = 200000)
     public void checkInvalidEmailSignIn() {
         // Test incorrect password being entered in with correct email
 
@@ -87,8 +87,8 @@ public class SignInUnitTest {
         onView(withId(R.id.emailsignin)).perform(typeText("doesntexist@gmail.com"),
                 closeSoftKeyboard());
         //type password into the password box
-        onView(withId(R.id.passwordsignin)).perform(click());
-        onView(withId(R.id.passwordsignin)).perform(typeText("wrongpassword"),
+        onView(withId(R.id.passwordsignin)).perform(doubleClick());
+        onView(withId(R.id.passwordsignin)).perform(typeText("testpassword"),
                 closeSoftKeyboard());
         //now click on sign in button
         onView(withId(R.id.signinbutton)).perform(click());
