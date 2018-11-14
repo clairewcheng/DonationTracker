@@ -62,21 +62,29 @@ public class SignInUnitTest {
 
     @Test
     public void checkInvalidPasswordSignIn() {
-        // Test incorrect password being entered in with correct email
+        try {
+            // Test incorrect password being entered in with correct email
 
-        //type email into the email box
-        onView(withId(R.id.emailsignin)).perform(typeText("test@gmail.com"),
-                closeSoftKeyboard());
-        //type password into the password box
-        onView(withId(R.id.passwordsignin)).perform(click());
-        onView(withId(R.id.passwordsignin)).perform(typeText("wrongpassword"),
-                closeSoftKeyboard());
-        //now click on sign in button
-        onView(withId(R.id.signinbutton)).perform(click());
-        //check to make sure error was thrown
-        SignInActivity activity = mSignInActivityRule.getActivity();
-        onView(withText("Please Correct Email and or Password")).inRoot(withDecorView(not(activity.
-                getWindow().getDecorView()))).check(matches((isDisplayed())));
+            //type email into the email box
+            onView(withId(R.id.emailsignin)).perform(typeText("test@gmail.com"),
+                    closeSoftKeyboard());
+            //type password into the password box
+            onView(withId(R.id.passwordsignin)).perform(click());
+            onView(withId(R.id.passwordsignin)).perform(typeText("wrongpassword"),
+                    closeSoftKeyboard());
+            //now click on sign in button
+            onView(withId(R.id.signinbutton)).perform(click());
+            //check to make sure error was thrown
+            SignInActivity activity = mSignInActivityRule.getActivity();
+            onView(withText("Please Correct Email and or Password")).inRoot(withDecorView(not(activity.
+                    getWindow().getDecorView()))).check(matches((isDisplayed())));
+        }
+        catch (android.support.test.espresso.NoMatchingViewException e) {
+
+            fail("The expected toast did not appear on screen notifying" +
+                    " the user of the incorrect password");
+
+        }
     }
 
     @Test (timeout = 200000)
