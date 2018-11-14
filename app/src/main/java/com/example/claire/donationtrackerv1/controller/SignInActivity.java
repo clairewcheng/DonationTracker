@@ -52,14 +52,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         if(TextUtils.isEmpty(email)) {
             //send error message email field is empty
-            Toast.makeText(this, "Please enter valid email...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter valid email...", Toast.LENGTH_LONG).show();
 
             return;
         }
 
         if(TextUtils.isEmpty(password)) {
             //send error message password field is empty
-            Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter valid password...", Toast.LENGTH_LONG).show();
 
             return;
         }
@@ -70,7 +70,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SignInActivity.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Sign In Successful", Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             //navigate to app launch screen
                             Intent intentLaunchApp = new Intent(getApplicationContext(),AppHomeActivity.class);
@@ -78,7 +78,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignInActivity.this, "Please Correct Email and or Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Please Correct Email and or Password", Toast.LENGTH_LONG).show();
                         }
 
                         // ...

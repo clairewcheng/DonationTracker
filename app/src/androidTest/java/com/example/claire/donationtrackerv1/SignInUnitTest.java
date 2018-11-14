@@ -62,7 +62,7 @@ public class SignInUnitTest {
 
     @Test
     public void checkInvalidPasswordSignIn() {
-        try {
+
             // Test incorrect password being entered in with correct email
 
             //type email into the email box
@@ -78,13 +78,7 @@ public class SignInUnitTest {
             SignInActivity activity = mSignInActivityRule.getActivity();
             onView(withText("Please Correct Email and or Password")).inRoot(withDecorView(not(activity.
                     getWindow().getDecorView()))).check(matches((isDisplayed())));
-        }
-        catch (android.support.test.espresso.NoMatchingViewException e) {
 
-            fail("The expected toast did not appear on screen notifying" +
-                    " the user of the incorrect password");
-
-        }
     }
 
     @Test (timeout = 200000)
